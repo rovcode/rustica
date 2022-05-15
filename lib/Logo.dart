@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, duplicate_ignore, non_constant_identifier_names, avoid_print
-
 import 'package:flutter/material.dart';
 import 'package:rustica/const.dart';
 
