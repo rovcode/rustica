@@ -22,9 +22,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({Key? key}) : super(key: key);
-
   //inal String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -34,6 +32,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Logo("assets/img/logorustica.png"),
+      
+      
     );
   }
 }
