@@ -1,54 +1,96 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'dart:async';
+
 import 'package:flutter/material.dart';
-import 'package:rustica/const.dart';
 
 class Logo extends StatelessWidget {
   String logoPath = "assets/img/logorustica.png";
   Logo(this.logoPath); //Constructor
   @override
   Widget build(BuildContext context) {
-    final logo = Container(
-      // ignore: prefer_const_constructors
-      margin: EdgeInsets.only(top: 150.00, left: 100),
-      width: 200.00,
-      height: 200.00,
-      decoration: BoxDecoration(
-          image: DecorationImage(
-        fit: BoxFit.fill,
-        image: AssetImage(logoPath),
-      )),
-    );
+    Widget Logo_Rustica() {
+      return Center(
+        child: Container(
+          margin: EdgeInsets.only(top: 150),
+          child: Column(
+            children: [Image(image: AssetImage(logoPath))],
+          ),
+        ),
+      );
+    }
+
     //===================================================
     // ignore: avoid_unnecessary_containers
-    final SloganTexto = Container(
-        // ignore: prefer_const_literals_to_create_immutables
-        child: Column(children: [
-      Padding(
-        padding: EdgeInsets.only(
-            left: 120,
-            bottom: 20,
-            right: 20,
-            top: 20), //apply padding to all four sides
-        // ignore: prefer_const_constructors
-        child: Text("Rápido y facil"),
-      ),
-    ]));
+    Widget TextoPantallaPrincipal() {
+      return Center(
+          child: Container(
+        margin: EdgeInsets.only(top: 20, bottom: 40),
+        child: Text(
+          "Rápido y fácil",
+          style: TextStyle(color: Colors.white),
+        ),
+      ));
+    }
     //===================================================
 
-    final btnQRCode = Container(
-        // ignore: prefer_const_literals_to_create_immutables
-        margin: const EdgeInsets.only(top: 25, left: 120),
+    Widget ButtonQRCode() {
+      return Center(
+        child: Container(
+          margin: EdgeInsets.only(bottom: 10),
+          child: Column(
+            children: [
+              RaisedButton(
+                child: new Text(
+                  "Escaner QR",
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+                // ignore: unnecessary_new
+                shape: new RoundedRectangleBorder(
+                    // ignore: unnecessary_new
+                    borderRadius: new BorderRadius.circular(30)),
+                color: Color(0xffffa900),
+                onPressed: () {
+                  print("ok");
+                },
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+
+    //===================================================
+    Widget ButtonLogin() {
+      return Center(
         child: Column(children: [
           RaisedButton(
-            child: Text("Escanear QR Code"),
-            color: Color(0xffffa900),
-            onPressed: () {
-              print("ok");
-            },
-          ),
-        ]));
-    //===================================================
+              child: new Text(
+                "Login",
+                style: TextStyle(
+                  color: Colors.black,
+                ),
+              ),
+              shape: new RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30)),
+              color: Colors.white,
+              onPressed: () {
+                print("Login");
+              }),
+        ]),
+      );
+    }
+
+    //==================================================
     return Column(
-      children: <Widget>[logo, SloganTexto, btnQRCode],
+      children: <Widget>[
+        Logo_Rustica(),
+        TextoPantallaPrincipal(),
+        ButtonQRCode(),
+        ButtonLogin()
+      ],
     );
   }
 }
