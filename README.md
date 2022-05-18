@@ -1,7 +1,9 @@
 # rustica
 
-A new Flutter project.
+Este es un proyecto elabarado como RSU, el mismo está implementado en fluter, aplicando la metodología atomic design.
 
+Este es código de libre acceso para cualquier interesado en conocer, aprender y sugerir cambios, puede contactar a 
+- [Rony Velásquez](https://www.ronyvelasquez.com)
 ## Getting Started
 
 This project is a starting point for a Flutter application.
