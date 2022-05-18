@@ -114,13 +114,13 @@ class LoginState extends State<Login> {
         )));
   }
 
-  Widget _boton_registro() {
+   Widget _boton_registro() {
     return Container(
         margin: EdgeInsets.only(top: 35),
         child: Center(
           child: Card(
             color: ColoresApp.darkPrimary,
-            
+
             child: Wrap(
             direction: Axis.vertical,
             spacing: 20,
@@ -139,9 +139,11 @@ class LoginState extends State<Login> {
                       borderRadius: new BorderRadius.circular(30)),
                   color: ColoresApp.lightPrimary,
                   onPressed: () {
-                    Navigator.push(context, MaterialPageRoute( builder: (context) => Registro()),);
-                    });
-                  }
+                     Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => Registro()),
+                    );
+                  },
                   child: Text('Registrarme',
                       style: TextStyle(
                         color: ColoresApp.darkPrimary,
