@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/Logo.dart';
-import 'package:rustica/const.dart';
+import 'package:rustica/ui/view/pantalla_principal.dart';
+import 'package:rustica/ui/atomic-design/tokens/const.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,12 +27,18 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+ 
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Logo("assets/img/logorustica.png"),
-      
+      body: PantallPrincipal("assets/img/logorustica.png"),
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){},
+        tooltip: 'Increment',
+        backgroundColor: ColoresApp.fondoNaranja,
+        child: const Icon(Icons.message),
+      ),
       
     );
   }

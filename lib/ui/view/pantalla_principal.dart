@@ -4,9 +4,9 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-class Logo extends StatelessWidget {
+class PantallPrincipal extends StatelessWidget {
   String logoPath = "assets/img/logorustica.png";
-  Logo(this.logoPath); //Constructor
+  PantallPrincipal(this.logoPath); //Constructor
   @override
   Widget build(BuildContext context) {
     Widget Logo_Rustica() {
