@@ -1,6 +1,6 @@
 # rustica
 
-Este es un proyecto elabarado como RSU, el mismo está implementado en fluter, aplicando la metodología atomic design.
+Este es un proyecto elabarado como RSU, el mismo está implementado en fluter, aplicando la metodología atomic design, basado en una arquitecrura limpia, escalable y sin generar complicación en las diferentes etapas de desarrollo.
 
 Este es código de libre acceso para cualquier interesado en conocer, aprender y sugerir cambios, puede contactar a 
 - [Rony Velásquez](https://www.ronyvelasquez.com)
