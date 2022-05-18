@@ -9,7 +9,8 @@ class ChatBotState extends State<ChatBot> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('ChatBot Rustica')),
+      backgroundColor: ColoresApp.lightPrimary,
+      appBar: AppBar(title: Text('ChatBot Rustica'),backgroundColor:ColoresApp.fondoNaranja ),
       body: Column(
         
         children: [

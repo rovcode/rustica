@@ -4,6 +4,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import 'pantalla_login.dart';
+
 class PantallPrincipal extends StatelessWidget {
   String logoPath = "assets/img/logorustica.png";
   PantallPrincipal(this.logoPath); //Constructor
@@ -77,7 +79,10 @@ class PantallPrincipal extends StatelessWidget {
                   borderRadius: BorderRadius.circular(30)),
               color: Colors.white,
               onPressed: () {
-                print("Login");
+                    Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Login()),
+                );
               }),
         ]),
       );
