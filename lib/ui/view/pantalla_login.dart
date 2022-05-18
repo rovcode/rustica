@@ -1,6 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
 import 'package:rustica/ui/atomic-design/tokens/Logos.dart';
+import 'package:rustica/ui/view/pantalla_registro.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -137,20 +139,9 @@ class LoginState extends State<Login> {
                       borderRadius: new BorderRadius.circular(30)),
                   color: ColoresApp.lightPrimary,
                   onPressed: () {
-                    // devolverá true si el formulario es válido, o falso si
-                    // el formulario no es válido.
-                    if (_formKey.currentState!.validate()) {
-                      // Operaciones obj = new Operaciones();
-                      // int num1= int.parse(txtNumero1.text);
-                      // int num2 = int.parse(txtNumero2.text);
-                      // String ope= valoroperacion;
-                      // String mensaje = obj.CalcularProducto(num1, num2, ope);
-                      // txtResultado.text = mensaje;
-                      // Si el formulario es válido, queremos mostrar un Snackbar
-                      Scaffold.of(context)
-                          .showSnackBar(SnackBar(content: Text("ok")));
-                    }
-                  },
+                    Navigator.push(context, MaterialPageRoute( builder: (context) => Registro()),);
+                    });
+                  }
                   child: Text('Registrarme',
                       style: TextStyle(
                         color: ColoresApp.darkPrimary,
