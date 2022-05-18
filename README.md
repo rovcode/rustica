@@ -1,4 +1,4 @@
-# rustica
+# APP RSU - Rustica
 
 Este es un proyecto elabarado como RSU, el mismo está implementado en fluter, aplicando la metodología atomic design, basado en una arquitectura limpia, escalable y sin generar complicación en las diferentes etapas de desarrollo.
 
