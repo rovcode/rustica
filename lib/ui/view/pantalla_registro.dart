@@ -13,6 +13,7 @@ class RegistroState extends State<Registro> {
   final txtcorreo = TextEditingController();
   final txtnombre = TextEditingController();
   final txttelefono = TextEditingController();
+  final txtpassword = TextEditingController();
 
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +88,7 @@ class RegistroState extends State<Registro> {
       margin: EdgeInsets.only(top: 25, left: 25),
       width: 350,
       child: TextFormField(
-          controller: txtcorreo,
+          controller: txtpassword,
           decoration: const InputDecoration(
             icon: Icon(Icons.lock_clock),
             hintText: 'Ingrese su contraseña',
