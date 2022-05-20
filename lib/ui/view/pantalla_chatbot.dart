@@ -1,10 +1,8 @@
-// ignore_for_file: import_of_legacy_library_into_null_safe
-
 import 'dart:ffi';
-
 import 'package:flutter/material.dart';
 import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
 import 'package:dialog_flowtter/dialog_flowtter.dart';
+import 'package:rustica/ui/view/get_chat_chatbot.dart';
 class ChatBot extends StatefulWidget {
   @override
   ChatBotState createState() => ChatBotState();
@@ -13,12 +11,25 @@ class ChatBot extends StatefulWidget {
 
 class ChatBotState extends State<ChatBot> { 
   final TextEditingController txtControlerChat = TextEditingController();
-  final List<Message> chats = [];
-  void enviarChat(String chat) {
+  final DialogFlowtter txtControlerDialog = DialogFlowtter();
+  final List<Map<String, dynamic>> chats = [];
+  void enviarChat(String chat) async  {
     if (chat.isEmpty) return;
     setState(() {
-      Message userMessage = Message(text: DialogText(text: [chat]));
-      chats.add(userMessage);
+      Message usuarioChat = Message(text: DialogText(text: [chat]));
+      cargarChat(usuarioChat, true);
+    });
+    QueryInput consulta = QueryInput(text: TextInput(text:chat));//Creamos la consulta para el chatbot
+    DetectIntentResponse  respuesta = await txtControlerDialog.detectIntent(queryInput: consulta);
+    if (respuesta.message == null) return;
+    setState(() {
+      cargarChat(respuesta.message);
+    });
+  }
+  void cargarChat(Message chat, [bool esmensajeUsuario = false]) {
+    chats.add({
+      'chat': chat,
+      'esmensajeUsuario': esmensajeUsuario,
     });
   }
   @override
@@ -58,32 +69,6 @@ class ChatBotState extends State<ChatBot> {
           ), // Fin del contenedor
         ],
       ), // Fin de la columna
-    );
-  }
-}
-
-//=========================================================================
-// MOSTRANTO CHATS
-//=========================================================================
-class ListaChats extends StatelessWidget {
-  /// El componente recibirá una lista de mensajes
- final List<Message> arraychats;
-
-  const ListaChats({
-    this.arraychats = const [],
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return ListView.separated(
-      itemCount: arraychats.length,
-      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
-      separatorBuilder: (_, i) => const SizedBox(height: 10),
-      itemBuilder: (context, i) {
-        return Container(
-          child: Text(arraychats[i].text?.text[0] ?? '',style: TextStyle(color: ColoresApp.darkPrimary),),
-        );
-      },
     );
   }
 }

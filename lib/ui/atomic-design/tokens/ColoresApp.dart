@@ -6,7 +6,7 @@ class ColoresApp {
   //Colores institucionales
   static Color lightPrimary = Color(0xfffcfcff);
   static Color darkPrimary = Colors.black;
-  static Color lightAccent = Color(0xff5563ff);
+  static Color gris = Color.fromARGB(255, 118, 119, 131);
   static Color darkAccent = Color(0xff5563ff);
   static Color fondoBlanco = Color(0xfffcfcff);
   static Color fondoNaranja = Color(0xffffa900);
@@ -33,8 +33,8 @@ class ColoresApp {
   static ThemeData lightTheme = ThemeData(
     backgroundColor: fondoBlanco,
     primaryColor: lightPrimary,
-    accentColor: lightAccent,
-    cursorColor: lightAccent,
+    accentColor: gris,
+    cursorColor: gris,
     scaffoldBackgroundColor: fondoBlanco,
     appBarTheme: AppBarTheme(
       textTheme: TextTheme(
