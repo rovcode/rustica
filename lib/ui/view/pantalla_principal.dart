@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
 
 import 'pantalla_login.dart';
 
@@ -35,57 +36,79 @@ class PantallPrincipal extends StatelessWidget {
       ));
     }
     //===================================================
+   Widget ButtonQRCode() {
+    return Container(
+        margin: EdgeInsets.only(top: 35),
+        child: Center(
+          child: Card(
+            color: ColoresApp.darkPrimary,
 
-    Widget ButtonQRCode() {
-      return Center(
-        child: Container(
-          margin: EdgeInsets.only(bottom: 10),
-          child: Column(
+            child: Wrap(
+            direction: Axis.vertical,
+            spacing: 0,
+            runSpacing: 20,
             children: [
-              RaisedButton(
-                child: new Text(
-                  "Escaner QR",
-                  style: TextStyle(
-                    color: Colors.white,
-                  ),
+              Align(alignment: Alignment.center,),          
+              SizedBox(
+                width: 250,
+                height: 50,
+                child: RaisedButton(
+                  shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(30)),
+                  color: ColoresApp.fondoNaranja,
+                  onPressed: () {
+                    
+                  },
+                  child: Text('Escanear QR',
+                      style: TextStyle(
+                        color: ColoresApp.lightPrimary,
+                      )),
                 ),
-                // ignore: unnecessary_new
-                shape: new RoundedRectangleBorder(
-                    // ignore: unnecessary_new
-                    borderRadius: new BorderRadius.circular(30)),
-                color: Color(0xffffa900),
-                onPressed: () {
-                  print("ok");
-                },
-              ),
+
+              )
             ],
-          ),
-        ),
-      );
-    }
+          )),
+        ));
+  }
 
     //===================================================
+
     Widget ButtonLogin() {
-      return Center(
-        child: Column(children: [
-          RaisedButton(
-              child: new Text(
-                "Login",
-                style: TextStyle(
-                  color: Colors.black,
-                ),
-              ),
-              shape: new RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30)),
-              color: Colors.white,
-              onPressed: () {
-                    Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Login()),
-                );
-              }),
-        ]),
-      );
+      return Container(
+          margin: EdgeInsets.only(top: 35),
+          child: Center(
+            child: Card(
+                color: ColoresApp.darkPrimary,
+                child: Wrap(
+                  direction: Axis.vertical,
+                  spacing: 0,
+                  runSpacing: 20,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                    ),
+                    SizedBox(
+                      width: 250,
+                      height: 50,
+                      child: RaisedButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30)),
+                        color: ColoresApp.lightPrimary,
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => Login()),
+                          );
+                        },
+                        child: Text('Login',
+                            style: TextStyle(
+                              color: ColoresApp.darkPrimary,
+                            )),
+                      ),
+                    )
+                  ],
+                )),
+          ));
     }
 
     //==================================================

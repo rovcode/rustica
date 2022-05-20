@@ -59,7 +59,7 @@ class LoginState extends State<Login> {
             }
           }),
     );
-  }
+  } 
 
   Widget _pass() {
     return Container(
