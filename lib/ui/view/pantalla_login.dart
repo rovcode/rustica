@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
 import 'package:rustica/ui/atomic-design/tokens/Logos.dart';
+import 'package:rustica/ui/view/Usuario/dashboard.dart';
 import 'package:rustica/ui/view/pantalla_registro.dart';
 
 class Login extends StatefulWidget {
@@ -12,6 +13,7 @@ class Login extends StatefulWidget {
 class LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final txtcorreo = TextEditingController();
+  final txtpassword = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,7 +22,8 @@ class LoginState extends State<Login> {
         backgroundColor: ColoresApp.fondoNaranja,
       ),
       body: Container(
-        child: Form(
+        child: SingleChildScrollView(
+            child: Form(
           //1 Form como raiz de nuestro formulario
           key: _formKey,
           child: Center(
@@ -37,7 +40,7 @@ class LoginState extends State<Login> {
               ), //2
             ],
           )),
-        ),
+        )),
       ),
     );
   }
@@ -59,14 +62,15 @@ class LoginState extends State<Login> {
             }
           }),
     );
-  } 
+  }
 
   Widget _pass() {
     return Container(
       margin: EdgeInsets.only(top: 25, left: 25),
       width: 350,
       child: TextFormField(
-          controller: txtcorreo,
+          obscureText: true,
+          controller: txtpassword,
           decoration: const InputDecoration(
             icon: Icon(Icons.lock_clock),
             hintText: 'Ingrese su contraseña',
@@ -94,17 +98,12 @@ class LoginState extends State<Login> {
             onPressed: () {
               // devolverá true si el formulario es válido, o falso si
               // el formulario no es válido.
-              if (_formKey.currentState!.validate()) {
-                // Operaciones obj = new Operaciones();
-                // int num1= int.parse(txtNumero1.text);
-                // int num2 = int.parse(txtNumero2.text);
-                // String ope= valoroperacion;
-                // String mensaje = obj.CalcularProducto(num1, num2, ope);
-                // txtResultado.text = mensaje;
-                // Si el formulario es válido, queremos mostrar un Snackbar
-                Scaffold.of(context)
-                    .showSnackBar(SnackBar(content: Text("ok")));
-              }
+             
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+              
             },
             child: Text('Iniciar Sesión',
                 style: TextStyle(
@@ -114,44 +113,45 @@ class LoginState extends State<Login> {
         )));
   }
 
-   Widget _boton_registro() {
+  Widget _boton_registro() {
     return Container(
         margin: EdgeInsets.only(top: 35),
         child: Center(
           child: Card(
-            color: ColoresApp.darkPrimary,
-
-            child: Wrap(
-            direction: Axis.vertical,
-            spacing: 20,
-            runSpacing: 20,
-            children: [
-              Align(alignment: Alignment.center,),
-              Text('                  ¿No tienes cuenta?',
-                  style: TextStyle(
-                    color: ColoresApp.lightPrimary,
-                  )),
-              SizedBox(
-                width: 250,
-                height: 50,
-                child: RaisedButton(
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30)),
-                  color: ColoresApp.lightPrimary,
-                  onPressed: () {
-                     Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Registro()),
-                    );
-                  },
-                  child: Text('Registrarme',
+              color: ColoresApp.darkPrimary,
+              child: Wrap(
+                direction: Axis.vertical,
+                spacing: 20,
+                runSpacing: 20,
+                children: [
+                  Align(
+                    alignment: Alignment.center,
+                  ),
+                  Text('                  ¿No tienes cuenta?',
                       style: TextStyle(
-                        color: ColoresApp.darkPrimary,
+                        color: ColoresApp.lightPrimary,
                       )),
-                ),
-              )
-            ],
-          )),
+                  SizedBox(
+                    width: 250,
+                    height: 50,
+                    child: RaisedButton(
+                      shape: new RoundedRectangleBorder(
+                          borderRadius: new BorderRadius.circular(30)),
+                      color: ColoresApp.lightPrimary,
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Registro()),
+                        );
+                      },
+                      child: Text('Registrarme',
+                          style: TextStyle(
+                            color: ColoresApp.darkPrimary,
+                          )),
+                    ),
+                  )
+                ],
+              )),
         ));
   }
 }
