@@ -3,6 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:rustica/ui/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
 
 import 'pantalla_login.dart';
@@ -35,41 +36,40 @@ class PantallPrincipal extends StatelessWidget {
         ),
       ));
     }
+
     //===================================================
-   Widget ButtonQRCode() {
-    return Container(
-        margin: EdgeInsets.only(top: 35),
-        child: Center(
-          child: Card(
-            color: ColoresApp.darkPrimary,
-
-            child: Wrap(
-            direction: Axis.vertical,
-            spacing: 0,
-            runSpacing: 20,
-            children: [
-              Align(alignment: Alignment.center,),          
-              SizedBox(
-                width: 250,
-                height: 50,
-                child: RaisedButton(
-                  shape: new RoundedRectangleBorder(
-                      borderRadius: new BorderRadius.circular(30)),
-                  color: ColoresApp.fondoNaranja,
-                  onPressed: () {
-                    
-                  },
-                  child: Text('Escanear QR',
-                      style: TextStyle(
-                        color: ColoresApp.lightPrimary,
-                      )),
-                ),
-
-              )
-            ],
-          )),
-        ));
-  }
+    Widget ButtonQRCode() {
+      return Container(
+          margin: EdgeInsets.only(top: 35),
+          child: Center(
+            child: Card(
+                color: ColoresApp.darkPrimary,
+                child: Wrap(
+                  direction: Axis.vertical,
+                  spacing: 0,
+                  runSpacing: 20,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                    ),
+                    SizedBox(
+                      width: 250,
+                      height: 50,
+                      child: RaisedButton(
+                        shape: new RoundedRectangleBorder(
+                            borderRadius: new BorderRadius.circular(30)),
+                        color: ColoresApp.fondoNaranja,
+                        onPressed: () {},
+                        child: Text('Escanear QR',
+                            style: TextStyle(
+                              color: ColoresApp.lightPrimary,
+                            )),
+                      ),
+                    )
+                  ],
+                )),
+          ));
+    }
 
     //===================================================
 
@@ -117,7 +117,7 @@ class PantallPrincipal extends StatelessWidget {
         Logo_Rustica(),
         TextoPantallaPrincipal(),
         ButtonQRCode(),
-        ButtonLogin()
+        ButtonLogin(),
       ],
     );
   }
