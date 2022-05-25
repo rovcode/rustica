@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
-import 'package:rustica/ui/atomic-design/tokens/Logos.dart';
+import 'package:rustica/View/Usuario/WidgetApi.dart';
+import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
 
-import '../../../main.dart';
 
 class MenuVertical extends StatefulWidget{
  @override
@@ -22,11 +21,16 @@ class MenuVerticalStatus extends State<MenuVertical>{
               opcionMenu(icon: Icons.home, nombre:"Dashboard", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):
               }),
-              opcionMenu(icon: Icons.tab_outlined, nombre:"Mesas", onTap:()=>{
-                // Navigator.pushReplacementNamed(context, MyHomePage=>()):
-              }),
+              opcionMenu(icon: Icons.tab_outlined, nombre:"Mesas", onTap:(){
+                // Navigator.of(context).pop();
+                // Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WidgetApi()));
+              }),             
               opcionMenu(icon: Icons.delivery_dining, nombre:"Pedidos", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):
+              }),
+               opcionMenu(icon: Icons.api, nombre:"API", onTap:(){
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WidgetApi()));
               }),
               opcionMenu(icon: Icons.settings, nombre:"Configuración", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):

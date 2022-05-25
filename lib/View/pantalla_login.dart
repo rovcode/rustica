@@ -1,28 +1,31 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
-import 'package:rustica/ui/atomic-design/tokens/Logos.dart';
+import 'package:rustica/View/Usuario/dashboard.dart';
+import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/tokens/Logos.dart';
+import 'package:rustica/View/pantalla_registro.dart';
 
-class Registro extends StatefulWidget {
+
+
+class Login extends StatefulWidget {
   @override
-  RegistroState createState() => RegistroState();
+  LoginState createState() => LoginState();
 }
 
-class RegistroState extends State<Registro> {
-  @override
+class LoginState extends State<Login> {
   final _formKey = GlobalKey<FormState>();
   final txtcorreo = TextEditingController();
-  final txtnombre = TextEditingController();
-  final txttelefono = TextEditingController();
   final txtpassword = TextEditingController();
-
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Registro"),
+        title: Text("Login"),
         backgroundColor: ColoresApp.fondoNaranja,
       ),
       body: Container(
-        child: Form(
+        child: SingleChildScrollView(
+            child: Form(
           //1 Form como raiz de nuestro formulario
           key: _formKey,
           child: Center(
@@ -32,15 +35,14 @@ class RegistroState extends State<Registro> {
               Logo(),
               _correo(),
               _pass(),
-              _telefono(),
-              _nombre(),
+              _boton_inicio_sesion(),
               _boton_registro(),
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
               ), //2
             ],
           )),
-        ),
+        )),
       ),
     );
   }
@@ -64,30 +66,12 @@ class RegistroState extends State<Registro> {
     );
   }
 
-  Widget _nombre() {
-    return Container(
-      margin: EdgeInsets.only(top: 25, left: 25),
-      width: 350,
-      child: TextFormField(
-          controller: txtnombre,
-          decoration: const InputDecoration(
-            icon: Icon(Icons.article),
-            hintText: 'Ingrese su nombre',
-            labelText: 'Nombre',
-          ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Ingrese nombre';
-            }
-          }),
-    );
-  }
-
   Widget _pass() {
     return Container(
       margin: EdgeInsets.only(top: 25, left: 25),
       width: 350,
       child: TextFormField(
+          obscureText: true,
           controller: txtpassword,
           decoration: const InputDecoration(
             icon: Icon(Icons.lock_clock),
@@ -102,23 +86,33 @@ class RegistroState extends State<Registro> {
     );
   }
 
-  Widget _telefono() {
+  Widget _boton_inicio_sesion() {
     return Container(
-      margin: EdgeInsets.only(top: 25, left: 25),
-      width: 350,
-      child: TextFormField(
-          controller: txttelefono,
-          decoration: const InputDecoration(
-            icon: Icon(Icons.lock_clock),
-            hintText: 'Ingrese su telefono',
-            labelText: 'Telefono',
+        margin: EdgeInsets.only(top: 35),
+        child: Center(
+            child: SizedBox(
+          width: 300,
+          height: 50,
+          child: RaisedButton(
+            shape: new RoundedRectangleBorder(
+                borderRadius: new BorderRadius.circular(30)),
+            color: ColoresApp.lightPrimary,
+            onPressed: () {
+              // devolverá true si el formulario es válido, o falso si
+              // el formulario no es válido.
+             
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Dashboard()),
+                  );
+              
+            },
+            child: Text('Iniciar Sesión',
+                style: TextStyle(
+                  color: ColoresApp.darkPrimary,
+                )),
           ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Ingrese telefono';
-            }
-          }),
-    );
+        )));
   }
 
   Widget _boton_registro() {
@@ -147,19 +141,10 @@ class RegistroState extends State<Registro> {
                           borderRadius: new BorderRadius.circular(30)),
                       color: ColoresApp.lightPrimary,
                       onPressed: () {
-                        // devolverá true si el formulario es válido, o falso si
-                        // el formulario no es válido.
-                        if (_formKey.currentState!.validate()) {
-                          // Operaciones obj = new Operaciones();
-                          // int num1= int.parse(txtNumero1.text);
-                          // int num2 = int.parse(txtNumero2.text);
-                          // String ope= valoroperacion;
-                          // String mensaje = obj.CalcularProducto(num1, num2, ope);
-                          // txtResultado.text = mensaje;
-                          // Si el formulario es válido, queremos mostrar un Snackbar
-                          Scaffold.of(context)
-                              .showSnackBar(SnackBar(content: Text("ok")));
-                        }
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => Registro()),
+                        );
                       },
                       child: Text('Registrarme',
                           style: TextStyle(

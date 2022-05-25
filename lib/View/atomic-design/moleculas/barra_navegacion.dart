@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
-import 'package:rustica/ui/view/Usuario/explorar.dart';
-import 'package:rustica/ui/view/Usuario/mesas_usuario.dart';
-import 'package:rustica/ui/view/Usuario/principal.dart';
-import 'package:rustica/ui/view/Usuario/red_social_usuarios.dart';
+import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/Usuario/explorar.dart';
+import 'package:rustica/View//Usuario/mesas_usuario.dart';
+import 'package:rustica/View/Usuario/principal.dart';
+import 'package:rustica/View/Usuario/red_social_usuarios.dart';
+
 
 class BarraNavegacion extends StatefulWidget {
   @override

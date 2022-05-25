@@ -1,9 +1,9 @@
 //Dashboard del usuario
 import 'package:flutter/material.dart';
-import 'package:rustica/ui/atomic-design/moleculas/barra_navegacion.dart';
-import 'package:rustica/ui/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
+import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
+import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
 
-import '../../atomic-design/moleculas/menu_vertical.dart';
 
 class Dashboard extends StatefulWidget {
   DashboardState createState() => DashboardState();
