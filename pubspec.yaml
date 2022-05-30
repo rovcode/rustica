@@ -67,6 +67,9 @@ flutter:
    - assets/img/logorustica.png
    - assets/img/fogo_default.webp
    - assets/dialog_flow_auth.json
+   - assets/img/arrozchaufa.jpg
+   - assets/img/pollobrasa.jpg
+   - assets/img/pollobroaster.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

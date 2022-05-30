@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/View/Usuario/WidgetApi.dart';
 import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import '../../Usuario/pantalla_platos.dart';
 
 
 class MenuVertical extends StatefulWidget{
@@ -31,6 +32,10 @@ class MenuVerticalStatus extends State<MenuVertical>{
                opcionMenu(icon: Icons.api, nombre:"API", onTap:(){
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WidgetApi()));
+              }),
+              opcionMenu(icon: Icons.tab_outlined, nombre:"Platos", onTap:(){
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Platos()));
               }),
               opcionMenu(icon: Icons.settings, nombre:"Configuración", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):
