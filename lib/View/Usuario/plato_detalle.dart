@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 
 class Detalle extends StatefulWidget {
   DetalleState createState() => DetalleState();

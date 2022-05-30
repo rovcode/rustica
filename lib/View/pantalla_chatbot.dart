@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:dialog_flowtter/dialog_flowtter.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/get_chat_chatbot.dart';
 
 class ChatBot extends StatefulWidget {

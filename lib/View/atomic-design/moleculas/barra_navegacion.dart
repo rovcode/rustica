@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/Usuario/explorar.dart';
 import 'package:rustica/View//Usuario/mesas_usuario.dart';
 import 'package:rustica/View/Usuario/principal.dart';

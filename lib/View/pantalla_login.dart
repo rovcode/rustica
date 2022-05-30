@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/View/Usuario/dashboard.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
-import 'package:rustica/View/atomic-design/tokens/Logos.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/Logos.dart';
 import 'package:rustica/View/pantalla_registro.dart';
 
 

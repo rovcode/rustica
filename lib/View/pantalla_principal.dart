@@ -3,7 +3,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 
 
 import 'pantalla_login.dart';

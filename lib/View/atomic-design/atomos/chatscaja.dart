@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 // ignore: import_of_legacy_library_into_null_safe
 import 'package:dialog_flowtter/dialog_flowtter.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 
 class CajaChat extends StatelessWidget {
   final Message chat;

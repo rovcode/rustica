@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
-import 'package:rustica/View/atomic-design/tokens/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/Usuario/plato_detalle.dart';
 
 class Platos extends StatefulWidget {
