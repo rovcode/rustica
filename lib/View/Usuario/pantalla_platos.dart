@@ -133,31 +133,37 @@ class PlatosState extends State<Platos> {
 
       ),
     );
-
-    return Scaffold(
-      backgroundColor: ColoresApp.fondoBlanco,
-      drawer: MenuVertical(),
-      appBar: AppBar(
-
-        backgroundColor: ColoresApp.fondoNaranja,
-        elevation: 0.0,
-        actions: [
-          IconButton(
-            color: ColoresApp.fondoBlanco,
-            icon: Icon(Icons.notifications),
-            onPressed: (){
-
-            },
-          ),
-        ],
-      ),
-      body: ListView(
+    return ListView(
         children: [
           Cuadro1,
           Cuadro2,
           Cuadro3,
         ],
-      ),
-    );
+      );
+    // return Scaffold(
+    //   backgroundColor: ColoresApp.fondoBlanco,
+    //   drawer: MenuVertical(),
+    //   appBar: AppBar(
+
+    //     backgroundColor: ColoresApp.fondoNaranja,
+    //     elevation: 0.0,
+    //     actions: [
+    //       IconButton(
+    //         color: ColoresApp.fondoBlanco,
+    //         icon: Icon(Icons.notifications),
+    //         onPressed: (){
+
+    //         },
+    //       ),
+    //     ],
+    //   ),
+    //   body: ListView(
+    //     children: [
+    //       Cuadro1,
+    //       Cuadro2,
+    //       Cuadro3,
+    //     ],
+    //   ),
+    // );
   }
 }

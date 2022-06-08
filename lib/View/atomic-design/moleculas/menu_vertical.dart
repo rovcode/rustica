@@ -29,13 +29,14 @@ class MenuVerticalStatus extends State<MenuVertical>{
               opcionMenu(icon: Icons.delivery_dining, nombre:"Pedidos", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):
               }),
-               opcionMenu(icon: Icons.api, nombre:"API", onTap:(){
-                Navigator.of(context).pop();
-                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WidgetApi()));
-              }),
-              opcionMenu(icon: Icons.tab_outlined, nombre:"Platos", onTap:(){
+               
+              opcionMenu(icon: Icons.food_bank_rounded, nombre:"Platos", onTap:(){
                 Navigator.of(context).pop();
                 Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Platos()));
+              }),
+              opcionMenu(icon: Icons.api, nombre:"API", onTap:(){
+                Navigator.of(context).pop();
+                Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>WidgetApi()));
               }),
               opcionMenu(icon: Icons.settings, nombre:"Configuración", onTap:()=>{
                 // Navigator.pushReplacementNamed(context, MyHomePage=>()):
@@ -59,7 +60,7 @@ class MenuVerticalStatus extends State<MenuVertical>{
              Center(child: Positioned(
               bottom: 20.00,
               left: 20.00,
-              child: Text("Rony Velásquez",style: TextStyle(color: ColoresApp.lightPrimary,fontSize: 25.00,fontWeight:FontWeight.w500),)),)
+              child: Text("Usuario 001",style: TextStyle(color: ColoresApp.lightPrimary,fontSize: 25.00,fontWeight:FontWeight.w500),)),)
         ]
       ),
    );
