@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/API-RSU.dart';
+import 'package:rustica/View/Usuario/dashboard.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/atomos/Logos.dart';
-
+import 'package:dio/dio.dart';
 class Registro extends StatefulWidget {
   @override
   RegistroState createState() => RegistroState();
@@ -22,7 +24,7 @@ class RegistroState extends State<Registro> {
         backgroundColor: ColoresApp.fondoNaranja,
       ),
       body: Container(
-        child: Form(
+        child: SingleChildScrollView(child:  Form( 
           //1 Form como raiz de nuestro formulario
           key: _formKey,
           child: Center(
@@ -40,7 +42,7 @@ class RegistroState extends State<Registro> {
               ), //2
             ],
           )),
-        ),
+        )),
       ),
     );
   }
@@ -63,6 +65,7 @@ class RegistroState extends State<Registro> {
           }),
     );
   }
+ 
 
   Widget _nombre() {
     return Container(
@@ -146,21 +149,7 @@ class RegistroState extends State<Registro> {
                       shape: new RoundedRectangleBorder(
                           borderRadius: new BorderRadius.circular(30)),
                       color: ColoresApp.lightPrimary,
-                      onPressed: () {
-                        // devolverá true si el formulario es válido, o falso si
-                        // el formulario no es válido.
-                        if (_formKey.currentState!.validate()) {
-                          // Operaciones obj = new Operaciones();
-                          // int num1= int.parse(txtNumero1.text);
-                          // int num2 = int.parse(txtNumero2.text);
-                          // String ope= valoroperacion;
-                          // String mensaje = obj.CalcularProducto(num1, num2, ope);
-                          // txtResultado.text = mensaje;
-                          // Si el formulario es válido, queremos mostrar un Snackbar
-                          Scaffold.of(context)
-                              .showSnackBar(SnackBar(content: Text("ok")));
-                        }
-                      },
+                      onPressed: registrarUsuario,
                       child: Text('Registrarme',
                           style: TextStyle(
                             color: ColoresApp.darkPrimary,
@@ -170,5 +159,62 @@ class RegistroState extends State<Registro> {
                 ],
               )),
         ));
-  }
+    }
+
+    //Creamos el Future registrar
+    Future<void> registrarUsuario() async{
+       if(_formKey.currentState!.validate()){
+        // ignore: prefer_const_constructors
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content:  const Text(
+            "Registrando..",
+            style: TextStyle(color: Colors.white),),
+            backgroundColor: ColoresApp.fondoNaranja,
+        ));
+        //obtenemos los valores ingresados por el usuario
+        var csrf = "mBsiZ60X0ZlmCFthV8pITkwfE5ElzQyoQ2A8H3kA"; 
+         Map<String, dynamic> datosUsuario ={
+            "name":txtnombre.text,
+            "phone":txttelefono.text,
+            "email":[{"value": txtcorreo.text}], 
+            "password": txtpassword.text,
+            "rol_id":2,
+            "csrfmiddlewaretoken" : csrf
+         };
+          ApiRSU _apiUsurio = ApiRSU();
+         dynamic response = await _apiUsurio.registerUser(datosUsuario,
+          
+         );
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (response.statusCode == 200) {
+        print(response.data);
+        if (response.data['mensaje'] != null) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text(
+              'Error en credenciales...',
+              style: TextStyle(color: Colors.red),
+            ),
+            backgroundColor: ColoresApp.fondoBlanco,
+          ));
+          print("error credenciales");
+        } else {
+          // ignore: prefer_const_constructors
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text(
+              'Bienvenido!!',
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.green,
+          ));
+          print("ok");
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Dashboard()));
+        }
+        //print(res.data['user']['id']);
+      } else {
+        print("error");
+        print(response.statusCode);
+      }
+       }
+    }
 }

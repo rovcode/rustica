@@ -1,11 +1,17 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/API-RSU.dart';
+import 'package:rustica/Model/db/ServiceApiLogin.dart';
 import 'package:rustica/View/Usuario/dashboard.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/atomos/Logos.dart';
 import 'package:rustica/View/pantalla_registro.dart';
+import 'package:http/http.dart' as http;
 
-
+import '../Model/db/User.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -97,16 +103,7 @@ class LoginState extends State<Login> {
             shape: new RoundedRectangleBorder(
                 borderRadius: new BorderRadius.circular(30)),
             color: ColoresApp.lightPrimary,
-            onPressed: () {
-              // devolverá true si el formulario es válido, o falso si
-              // el formulario no es válido.
-             
-                    Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => Dashboard()),
-                  );
-              
-            },
+            onPressed: login,
             child: Text('Iniciar Sesión',
                 style: TextStyle(
                   color: ColoresApp.darkPrimary,
@@ -155,5 +152,50 @@ class LoginState extends State<Login> {
                 ],
               )),
         ));
+  }
+
+  Future<void> login() async {
+    if (_formKey.currentState!.validate()) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text(
+          'Validando...',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: ColoresApp.fondoNaranja,
+      ));
+      ApiRSU _apiUsurio = ApiRSU();
+      dynamic res = await _apiUsurio.iniciarSesion(
+        txtcorreo.text,
+        txtpassword.text,
+      );
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (res.statusCode == 200) {
+        if (res.data['mensaje'] != null) {
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text(
+              'Error en credenciales...',
+              style: TextStyle(color: Colors.red),
+            ),
+            backgroundColor: ColoresApp.fondoBlanco,
+          ));
+          print("error credenciales");
+        } else {
+          // ignore: prefer_const_constructors
+          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text(
+              'Bienvenido!!',
+              style: TextStyle(color: Colors.white),
+            ),
+            backgroundColor: Colors.green,
+          ));
+          print("ok");
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => Dashboard()));
+        }
+        //print(res.data['user']['id']);
+      } else {
+        print("error");
+      }
+    }
   }
 }

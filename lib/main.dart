@@ -3,9 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/pantalla_chatbot.dart';
 import 'package:rustica/View/pantalla_principal.dart';
+import 'package:rustica/View/pantalla_login.dart';
 
 void main() {
+  //WidgetsFlutterBinding.ensureInitialized();//Inicia Firebase
+  //Firebase.initializeApp();//Cargamos metodo proncipal
   runApp(RusticaApp());
+ 
 }
 
 class RusticaApp extends StatelessWidget {

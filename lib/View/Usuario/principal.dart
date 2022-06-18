@@ -11,73 +11,53 @@ class Principal extends StatelessWidget {
     return Container(
       child: Column(
         children: [nuestrosPlatod()],
-      ) ,
+      ),
     );
   }
 
   //Creamos un card para mostrar los platos principales o promociones
-  Card nuestrosPlatod(){
+  Card nuestrosPlatod() {
     // Un obj tipo card siempre retorna un Card y como child un ClipRRect
-     return Card(
-
+    return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(15),
       elevation: 5,
-       child: Container(
-         decoration:BoxDecoration(
-                    borderRadius: BorderRadius.circular(5),
-                    color: Colors.white,                  
-            ), 
-         child: ClipRRect(      
-         borderRadius: BorderRadius.circular(10) ,    
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: Colors.white,
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(10),
           child: Column(
             // ignore: prefer_const_literals_to_create_immutables
             children: [
-              Image.network("https://www.saborusa.com/bo/wp-content/uploads/sites/16/2019/11/Calma-tus-antojos-con-deliciosas-y-rapidas-recetas-Foto-destacada.png", 
-              fit: BoxFit.fill, 
-              height:200, 
-              width:400),
+              Image.network(
+                  "https://www.saborusa.com/bo/wp-content/uploads/sites/16/2019/11/Calma-tus-antojos-con-deliciosas-y-rapidas-recetas-Foto-destacada.png",
+                  fit: BoxFit.fill,
+                  height: 200,
+                  width: 400),
               Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                elevation: 5, 
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
+                elevation: 5,
                 // ignore: avoid_unnecessary_containers
                 child: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(5),
-                    color: Colors.white,                  
+                    color: Colors.white,
                   ),
-                  child: Center(                  
+                  child: Center(
                     child: Row(
-                     children: [ textosLeft(),],
-                  ),
+                      children: [],
+                    ),
                   ),
                 ),
               )
-            ],            
-          ),
-         ),
-       ) ,
-      );
-
-  }
-  Widget textosLeft(){
-   // ignore: avoid_unnecessary_containers
-   return Center(
-      child: Card(
-        child: InkWell(
-          splashColor: Colors.blue.withAlpha(30),
-          onTap: () {
-            debugPrint('Card tapped.');
-          },
-          child: const SizedBox(
-            width: 300,
-            height: 100,
-            child: Text('A card that can be tapped'),
+            ],
           ),
         ),
       ),
     );
-  
- }
-
+  }
 }
