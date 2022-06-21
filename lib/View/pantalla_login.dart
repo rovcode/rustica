@@ -168,6 +168,7 @@ class LoginState extends State<Login> {
         txtcorreo.text,
         txtpassword.text,
       );
+      print(res);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       if (res.statusCode == 200) {
         if (res.data['mensaje'] != null) {

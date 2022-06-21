@@ -37,6 +37,7 @@ class RegistroState extends State<Registro> {
               _telefono(),
               _nombre(),
               _boton_registro(),
+              // ignore: prefer_const_constructors
               Padding(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
               ), //2
@@ -171,32 +172,26 @@ class RegistroState extends State<Registro> {
             style: TextStyle(color: Colors.white),),
             backgroundColor: ColoresApp.fondoNaranja,
         ));
-        //obtenemos los valores ingresados por el usuario
-        var csrf = "mBsiZ60X0ZlmCFthV8pITkwfE5ElzQyoQ2A8H3kA"; 
+        //obtenemos los valores ingresados por el usuario 
          Map<String, dynamic> datosUsuario ={
             "name":txtnombre.text,
             "phone":txttelefono.text,
-            "email":[{"value": txtcorreo.text}], 
+            "email": txtcorreo.text, 
             "password": txtpassword.text,
-            "rol_id":2,
-            "csrfmiddlewaretoken" : csrf
+            "rol_id":2
          };
           ApiRSU _apiUsurio = ApiRSU();
-         dynamic response = await _apiUsurio.registerUser(datosUsuario,
-          
-         );
+          dynamic res = await _apiUsurio.registerUser(datosUsuario);
           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-      if (response.statusCode == 200) {
-        print(response.data);
-        if (response.data['mensaje'] != null) {
+            if (res.statusCode == 200) {
+        if (res.data['mensaje'] != null) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text(
-              'Error en credenciales...',
+              'Error en registro...',
               style: TextStyle(color: Colors.red),
             ),
             backgroundColor: ColoresApp.fondoBlanco,
           ));
-          print("error credenciales");
         } else {
           // ignore: prefer_const_constructors
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -206,15 +201,21 @@ class RegistroState extends State<Registro> {
             ),
             backgroundColor: Colors.green,
           ));
-          print("ok");
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => Dashboard()));
         }
         //print(res.data['user']['id']);
       } else {
-        print("error");
-        print(response.statusCode);
+         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+            content: const Text(
+              'Este usuario ya se registró anteriormente',
+              style: TextStyle(color: Colors.red),
+            ),
+            backgroundColor: ColoresApp.fondoBlanco,
+          ));
+        
       }
+            
        }
     }
 }
