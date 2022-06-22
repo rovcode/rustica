@@ -11,7 +11,7 @@ import 'package:rustica/View/atomic-design/atomos/Logos.dart';
 import 'package:rustica/View/pantalla_registro.dart';
 import 'package:http/http.dart' as http;
 
-import '../Model/db/User.dart';
+import 'package:rustica/Model/db/User.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -189,9 +189,15 @@ class LoginState extends State<Login> {
             ),
             backgroundColor: Colors.green,
           ));
-          print("ok");
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
+          
+          int id = res.data['user']['id'];
+          String name=res.data['user']['name'];
+          String phone=res.data['user']['phone'];
+          String email=res.data['user']['email'];
+          int rol_id=res.data['user']['rol_id'];
+          final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: id);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
+         
         }
         //print(res.data['user']['id']);
       } else {

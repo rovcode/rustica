@@ -1,14 +1,19 @@
 //Detalle de un plato
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 
 class Detalle extends StatefulWidget {
-  DetalleState createState() => DetalleState();
+  final Usuario datos;
+  Detalle({required this.datos});
+  DetalleState createState() => DetalleState(data: datos);
 }
 
 class DetalleState extends State<Detalle> {
+   final Usuario data;
+   DetalleState({ required this.data });
   @override
   Widget build(BuildContext context) {
 
@@ -66,7 +71,7 @@ class DetalleState extends State<Detalle> {
 
     return Scaffold(
       backgroundColor: ColoresApp.fondoBlanco,
-      drawer: MenuVertical(),
+      drawer: MenuVertical(this.data),
       appBar: AppBar(
         backgroundColor: ColoresApp.fondoNaranja,
         elevation: 0.0,

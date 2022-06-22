@@ -1,5 +1,6 @@
 //Platos de la carta
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
@@ -50,7 +51,13 @@ class PlatosState extends State<Platos> {
          ),
        ),
         onTap: (){
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Detalle()));
+          // int id = res.data['user']['id'];
+          // String name=res.data['user']['name'];
+          // String phone=res.data['user']['phone'];
+          // String email=res.data['user']['email'];
+          // String rol=res.data['user']['rol_id'];
+          final data = Usuario(id: 1, name:"name", phone: "phone", email: "email", rol_id: 1);
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Detalle(datos:data)));
         },
       ),
     );

@@ -38,18 +38,13 @@ class ApiRSU {
   }
 
 //Traer datos del usuario
-  Future<Response> getUserProfileData(String accesstoken) async {
+  Future<Response> obtenerdatosusuario(int id) async {
     try {
-      Response response = await _dio.get(
-        'https://api.loginradius.com/identity/v2/auth/account',
-      );
-      return response.data;
+      Response response = await _dio.get(url.recursoUrsurio()+id.toString(),);
+      return response;
     } on DioError catch (e) {
       return e.response!.data;
     }
 
-    // Future<Response> cerrarSesion() async {
-    //     //IMPLEMENT USER LOGOUT
-    //  }
   }
 }

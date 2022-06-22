@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/Model/db/API-RSU.dart';
+import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/Usuario/dashboard.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/atomos/Logos.dart';
@@ -201,8 +202,13 @@ class RegistroState extends State<Registro> {
             ),
             backgroundColor: Colors.green,
           ));
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => Dashboard()));
+             int id = res.data['user']['id'];
+          String name=res.data['user']['name'];
+          String phone=res.data['user']['phone'];
+          String email=res.data['user']['email'];
+          int rol_id=res.data['user']['rol_id'];
+          final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id,);
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
         }
         //print(res.data['user']['id']);
       } else {

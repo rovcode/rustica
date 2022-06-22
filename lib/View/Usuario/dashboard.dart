@@ -1,20 +1,28 @@
 //Dashboard del usuario
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 
 
 class Dashboard extends StatefulWidget {
-  DashboardState createState() => DashboardState();
+  final Usuario data;
+  Dashboard({required this.data});
+  @override
+  DashboardState createState() => DashboardState(data: data);
+ 
 }
 
 class DashboardState extends State<Dashboard> {
+  final Usuario data;
+   DashboardState({ required this.data });
+   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColoresApp.fondoBlanco,
-      drawer: MenuVertical(),
+      drawer: MenuVertical(this.data),
       appBar: AppBar(
         leading: Builder(
           builder: (BuildContext context) {
