@@ -168,7 +168,6 @@ class LoginState extends State<Login> {
         txtcorreo.text,
         txtpassword.text,
       );
-      print(res);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       if (res.statusCode == 200) {
         if (res.data['mensaje'] != null) {
@@ -195,7 +194,7 @@ class LoginState extends State<Login> {
           String phone=res.data['user']['phone'];
           String email=res.data['user']['email'];
           int rol_id=res.data['user']['rol_id'];
-          final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: id);
+          final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id);
           Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
          
         }

@@ -5,6 +5,7 @@ import 'package:rustica/View/Usuario/explorar.dart';
 import 'package:rustica/View//Usuario/mesas_usuario.dart';
 import 'package:rustica/View/Usuario/principal.dart';
 import 'package:rustica/View/Usuario/red_social_usuarios.dart';
+import 'package:rustica/View/dashboard/PantallPrincipal.dart';
 
 
 class BarraNavegacion extends StatefulWidget {
@@ -17,7 +18,7 @@ class BarraNavegacionState extends State<BarraNavegacion> {
   int _opSeleccionada=0;
    static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
 
-   static List<Widget> get WidgetOpciones => [Principal(),Platos(),MesasUsuario(),RedSocial()];
+   static List<Widget> get WidgetOpciones => [PantallPrincipal(),Platos(),MesasUsuario(),RedSocial()];
   
   ///Creamos una funcion para validar el state  
   void _clickRealizado(int i){
