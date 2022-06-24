@@ -17,10 +17,10 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
   GestorMemnuAppState({required this.tipo});
   @override
   Widget build(BuildContext context) {
-     return condition(tipo);
+     return tipoMenu(tipo);
   }
 
-  Widget condition(int id) {
+  Widget tipoMenu(int id) {
     Widget widget;
     switch (id) {
       case 2:
@@ -72,8 +72,6 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
       default:
         widget = Container();
     }
-  
-    // Finally returning a Widget
     return widget;
   }
   //Creamos el Item del menuVertical

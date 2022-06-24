@@ -36,6 +36,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   dio: ^3.0.10
   flutter_svg: ^1.1.0
+  twilio_flutter: ^0.0.5
 
 dev_dependencies:
   flutter_test:

@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rustica/View/admin/Seguimiento.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/dashboard/CardPublicidad.dart';
-import 'package:rustica/View/dashboard/CategoriasRustica.dart';
 import 'package:rustica/View/pantalla_chatbot.dart';
 
-class PantallPrincipal extends StatelessWidget {
+class DashboardAdmin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ChatBot()),
-          );
-        },
-        tooltip: 'Chatbot',
-        backgroundColor: ColoresApp.fondoNaranja,
-        child: const Icon(Icons.message),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => ChatBot()),
+      //     );
+      //   },
+      //   tooltip: 'Chatbot',
+      //   backgroundColor: ColoresApp.fondoNaranja,
+      //   child: const Icon(Icons.message),
+      // ),
       backgroundColor: ColoresApp.fondoBlanco,
       body: SafeArea(
         bottom: false,
@@ -29,7 +29,7 @@ class PantallPrincipal extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30, vertical:20),
-                child: Text('¡Encuentra lo que deseas comer hoy!',
+                child: Text('Panel de administración',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
@@ -46,7 +46,7 @@ class PantallPrincipal extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 child: Text(
-                  'Categorías',
+                  'Accesos de seguimiento',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: ColoresApp.darkPrimary,
@@ -57,13 +57,13 @@ class PantallPrincipal extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              categoriaRustica(),
+              seguimiento(),
               SizedBox(
                 height: 20,
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text('Más consumido',
+                child: Text('Notificaciones',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: ColoresApp.darkPrimary,
@@ -82,7 +82,7 @@ class PantallPrincipal extends StatelessWidget {
     );
   }
 
-  categoriaRustica() {
+  seguimiento() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
@@ -90,27 +90,26 @@ class PantallPrincipal extends StatelessWidget {
           SizedBox(
             width: 30,
           ),
-          CategoriasRustica(
-            'Zona Comida',
-            'assets/icons/comida.svg',
-            ColoresApp.azul,
+          SeguimientosAdmin(
+            'Ventas',
+            'assets/icons/ventas.svg',Colors.transparent,
           ),
           SizedBox(
             width: 10,
           ),
-          CategoriasRustica(
-            'Zona Bar',
-            'assets/icons/bebida.svg',
-            ColoresApp.amarillo,
+          SeguimientosAdmin(
+            'Calificación',
+            'assets/icons/checklist.svg',
+            Colors.transparent,
           ),
           SizedBox(
             width: 10,
             
           ),
-          CategoriasRustica(
-           'Promociones',
-            'assets/icons/promo.svg',
-            ColoresApp.naranja,
+          SeguimientosAdmin(
+           'Stock',
+            'assets/icons/stock.svg',
+            Colors.transparent,
           ),
           SizedBox(
             width: 30,

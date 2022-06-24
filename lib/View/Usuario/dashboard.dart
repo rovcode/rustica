@@ -49,7 +49,7 @@ class DashboardState extends State<Dashboard> {
               }),
         ],
       ),
-      body: BarraNavegacion(),
+      body: BarraNavegacion(datausuario: data),
     );
   }
 }

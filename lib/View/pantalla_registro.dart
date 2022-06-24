@@ -5,6 +5,7 @@ import 'package:rustica/View/Usuario/dashboard.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/atomos/Logos.dart';
 import 'package:dio/dio.dart';
+import 'package:rustica/View/atomic-design/moleculas/GestorSMS.dart';
 class Registro extends StatefulWidget {
   @override
   RegistroState createState() => RegistroState();
@@ -162,7 +163,6 @@ class RegistroState extends State<Registro> {
               )),
         ));
     }
-
     //Creamos el Future registrar
     Future<void> registrarUsuario() async{
        if(_formKey.currentState!.validate()){
@@ -209,6 +209,7 @@ class RegistroState extends State<Registro> {
           int rol_id=res.data['user']['rol_id'];
           final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id,);
           Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
+          GestorSMS gestionSMS =  GestorSMS(numerocliente: phone);
         }
         //print(res.data['user']['id']);
       } else {

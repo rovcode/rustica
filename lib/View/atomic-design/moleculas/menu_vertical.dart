@@ -69,27 +69,4 @@ class MenuVerticalStatus extends State<MenuVertical> {
     }
    
   }
-
-  //Creamos el Item del menuVertical
-  Widget opcionMenu(
-      {IconData? icon, String? nombre, GestureTapCallback? onTap}) {
-    return ListTile(
-      title: Row(
-        children: <Widget>[
-          Icon(
-            icon,
-            color: ColoresApp.darkPrimary,
-          ),
-          Padding(
-            padding: EdgeInsets.only(left: 8.0),
-            child: Text(
-              nombre!,
-              style: TextStyle(color: ColoresApp.darkPrimary),
-            ),
-          )
-        ],
-      ),
-      onTap: onTap,
-    );
-  }
 }
