@@ -9,7 +9,11 @@ import 'package:rustica/View/Usuario/dashboard.dart';
 import 'package:rustica/View/admin/DashboardAdmin.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/atomos/Logos.dart';
+
+import 'package:rustica/View/login_pw_page.dart';
+
 import 'package:rustica/View/atomic-design/moleculas/GestorSMS.dart';
+
 import 'package:rustica/View/pantalla_registro.dart';
 import 'package:http/http.dart' as http;
 
@@ -44,6 +48,7 @@ class LoginState extends State<Login> {
               Logo(),
               _correo(),
               _pass(),
+              _row(),
               _boton_inicio_sesion(),
               _boton_registro(),
               Padding(
@@ -209,6 +214,37 @@ class LoginState extends State<Login> {
       }
     }
   }
+
+
+  Widget _row() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 25.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          GestureDetector(
+            onTap: (){
+              Navigator.push(context,
+              MaterialPageRoute(
+                  builder: (context) {
+                return ForgotPasswordPage();
+              },
+              ),
+              );
+            },
+            child: Text(
+              'Forgot Password?',
+              style: TextStyle(
+                color: Colors.blue,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   ///Enviando SMS al usuario
 //   late TwilioFlutter twilioFlutter;
 //  void initState() {
@@ -218,4 +254,5 @@ class LoginState extends State<Login> {
 //   void sendSms(String phone,String name) async {
 //     twilioFlutter.sendSMS(toNumber: '+51'+phone, messageBody: 'Hola '+name+' Rustica App RSU te da la bienvenida!');
 //   }
+
 }
