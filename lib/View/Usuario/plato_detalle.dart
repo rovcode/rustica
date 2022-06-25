@@ -4,6 +4,7 @@ import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
+import 'package:rustica/View/Usuario/plato_detalle2.dart';
 
 class Detalle extends StatefulWidget {
   final Usuario datos;
@@ -62,12 +63,6 @@ class DetalleState extends State<Detalle> {
 
     Color color = Colors.orange;
 
-    Widget Acciones = Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        _buildButtonColumn(color, Icons.shopping_cart_outlined, 'Agregar'),
-      ],
-    );
 
     return Scaffold(
       backgroundColor: ColoresApp.fondoBlanco,
@@ -91,7 +86,16 @@ class DetalleState extends State<Detalle> {
             fit: BoxFit.cover,
           ),
           Descripcion_plato,
-          Acciones,
+          MaterialButton(
+            child: Text("Detalles"),
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => plato_detalle2()),
+              );
+            },
+            color: Colors.orange,
+          )
         ],
       ),
     );
