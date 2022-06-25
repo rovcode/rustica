@@ -233,7 +233,7 @@ class LoginState extends State<Login> {
               );
             },
             child: Text(
-              'Forgot Password?',
+              'Resetear contraseña',
               style: TextStyle(
                 color: Colors.blue,
                 fontWeight: FontWeight.bold,

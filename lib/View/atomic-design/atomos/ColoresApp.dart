@@ -13,7 +13,7 @@ class ColoresApp {
   static Color fondoNegro = Colors.black;
   static Color naranja = Color(0xffEF716B);
   static Color amarillo = Color(0xffFFB167);
-
+ 
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     backgroundColor: fondoNegro,
