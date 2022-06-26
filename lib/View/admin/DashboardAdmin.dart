@@ -4,22 +4,12 @@ import 'package:rustica/View/admin/Seguimiento.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/dashboard/CardPublicidad.dart';
 import 'package:rustica/View/pantalla_chatbot.dart';
-
+import 'package:url_launcher/url_launcher.dart';
 class DashboardAdmin extends StatelessWidget {
+  final adminweb = Uri.parse("http://api-rsu.herokuapp.com/");
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(builder: (context) => ChatBot()),
-      //     );
-      //   },
-      //   tooltip: 'Chatbot',
-      //   backgroundColor: ColoresApp.fondoNaranja,
-      //   child: const Icon(Icons.message),
-      // ),
       backgroundColor: ColoresApp.fondoBlanco,
       body: SafeArea(
         bottom: false,
@@ -28,8 +18,9 @@ class DashboardAdmin extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 30, vertical:20),
-                child: Text('Panel de administración',
+                padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                child: Text(
+                  'Panel de administración',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 25,
@@ -45,12 +36,33 @@ class DashboardAdmin extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text(
-                  'Accesos de seguimiento',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: ColoresApp.darkPrimary,
-                    fontSize: 18,
+                child: Container(
+                  child: Row(
+                    children: [
+                      Text('Accesos de seguimiento',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: ColoresApp.darkPrimary,
+                            fontSize: 18,
+                          )),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      SizedBox(
+                        width: 120,
+                        height: 40,
+                        child: RaisedButton(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30)),
+                          color: ColoresApp.lightPrimary,
+                          onPressed:administradorweb,
+                          child: Text('Admin Web',
+                              style: TextStyle(
+                                color: ColoresApp.darkPrimary,
+                              )),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -63,7 +75,8 @@ class DashboardAdmin extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text('Notificaciones',
+                child: Text(
+                  'Notificaciones',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: ColoresApp.darkPrimary,
@@ -81,7 +94,9 @@ class DashboardAdmin extends StatelessWidget {
       ),
     );
   }
-
+void administradorweb() async {
+  if (!await launchUrl(adminweb)) throw 'Could not launch $adminweb';
+}
   seguimiento() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
@@ -92,7 +107,8 @@ class DashboardAdmin extends StatelessWidget {
           ),
           SeguimientosAdmin(
             'Ventas',
-            'assets/icons/ventas.svg',Colors.transparent,
+            'assets/icons/ventas.svg',
+            Colors.transparent,
           ),
           SizedBox(
             width: 10,
@@ -104,10 +120,9 @@ class DashboardAdmin extends StatelessWidget {
           ),
           SizedBox(
             width: 10,
-            
           ),
           SeguimientosAdmin(
-           'Stock',
+            'Stock',
             'assets/icons/stock.svg',
             Colors.transparent,
           ),
