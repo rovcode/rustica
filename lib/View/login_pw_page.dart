@@ -48,7 +48,7 @@ Future passwordRecovery() async{
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 25.0),
             child: Text(
-                'Ingresa tu Email y te enviaremos tu contraseña',
+                'Ingresa tu Email y te enviaremos un link de cambio.',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 20),
               ),
@@ -74,7 +74,7 @@ Future passwordRecovery() async{
           MaterialButton(
               onPressed: passwordRecovery ,
           child: Text('Recuperar Password'),
-          color: Colors.deepPurple[200],
+          color: ColoresApp.fondoNaranja,
           ),
         ],
       ),

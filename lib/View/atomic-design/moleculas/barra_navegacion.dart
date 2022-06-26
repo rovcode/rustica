@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/ServiceMesas.dart';
 import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/Usuario/pantalla_platos.dart';
 import 'package:rustica/View/admin/DashboardAdmin.dart';
@@ -23,7 +24,9 @@ class BarraNavegacionState extends State<BarraNavegacion> {
   int _opSeleccionada=0;
    static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
 
+
     List<Widget> get WidgetOpciones => [TipoDashboard(data.rol_id),Platos(data:data),MesasUsuario(),RedSocial()];
+
   
   ///Creamos una funcion para validar el state  
   void _clickRealizado(int i){
@@ -74,5 +77,7 @@ class BarraNavegacionState extends State<BarraNavegacion> {
     }
     return widget;
   }
+
+    
 }
 
