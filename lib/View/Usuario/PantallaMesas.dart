@@ -3,14 +3,14 @@ import 'package:rustica/Model/Mesa.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 class PantallaMesas extends StatefulWidget{
-   List data=[];
+   dynamic data=[];
    PantallaMesas({ required this.data});
    @override
    PantallaMesasState createState() => PantallaMesasState(data:data);
   
 }
 class PantallaMesasState extends State<PantallaMesas> {
-  List data=[];
+  dynamic data=[];
   
   PantallaMesasState({ required this.data});
   @override
@@ -53,6 +53,6 @@ class PantallaMesasState extends State<PantallaMesas> {
       //              print(data[i]);
       //   }            
       // }
-       print(data.toString());
+       print(data);
   }
 }

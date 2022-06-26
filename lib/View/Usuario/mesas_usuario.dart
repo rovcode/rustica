@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/Model/Mesa.dart';
 import 'package:rustica/Model/db/ServiceMesas.dart';
@@ -19,35 +20,44 @@ class MesasUsuarioState extends State<MesasUsuario>{
         return Scaffold(
           backgroundColor: ColoresApp.fondoBlanco,
           body:Container(
-            child: Text(""),
+            child: RaisedButton(
+                          shape: new RoundedRectangleBorder(
+                              borderRadius: new BorderRadius.circular(30)),
+                          color: ColoresApp.lightPrimary,
+                          onPressed:(){
+                             print(listamesas());
+                          },
+                          child: Text('Admin Web',
+                              style: TextStyle(
+                                color: ColoresApp.darkPrimary,
+                              )),
+                        ),
           ));
     }
-    @override
-  void initState() {
-    super.initState();
-    listamesas();
-  }
+  //   @override
+  // void initState() {
+  //   super.initState();
+  //   listamesas();
+  // }
 
-Future<void> listamesas() async {      
+Future<Response> listamesas() async {      
       ServiceMesas _serviceMesas = ServiceMesas();
       dynamic res = await _serviceMesas.getMesas();
-      
-       //print(res);
-      if (res.statusCode == 200) {
-          late List datmesas=[];             
-               String estado,piso;
-              for (var i = 0; i < res.data.length; i++) {
-                           
-                           datmesas.add(res.data[i]['id']);
-                           print(jsonEncode(res));
-              }
-            
-              //Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaMesas(data:datmesas))); 
+        return res;
+      // print(res);
+      // if (res.statusCode == 200) {
+      //     late List datmesas=[];             
+          
+      //       return Container(
+      //         margin: EdgeInsets.all(50),
+      //         child: Text("Holassssssssssssssss", style: TextStyle(color: ColoresApp.fondoNegro),),
+      //       );
+      //       //Navigator.push(context, MaterialPageRoute(builder: (context) => PantallaMesas(data:res))); 
             
                                 
-      } else {
-        print("error");
-      }
+      // } else {
+      //   print("error");
+      // }
     }
   
   
