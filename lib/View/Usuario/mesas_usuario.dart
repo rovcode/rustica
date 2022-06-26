@@ -34,8 +34,7 @@ Future<void> listamesas() async {
       
        //print(res);
       if (res.statusCode == 200) {
-          late List datmesas=[];
-             
+          late List datmesas=[];             
                String estado,piso;
               for (var i = 0; i < res.data.length; i++) {
                            
