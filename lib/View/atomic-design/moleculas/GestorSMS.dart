@@ -1,31 +1,49 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:rustica/Model/db/API-RSU.dart';
+import 'package:rustica/Model/db/ServiceApiLogin.dart';
+import 'package:rustica/View/Usuario/dashboard.dart';
+import 'package:rustica/View/admin/DashboardAdmin.dart';
+import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
+import 'package:rustica/View/atomic-design/atomos/Logos.dart';
+
+import 'package:rustica/View/login_pw_page.dart';
+
+import 'package:rustica/View/atomic-design/moleculas/GestorSMS.dart';
+
+import 'package:rustica/View/pantalla_registro.dart';
+import 'package:http/http.dart' as http;
 import 'package:twilio_flutter/twilio_flutter.dart';
 
 class GestorSMS extends StatefulWidget {
-  final String numerocliente;
-  // ignore: use_key_in_widget_constructors
-  GestorSMS({required this.numerocliente});
   @override
-  // ignore: no_logic_in_create_state
-  GestorSMSState createState() => GestorSMSState(numerocliente:numerocliente);
+  GestorSMSState createState() => GestorSMSState();
 }
-class GestorSMSState extends State<GestorSMS>{
- final String numerocliente;
- GestorSMSState({required this.numerocliente});
- late TwilioFlutter twilioFlutter;
- void initState() {
-    twilioFlutter =TwilioFlutter(accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6', authToken: '9ed5088b02beb7b530a4f7fa61f44009', twilioNumber: '+16107568190');
 
-    super.initState();
-    sendSms();
-  }
-
-  void sendSms() async {
-    twilioFlutter.sendSMS(toNumber: numerocliente, messageBody: 'Prueba de app rustica');
-  }
+class GestorSMSState extends State<GestorSMS> {
   @override
-  Widget build(BuildContext context) {
-    return Container();
-  }
+    Widget build(BuildContext context) {
+      return Container();
+      //sendSms('980866911','Rony');
+    }
+    Future<void> iniciandoservicio() async {
+      sendSms('980866911','Rony');
+    }
+
+
+
+ //Enviando SMS al usuario
+  late TwilioFlutter twilioFlutter;
+  void initState() {
+      iniciandoservicio();
+      twilioFlutter =TwilioFlutter(accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6', authToken: '9ed5088b02beb7b530a4f7fa61f44009', twilioNumber: '+16107568190');
+      super.initState();
+    }
+    void sendSms(String phone,String name) async {
+      twilioFlutter.sendSMS(toNumber: '+51'+phone, messageBody: 'Hola '+name+' Rustica App RSU te da la bienvenida!');
+    }
 
 }
