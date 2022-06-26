@@ -38,6 +38,7 @@ dependencies:
   flutter_svg: ^1.1.0
   twilio_flutter: ^0.0.5
   url_launcher: ^6.1.4
+  http:
 
 dev_dependencies:
   flutter_test:

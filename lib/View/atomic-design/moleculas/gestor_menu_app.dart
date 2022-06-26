@@ -6,6 +6,7 @@ import 'package:rustica/View/pantalla_login.dart';
 import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/Models/perfil.dart';
 import 'package:rustica/View/atomic-design/Models/about.dart';
+import 'package:rustica/ViewModel/VistaApi.dart';
 
 class GestorMenuApp extends StatefulWidget {
   //final int tipousuarios;
@@ -53,7 +54,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
         break;
       case 1:
         widget =  Column(children: [
-          opcionMenu(icon: Icons.home, nombre: "Dashboard",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
+          opcionMenu(icon: Icons.home, nombre: "Dashboard",onTap: () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => VistaApi()))}),
           opcionMenu(icon: Icons.file_copy_sharp, nombre: "Facturas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.monetization_on, nombre: "Ventas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.stop, nombre: "Productos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
