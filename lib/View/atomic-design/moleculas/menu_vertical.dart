@@ -27,7 +27,7 @@ class MenuVerticalStatus extends State<MenuVertical> {
         padding: EdgeInsets.zero,
         children: [
           header_app(datos.name, datos.email, datos.rol_id),          
-          GestorMenuApp(tipousuarios: datos.rol_id)
+          GestorMenuApp(Usuariodata: datos)
         ],
       ),
     );

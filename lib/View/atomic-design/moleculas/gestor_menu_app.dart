@@ -3,21 +3,27 @@ import 'package:rustica/View/Usuario/WidgetApi.dart';
 import 'package:rustica/View/Usuario/pantalla_platos.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/pantalla_login.dart';
+import 'package:rustica/Model/db/User.dart';
+import 'package:rustica/View/atomic-design/Models/perfil.dart';
+import 'package:rustica/View/atomic-design/Models/about.dart';
 
 class GestorMenuApp extends StatefulWidget {
-  final int tipousuarios;
-  GestorMenuApp({required this.tipousuarios});
+  //final int tipousuarios;
+  final Usuario Usuariodata;
+
+  GestorMenuApp({required this.Usuariodata});
   @override
   // ignore: no_logic_in_create_state
-  GestorMemnuAppState createState() => GestorMemnuAppState(tipo: tipousuarios);
+  GestorMemnuAppState createState() => GestorMemnuAppState(tipo: Usuariodata);
 }
 
 class GestorMemnuAppState extends State<GestorMenuApp> {
-  final int tipo;
+  //final int tipo;
+  final Usuario tipo;
   GestorMemnuAppState({required this.tipo});
   @override
   Widget build(BuildContext context) {
-     return tipoMenu(tipo);
+     return tipoMenu(tipo.rol_id);
   }
 
   Widget tipoMenu(int id) {
@@ -29,7 +35,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
           opcionMenu(icon: Icons.table_bar, nombre: "Mesas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.delivery_dining, nombre: "Mis Pedidos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.food_bank, nombre: "Platos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
-          opcionMenu(icon: Icons.settings, nombre: "Configuración",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
+          opcionMenu(icon: Icons.settings, nombre: "Configuración",onTap: _onButtonPressed ),
            Container(
               margin: EdgeInsets.all(20),
              child: FlatButton(
@@ -94,6 +100,65 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
         ],
       ),
       onTap: onTap,
+    );
+  }
+  void _onButtonPressed(){
+    showModalBottomSheet(
+        context: context,
+        builder: (context){
+          return Container(
+            color: Color(0xFF747475),
+
+            height: 260,
+
+            child: Container(
+              child: _buildBottomNavigationMenu(),
+              decoration: BoxDecoration(
+                color: Theme.of(context).canvasColor,
+                borderRadius: BorderRadius.only(
+                  topLeft: const Radius.circular(30),
+                  topRight: const Radius.circular(30),
+                ),
+
+              ),
+            ),
+          );
+        });
+  }
+  Column _buildBottomNavigationMenu() {
+
+
+    return Column(
+      children: <Widget>[
+        ListTile(
+            leading: Icon(Icons.accessibility_new),
+            title: Text('Perfil'),
+            onTap: () =>{
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
+        ),
+        ListTile(
+          leading: Icon(Icons.access_alarm),
+          title: Text('Notificación'),
+
+        ),
+        ListTile(
+          leading: Icon(Icons.ac_unit),
+          title: Text('Acerca de Nosotros'),
+
+        ),
+        ListTile(
+          leading: Icon(Icons.add_business),
+          title: Text('Insumos'),
+
+        ),
+        ListTile(
+            leading: Icon(Icons.assessment),
+            title: Text('About'),
+            onTap: () =>{
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> About(data:tipo)))  }
+
+        ),
+      ],
     );
   }
 }

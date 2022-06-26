@@ -4,13 +4,17 @@ import 'package:rustica/Model/db/User.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
-import 'package:rustica/View/Usuario/plato_detalle.dart';
+import 'package:rustica/View/Usuario/plato_detalle2.dart';
 
 class Platos extends StatefulWidget {
-  PlatosState createState() => PlatosState();
+  final Usuario data;
+  Platos({required this.data});
+  PlatosState createState() => PlatosState(data:data);
 }
 
 class PlatosState extends State<Platos> {
+  final Usuario data;
+  PlatosState({required this.data});
   @override
   Widget build(BuildContext context) {
 
@@ -56,8 +60,8 @@ class PlatosState extends State<Platos> {
           // String phone=res.data['user']['phone'];
           // String email=res.data['user']['email'];
           // String rol=res.data['user']['rol_id'];
-          final data = Usuario(id: 1, name:"name", phone: "phone", email: "email", rol_id: 1);
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>Detalle(datos:data)));
+
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle2()));
         },
       ),
     );

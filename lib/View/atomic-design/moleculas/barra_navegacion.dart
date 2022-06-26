@@ -23,7 +23,7 @@ class BarraNavegacionState extends State<BarraNavegacion> {
   int _opSeleccionada=0;
    static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
 
-    List<Widget> get WidgetOpciones => [TipoDashboard(data.rol_id),Platos(),MesasUsuario(),RedSocial()];
+    List<Widget> get WidgetOpciones => [TipoDashboard(data.rol_id),Platos(data:data),MesasUsuario(),RedSocial()];
   
   ///Creamos una funcion para validar el state  
   void _clickRealizado(int i){
