@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -30,7 +31,12 @@ class GestorSMSState extends State<GestorSMS> {
       //sendSms('980866911','Rony');
     }
     Future<void> iniciandoservicio() async {
-      sendSms('980866911','Rony');
+        
+          Timer siguiendoAtencionOnline = Timer.periodic(const Duration(seconds: 20), (timer) {
+        sendSms('980866911','Rony');
+          print("hola");
+      });
+      
     }
 
 
