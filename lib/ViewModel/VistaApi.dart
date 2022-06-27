@@ -8,7 +8,7 @@ class VistaApi extends StatelessWidget {
     return Container(
       child: FutureBuilder(
           key: Key('futureBuilder'),
-          future: _albumConfig.caso_uso.getByID('180'),
+          future: _albumConfig.caso_uso.getByID("1"),
           builder: (BuildContext context, AsyncSnapshot snapshot) =>
               asycnHelper(snapshot)),
     );
@@ -24,9 +24,9 @@ class VistaApi extends StatelessWidget {
       );
     } else {
       element = ApiView(
-        description: 'id :' + snapshot.data.id.toString(),
-        title: snapshot.data.title,
-        url: snapshot.data.thumbnailUrl,
+        numSillas: snapshot.data.num_sillas,
+        estado: snapshot.data.estado,
+        piso: snapshot.data.piso,
       );
     }
     return element;
@@ -34,11 +34,11 @@ class VistaApi extends StatelessWidget {
 }
 
 class ApiView extends StatelessWidget {
-  final String url;
-  final String title;
-  final String description;
+  final int numSillas;
+  final String estado;
+  final String piso;
 
-  ApiView({required this.url, required this.title, required this.description});
+  ApiView({required this.numSillas, required this.estado, required this.piso});
   @override
   Widget build(BuildContext context) {
     final element = Container(
@@ -47,14 +47,14 @@ class ApiView extends StatelessWidget {
       margin: EdgeInsets.all(10.0),
       child: Row(
         children: [
-          ShowImagen(url: this.url, widthImage: 150, heightImage: 150),
+           Text(numSillas.toString()),
           Column(
             children: [
               Container(
                 width: 200,
                 padding: EdgeInsets.fromLTRB(10, 2, 10, 0),
                 child: Text(
-                  title,
+                  estado,
                   key: Key('title-album-api'),
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
@@ -62,7 +62,7 @@ class ApiView extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(10),
-                child: Text(description),
+                child: Text(piso),
               ),
             ],
           )

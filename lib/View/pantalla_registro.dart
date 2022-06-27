@@ -209,7 +209,7 @@ class RegistroState extends State<Registro> {
           int rol_id=res.data['user']['rol_id'];
           final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id,);
           Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
-          GestorSMS gestionSMS =  GestorSMS(numerocliente: phone);
+          //GestorSMS gestionSMS =  GestorSMS(numerocliente: phone);
         }
         //print(res.data['user']['id']);
       } else {

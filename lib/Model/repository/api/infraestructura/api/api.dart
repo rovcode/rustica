@@ -10,12 +10,17 @@ class  Api extends GetAbstractaClase {
   JsonMapper _apiMapper = JsonMapper();
   @override
   Future<List<Recurso>> getAll() async {
-    throw Exception('No se ha implementado este método ');
+    final response = await http.get('http://api-rsu.herokuapp.com/api/mesas/');
+    if (response.statusCode == 200){
+      return  _apiMapper.fromMap (jsonDecode( response.body));
+    }else {
+      throw Exception('Fue imposible adquirir esta url');
+    } 
   }
   @override
   Future<Recurso> getByID(String id) async{
     sleep(Duration(seconds: 4));
-    final response = await http.get('https://jsonplaceholder.typicode.com/photos/'+id);
+    final response = await http.get('http://api-rsu.herokuapp.com/api/detallesmesa/'+id);
     if (response.statusCode == 200){
       return  _apiMapper.fromMap (jsonDecode( response.body));
     }else {
