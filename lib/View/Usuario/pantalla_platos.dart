@@ -1,6 +1,8 @@
 //Platos de la carta
 import 'package:flutter/material.dart';
 import 'package:rustica/Model/db/User.dart';
+import 'package:rustica/View/Usuario/plato_detalle3.dart';
+import 'package:rustica/View/Usuario/plato_detalle4.dart';
 import 'package:rustica/View/atomic-design/moleculas/barra_navegacion.dart';
 import 'package:rustica/View/atomic-design/moleculas/menu_vertical.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
@@ -99,10 +101,19 @@ class PlatosState extends State<Platos> {
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.5,
               ),
+
             ),
           ),
         ),
+        onTap: (){
+          // int id = res.data['user']['id'];
+          // String name=res.data['user']['name'];
+          // String phone=res.data['user']['phone'];
+          // String email=res.data['user']['email'];
+          // String rol=res.data['user']['rol_id'];
 
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle4()));
+        },
       ),
     );
 
@@ -141,6 +152,15 @@ class PlatosState extends State<Platos> {
             ),
           ),
         ),
+        onTap: (){
+          // int id = res.data['user']['id'];
+          // String name=res.data['user']['name'];
+          // String phone=res.data['user']['phone'];
+          // String email=res.data['user']['email'];
+          // String rol=res.data['user']['rol_id'];
+
+          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle3()));
+        },
 
       ),
     );
