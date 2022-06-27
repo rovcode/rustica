@@ -1,5 +1,6 @@
 //@dart=2.9
 import 'package:flutter/material.dart';
+import 'package:rustica/View/Usuario/plato_detalle4.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:rustica/View/pantalla_chatbot.dart';
 import 'package:rustica/View/pantalla_principal.dart';
@@ -27,7 +28,8 @@ class RusticaApp extends StatelessWidget {
 
 class NucleoApp extends StatefulWidget {
   @override
-  State<NucleoApp> createState() => NucleoAppState();
+
+ State<NucleoApp> createState() => NucleoAppState();
 }
 
 class NucleoAppState extends State<NucleoApp> {
