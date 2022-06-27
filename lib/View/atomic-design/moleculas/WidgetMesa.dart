@@ -68,6 +68,7 @@ class ViewMesa extends StatelessWidget {
   }
  Timer siguiendoAtencionOnline = Timer.periodic(const Duration(seconds: 20), (timer) {
       GestorSMS();
+      print("hola");
   });
   
   Widget gestionaEstado(String estado) {
