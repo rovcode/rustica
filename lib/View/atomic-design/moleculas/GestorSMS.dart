@@ -32,7 +32,7 @@ class GestorSMSState extends State<GestorSMS> {
     }
     Future<void> iniciandoservicio() async {
         
-          Timer siguiendoAtencionOnline = Timer.periodic(const Duration(seconds: 20), (timer) {
+        Timer siguiendoAtencionOnline = Timer.periodic(const Duration(seconds: 20), (timer) {
         sendSms('980866911','Rony');
           print("hola");
       });

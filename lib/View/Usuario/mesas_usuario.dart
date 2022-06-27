@@ -8,6 +8,7 @@ import 'package:rustica/Model/db/ServiceMesas.dart';
 import 'package:rustica/View/Usuario/PantallaMesas.dart';
 import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
 import 'package:http/http.dart' as http;
+import 'package:rustica/View/atomic-design/moleculas/ViewMesas.dart';
 import 'package:rustica/View/atomic-design/moleculas/WidgetMesa.dart';
 
 class MesasUsuario extends StatefulWidget {
@@ -82,8 +83,7 @@ class ListaMesas extends StatelessWidget {
             title: Container(
                 child: Column(
               children: [
-                ViewMesa(
-                    usuario.id, usuario.numSillas, usuario.estado, usuario.piso)
+                VistaMesas(id:usuario.id, num_sillas:usuario.numSillas, estado:usuario.estado, piso:usuario.piso)
               ],
             )),
           );
