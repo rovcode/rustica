@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "471298467351",
+    "project_id": "rustica-firebase",
+    "storage_bucket": "rustica-firebase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:471298467351:android:4fd85b532e99db1e199e52",
+        "android_client_info": {
+          "package_name": "com.example.rustica"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "471298467351-tdb93nh39amsle19nv24ftrkt0i4l15t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqYvbybgh2kIZwzxz-Ei9FYRutbeK3EHg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "471298467351-tdb93nh39amsle19nv24ftrkt0i4l15t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
