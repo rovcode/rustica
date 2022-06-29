@@ -1,10 +1,9 @@
 //@dart=2.9
 import 'package:flutter/material.dart';
-import 'package:rustica/View/Usuario/plato_detalle4.dart';
-import 'package:rustica/View/atomic-design/atomos/ColoresApp.dart';
-import 'package:rustica/View/pantalla_chatbot.dart';
-import 'package:rustica/View/pantalla_principal.dart';
-import 'package:rustica/View/pantalla_login.dart';
+import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
+import 'package:rustica/Widgets/ChatBot/pantalla_chatbot.dart';
+import 'package:rustica/Widgets/pantalla_principal.dart';
+import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 
 void main() {
   //WidgetsFlutterBinding.ensureInitialized();//Inicia Firebase
@@ -37,17 +36,17 @@ class NucleoAppState extends State<NucleoApp> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PantallPrincipal("assets/img/logorustica.png"),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => ChatBot()),
-          );
-        },
-        tooltip: 'Chatbot',
-        backgroundColor: ColoresApp.fondoNaranja,
-        child: const Icon(Icons.message),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(builder: (context) => ChatBot()),
+      //     );
+      //   },
+      //   tooltip: 'Chatbot',
+      //   backgroundColor: ColoresApp.fondoNaranja,
+      //   child: const Icon(Icons.message),
+      // ),
     );
   }
 }
