@@ -4,6 +4,7 @@ import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/Models/perfil.dart';
+import 'package:rustica/Widgets/Resources/Models/nosotros.dart';
 import 'package:rustica/Widgets/Resources/Models/about.dart';
 import 'package:rustica/Widgets/Resources/VistaApi.dart';
 
@@ -59,7 +60,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
           opcionMenu(icon: Icons.stop, nombre: "Productos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.account_box_outlined, nombre: "Trabajadores",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.online_prediction, nombre: "En tiempo real",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
-          opcionMenu(icon: Icons.settings, nombre: "Configuración",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
+          opcionMenu(icon: Icons.settings, nombre: "Configuración",onTap: _onButtonPressed),
            Container(
               margin: EdgeInsets.all(20),
              child: FlatButton(
@@ -108,11 +109,14 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
         builder: (context){
           return Container(
             color: Color(0xFF747475),
-
             height: 260,
-
             child: Container(
-              child: _buildBottomNavigationMenu(),
+              child :ListView(
+                padding: EdgeInsets.zero,
+                children: [
+                  _buildBottomNavigationMenu(tipo.rol_id),
+                ],
+              ),
               decoration: BoxDecoration(
                 color: Theme.of(context).canvasColor,
                 borderRadius: BorderRadius.only(
@@ -125,40 +129,80 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
           );
         });
   }
-  Column _buildBottomNavigationMenu() {
 
+  Widget _buildBottomNavigationMenu(int id) {
+    Widget widget2;
+    switch (id) {
+      case 2:
+        widget2 = Column(
+          children: <Widget>[
+            ListTile(
+                leading: Icon(Icons.accessibility_new),
+                title: Text('Perfil'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
+            ),
+            ListTile(
+              leading: Icon(Icons.access_alarm),
+              title: Text('Notificación'),
 
-    return Column(
-      children: <Widget>[
-        ListTile(
-            leading: Icon(Icons.accessibility_new),
-            title: Text('Perfil'),
-            onTap: () =>{
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
-        ),
-        ListTile(
-          leading: Icon(Icons.access_alarm),
-          title: Text('Notificación'),
+            ),
+            ListTile(
+              leading: Icon(Icons.ac_unit),
+              title: Text('Acerca de Nosotros'),
+              onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Nosotros(data:tipo)))  }
 
-        ),
-        ListTile(
-          leading: Icon(Icons.ac_unit),
-          title: Text('Acerca de Nosotros'),
+            ),
+            ListTile(
+                leading: Icon(Icons.assessment),
+                title: Text('About'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> About(data:tipo)))  }
 
-        ),
-        ListTile(
-          leading: Icon(Icons.add_business),
-          title: Text('Insumos'),
+            ),
+          ],
+        );
+        break;
+      case 1:
+        widget2 =  Column(
+          children: <Widget>[
+            ListTile(
+                leading: Icon(Icons.accessibility_new),
+                title: Text('Perfil'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
+            ),
+            ListTile(
+              leading: Icon(Icons.access_alarm),
+              title: Text('Notificación'),
 
-        ),
-        ListTile(
-            leading: Icon(Icons.assessment),
-            title: Text('About'),
-            onTap: () =>{
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> About(data:tipo)))  }
+            ),
+            ListTile(
+              leading: Icon(Icons.ac_unit),
+              title: Text('Acerca de Nosotros'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Nosotros(data:tipo)))  }
 
-        ),
-      ],
-    );
+            ),
+            ListTile(
+              leading: Icon(Icons.add_business),
+              title: Text('Insumos'),
+
+            ),
+            ListTile(
+                leading: Icon(Icons.assessment),
+                title: Text('About'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> About(data:tipo)))  }
+
+            ),
+          ],
+        );
+        break;
+      default:
+        widget2 = Container();
+    }
+    return widget2;
   }
 }
