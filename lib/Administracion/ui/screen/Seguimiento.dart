@@ -9,10 +9,10 @@ class SeguimientosAdmin extends StatelessWidget {
   var titulo;
   var url;
   var colorfondo;
-  RegistrarMesa ruta;
+  GestureTapCallback? onTap;
   
 
-  SeguimientosAdmin(this.titulo, this.url, this.colorfondo, this.ruta, {Key? key}) : super(key: key);
+  SeguimientosAdmin(this.titulo, this.url, this.colorfondo,this.onTap);
   
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class SeguimientosAdmin extends StatelessWidget {
                 vertical: 20,
               ),
               child: InkWell(
-                onTap:(() => () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => ruta))}),
+                onTap: onTap,
                 child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
