@@ -1,6 +1,6 @@
 # APP RSU - Rustica
 
-Este es un proyecto elabarado como RSU, el mismo está implementado en fluter, aplicando la metodología atomic design, basado en una arquitectura limpia, escalable y sin generar complicación en las diferentes etapas de desarrollo.
+Este es un proyecto elaborado como RSU, el mismo está implementado en fluter, aplicando BLoC, basado en una arquitectura limpia, escalable y sin generar complicación en las diferentes etapas de desarrollo.
 
 Este es código de libre acceso para cualquier interesado en conocer, aprender y sugerir cambios, puede contactar a 
 - [Rony Velásquez](https://www.ronyvelasquez.com)
