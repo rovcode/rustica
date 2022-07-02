@@ -4,6 +4,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
+import 'package:rustica/Usuarios/ui/screen/QRScanner.dart';
 
 
 import '../Usuarios/ui/screen/pantalla_login.dart';
@@ -59,7 +60,7 @@ class PantallPrincipal extends StatelessWidget {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30)),
                         color: ColoresApp.fondoNaranja,
-                        onPressed: () {},
+                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder:(context)=> MyHomePage()));},
                         child: Text('Escanear QR',
                             style: TextStyle(
                               color: ColoresApp.lightPrimary,

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:barcode_scan/barcode_scan.dart';
 
-void main() => runApp(MaterialApp(
-  theme: ThemeData(
-      primarySwatch: Colors.green
-  ),
-  home: MyHomePage(),
-));
+//void main() => runApp(MaterialApp(
+ // theme: ThemeData(
+ //     primarySwatch: Colors.green
+ // ),
+ // home: MyHomePage(),
+//));
 
 class MyHomePage extends StatefulWidget {
   @override
