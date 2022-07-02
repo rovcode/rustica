@@ -37,7 +37,7 @@ class MenuVerticalStatus extends State<MenuVertical> {
     return DrawerHeader(
       margin: EdgeInsets.zero,
       padding: EdgeInsets.zero,
-      // ignore: prefer_const_constructors
+      // ignore: prefer_const_constructors      
       decoration: BoxDecoration(
           image: DecorationImage(
               fit: BoxFit.fill,
@@ -52,7 +52,9 @@ class MenuVerticalStatus extends State<MenuVertical> {
                 currentAccountPicture:  CircleAvatar(
                   backgroundColor: Colors.white,
                   backgroundImage:const AssetImage("assets/img/avatardafault.jpg"),
+                  
         ),
+      
       ),
     );
   }

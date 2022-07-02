@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 class plato_detalle2 extends StatefulWidget {
@@ -359,7 +360,9 @@ class _plato_detalle2 extends State<plato_detalle2> {
                                   backgroundColor: Colors.green,
                                   shape: StadiumBorder(),
                                   behavior: SnackBarBehavior.floating,
+                                  
                                 ));
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
                               },
                               child: Row(children: [                                
                                 const Text("Confimar pedido",style: TextStyle(color: Colors.white),),

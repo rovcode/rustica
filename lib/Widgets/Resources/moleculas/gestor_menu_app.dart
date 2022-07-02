@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/Platos/ui/screen/pantalla_platos.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 import 'package:rustica/Usuarios/model/User.dart';
@@ -34,6 +34,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
           opcionMenu(icon: Icons.home, nombre: "Dashboard",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.table_bar, nombre: "Mesas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.delivery_dining, nombre: "Mis Pedidos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
+           opcionMenu(icon: Icons.home, nombre: "Realizar Pago",onTap: () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()))}),
           opcionMenu(icon: Icons.food_bank, nombre: "Platos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.settings, nombre: "Configuración",onTap: _onButtonPressed ),
            Container(

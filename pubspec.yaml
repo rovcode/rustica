@@ -39,6 +39,7 @@ dependencies:
   twilio_flutter: ^0.0.5
   url_launcher: ^6.1.4
   http:
+  paymentez: ^1.0.4
 
 dev_dependencies:
   flutter_test:

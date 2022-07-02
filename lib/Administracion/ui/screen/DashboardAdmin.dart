@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:rustica/Administracion/ui/screen/Seguimiento.dart';
+import 'package:rustica/Mesas/ui/screen/RegistrarMesa.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Usuarios/ui/screen/CardPublicidad.dart';
 import 'package:rustica/Widgets/ChatBot/pantalla_chatbot.dart';
 import 'package:url_launcher/url_launcher.dart';
+
 class DashboardAdmin extends StatelessWidget {
   final adminweb = Uri.parse("http://api-rsu.herokuapp.com/");
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -55,7 +59,7 @@ class DashboardAdmin extends StatelessWidget {
                           shape: new RoundedRectangleBorder(
                               borderRadius: new BorderRadius.circular(30)),
                           color: ColoresApp.lightPrimary,
-                          onPressed:administradorweb,
+                          onPressed: administradorweb,
                           child: Text('Admin Web',
                               style: TextStyle(
                                 color: ColoresApp.darkPrimary,
@@ -94,41 +98,25 @@ class DashboardAdmin extends StatelessWidget {
       ),
     );
   }
-void administradorweb() async {
-  if (!await launchUrl(adminweb)) throw 'Could not launch $adminweb';
-}
-  seguimiento() {
+
+  void administradorweb() async {
+    if (!await launchUrl(adminweb)) throw 'ERROR DE PERMISOS $adminweb';
+  }
+ RegistrarMesa reg = new RegistrarMesa();
+  seguimiento({GestureTapCallback? onTap}) {
+    
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
       child: Row(
         children: <Widget>[
-          SizedBox(
-            width: 30,
-          ),
-          SeguimientosAdmin(
-            'Ventas',
-            'assets/icons/ventas.svg',
-            Colors.transparent,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          SeguimientosAdmin(
-            'Calificación',
-            'assets/icons/checklist.svg',
-            Colors.transparent,
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          SeguimientosAdmin(
-            'Stock',
-            'assets/icons/stock.svg',
-            Colors.transparent,
-          ),
-          SizedBox(
-            width: 30,
-          ),
+          const SizedBox(width: 30, ),
+          SeguimientosAdmin('Ventas','assets/icons/ventas.svg',Colors.transparent,reg ),
+          const SizedBox( width: 10,),
+          SeguimientosAdmin( 'Calificación','assets/icons/checklist.svg',Colors.transparent,reg),
+          const SizedBox( width: 10,),
+          SeguimientosAdmin('Stock','assets/icons/stock.svg',Colors.transparent,reg),
+          const SizedBox( width: 30,),
+          InkWell(child: SeguimientosAdmin( 'Mesas','assets/icons/addmesa.svg',Colors.transparent,reg)),
         ],
       ),
     );

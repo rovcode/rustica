@@ -1,17 +1,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rustica/Mesas/ui/screen/RegistrarMesa.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 class SeguimientosAdmin extends StatelessWidget {
   var titulo;
   var url;
   var colorfondo;
+  RegistrarMesa ruta;
+  
 
-  SeguimientosAdmin(this.titulo, this.url, this.colorfondo);
-
+  SeguimientosAdmin(this.titulo, this.url, this.colorfondo, this.ruta, {Key? key}) : super(key: key);
+  
   @override
   Widget build(BuildContext context) {
+
     return SizedBox(    
       width: 130,
       height: 160,
@@ -34,7 +39,7 @@ class SeguimientosAdmin extends StatelessWidget {
                 vertical: 20,
               ),
               child: InkWell(
-                onTap: (){ print("Ir a opcion"); },
+                onTap:(() => () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => ruta))}),
                 child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
