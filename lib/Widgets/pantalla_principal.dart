@@ -60,7 +60,7 @@ class PantallPrincipal extends StatelessWidget {
                         shape: new RoundedRectangleBorder(
                             borderRadius: new BorderRadius.circular(30)),
                         color: ColoresApp.fondoNaranja,
-                        onPressed: () {Navigator.push(context, MaterialPageRoute(builder:(context)=> MyHomePage()));},
+                        onPressed: () {},
                         child: Text('Escanear QR',
                             style: TextStyle(
                               color: ColoresApp.lightPrimary,
