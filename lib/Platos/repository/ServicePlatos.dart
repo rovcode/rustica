@@ -17,4 +17,10 @@ class ServicePlatos {
     //print(response.body);
     return responsePlatosFromJson(response.body);
   }
+
+  Future<ResponsePlatos> getDetallesPlatosApi(int id) async {
+    final response = await http.get(url.recursoDetallesPlato()+id.toString());
+    print(response.body);
+    return responsePlatosFromJson(response.body);
+  }
 }

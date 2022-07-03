@@ -89,10 +89,10 @@ class DetalleState extends State<Detalle> {
           MaterialButton(
             child: Text("Detalles"),
             onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => plato_detalle2()),
-              );
+              //Navigator.push(
+                //context,
+                //MaterialPageRoute(builder: (context) => plato_detalle2()),
+              //);
             },
             color: Colors.orange,
           )

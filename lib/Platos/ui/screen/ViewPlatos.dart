@@ -1,7 +1,9 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:rustica/Platos/repository/ServicePlatos.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
+import 'package:rustica/Platos/ui/screen/plato_detalle2.dart';
 
 
 
@@ -27,9 +29,10 @@ class VistaPlatosState extends State<VistaPlatos>{
 
   VistaPlatosState({required this.id, required this.nombre,required this.precio,required this.starts,required this.detalles});
   late String numPlato ="";
+
   @override
   Widget build(BuildContext context) {
-
+    //ServicePlatos service = ServicePlatos();
     return Card(
       color: ColoresApp.fondoBlanco,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -37,7 +40,7 @@ class VistaPlatosState extends State<VistaPlatos>{
       elevation: 5,
       child: InkWell(
           onTap: () {
-            print("Ver detalles");
+            //service.getDetallesPlatosApi();
           },
           child: Column(
             children: <Widget>[
@@ -67,13 +70,16 @@ class VistaPlatosState extends State<VistaPlatos>{
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   FlatButton(
-                      onPressed:() => {},
-                      child: Text('Reservar',
+                      onPressed:() => {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id)))
+
+                      },
+                      child: Text('Ver Detalle',
                           style: TextStyle(color: ColoresApp.darkPrimary))),
-                  FlatButton(
-                      onPressed: () => {},
-                      child: Text('Reportar',
-                          style: TextStyle(color: ColoresApp.darkPrimary)))
+                  //FlatButton(
+                    //  onPressed: () => {},
+                      //child: Text('Reportar',
+                        //  style: TextStyle(color: ColoresApp.darkPrimary)))
                 ],
               )
             ],

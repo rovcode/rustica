@@ -1,19 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:rustica/Platos/repository/ServicePlatos.dart';
 import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 class plato_detalle2 extends StatefulWidget {
+  int id;
   var chaufa;
-  plato_detalle2([this.chaufa]);
+  plato_detalle2({required this.id});
   @override
-  _plato_detalle2 createState() => _plato_detalle2();
+  _plato_detalle2 createState() => _plato_detalle2(id:id);
 }
 
 class _plato_detalle2 extends State<plato_detalle2> {
+  int id;
+  _plato_detalle2({required this.id});
   bool corazon = false;
   int total = 1;
+  ServicePlatos servicePlatos = ServicePlatos();
+  //dynamic res = await servicePlatos.getDetallesPlatosApi(1);
+  //servicePlatos.getDetallesPlatosApi();
+
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -362,7 +371,8 @@ class _plato_detalle2 extends State<plato_detalle2> {
                                   behavior: SnackBarBehavior.floating,
                                   
                                 ));
-                                Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
+                                //Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
+                                getDatos(id);
                               },
                               child: Row(children: [                                
                                 const Text("Confimar pedido",style: TextStyle(color: Colors.white),),
@@ -375,5 +385,10 @@ class _plato_detalle2 extends State<plato_detalle2> {
             )),
       ),
     );
+
+  }
+  Future<void> getDatos(int id) async {
+    ServicePlatos servicePlatos = ServicePlatos();
+    dynamic res = await servicePlatos.getDetallesPlatosApi(id);
   }
 }
