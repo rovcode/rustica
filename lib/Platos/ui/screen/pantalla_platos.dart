@@ -1,11 +1,10 @@
 //Platos de la carta
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:rustica/Platos/repository/ResponsePlatos.dart';
+import 'package:rustica/Platos/repository/ServicePlatos.dart';
+import 'package:rustica/Platos/ui/screen/ViewPlatos.dart';
 import 'package:rustica/Usuarios/model/User.dart';
-import 'package:rustica/Platos/ui/screen/plato_detalle2.dart';
-import 'package:rustica/Platos/ui/screen/plato_detalle3.dart';
-import 'package:rustica/Platos/ui/screen/plato_detalle4.dart';
-import 'package:rustica/Widgets/Resources/moleculas/barra_navegacion.dart';
-import 'package:rustica/Widgets/Resources/moleculas/menu_vertical.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 
@@ -19,183 +18,53 @@ class PlatosState extends State<Platos> {
   final Usuario data;
   PlatosState({required this.data});
   @override
+
+  Future<ResponsePlatos> getPlatosApi() async {
+    final response = await http.get('http://api-rsu.herokuapp.com/api/platos');
+    return responsePlatosFromJson(response.body);
+  }
+
+  ServicePlatos servicePlatos = ServicePlatos();
+
+  @override
   Widget build(BuildContext context) {
-
-    Widget Cuadro1 = Opacity(
-      opacity: 0.5,
-
-      child: InkWell(
-       child: Container(
-         margin: const EdgeInsets.all(30.0),
-         height: 200,
-         width: 100,
-         decoration: BoxDecoration(
-           color: Colors.blue,
-           borderRadius: const BorderRadius.all(
-               Radius.circular(32)
-           ),
-           boxShadow: [BoxShadow(
-               color: Colors.grey[850]!.withOpacity(0.29),
-               offset: const Offset(-10,10),
-               blurRadius: 10,
-               spreadRadius: 10
-           )],
-           image: const DecorationImage(
-             image: AssetImage('assets/img/arrozchaufa.jpg'),
-             fit: BoxFit.cover,
-           ),
-         ),
-         child: const Center(
-           child: Text(
-             'Arroz Chaufa ',
-             style: TextStyle(
-               fontSize: 25,
-               color: Colors.black,
-               fontWeight: FontWeight.bold,
-               letterSpacing: 1.5,
-             ),
-           ),
-         ),
-       ),
-        onTap: (){
-          // int id = res.data['user']['id'];
-          // String name=res.data['user']['name'];
-          // String phone=res.data['user']['phone'];
-          // String email=res.data['user']['email'];
-          // String rol=res.data['user']['rol_id'];
-
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle2()));
-        },
-      ),
-    );
-
-    Widget Cuadro2 = Opacity(
-      opacity: 0.5,
-
-      child: InkWell(
-        child: Container(
-          margin: const EdgeInsets.all(30.0),
-          height: 200,
-          width: 100,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: const BorderRadius.all(
-                Radius.circular(32)
-            ),
-            boxShadow: [BoxShadow(
-                color: Colors.grey[850]!.withOpacity(0.29),
-                offset: const Offset(-10,10),
-                blurRadius: 10,
-                spreadRadius: 10
-            )],
-            image: const DecorationImage(
-              image: AssetImage('assets/img/pollobroaster.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: const Center(
-            child: Text(
-              'Pollo Broaster',
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.5,
-              ),
-
-            ),
-          ),
-        ),
-        onTap: (){
-          // int id = res.data['user']['id'];
-          // String name=res.data['user']['name'];
-          // String phone=res.data['user']['phone'];
-          // String email=res.data['user']['email'];
-          // String rol=res.data['user']['rol_id'];
-
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle4()));
-        },
-      ),
-    );
-
-    Widget Cuadro3 = Opacity(
-      opacity: 0.5,
-      child: InkWell(
-        child: Container(
-          margin: const EdgeInsets.all(30.0),
-          height: 200,
-          width: 100,
-          decoration: BoxDecoration(
-            color: Colors.blue,
-            borderRadius: const BorderRadius.all(
-                Radius.circular(32)
-            ),
-            boxShadow: [BoxShadow(
-                color: Colors.grey[850]!.withOpacity(0.29),
-                offset: const Offset(-10,10),
-                blurRadius: 10,
-                spreadRadius: 10
-            )],
-            image: const DecorationImage(
-              image: AssetImage('assets/img/pollobrasa.jpg'),
-              fit: BoxFit.cover,
-            ),
-          ),
-          child: const Center(
-            child: Text(
-              'Pollo a la Brasa',
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 1.5,
-              ),
-            ),
-          ),
-        ),
-        onTap: (){
-          // int id = res.data['user']['id'];
-          // String name=res.data['user']['name'];
-          // String phone=res.data['user']['phone'];
-          // String email=res.data['user']['email'];
-          // String rol=res.data['user']['rol_id'];
-
-          Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context)=>plato_detalle3()));
-        },
-
-      ),
-    );
-    return ListView(
-        children: [
-          Cuadro1,
-          Cuadro2,
-          Cuadro3,
-        ],
-      );
-    // return Scaffold(
-    //   backgroundColor: ColoresApp.fondoBlanco,
-    //   drawer: MenuVertical(),
-    //   appBar: AppBar(
-
-    //     backgroundColor: ColoresApp.fondoNaranja,
-    //     elevation: 0.0,
-    //     actions: [
-    //       IconButton(
-    //         color: ColoresApp.fondoBlanco,
-    //         icon: Icon(Icons.notifications),
-    //         onPressed: (){
-
-    //         },
-    //       ),
-    //     ],
-    //   ),
-    //   body: ListView(
-    //     children: [
-    //       Cuadro1,
-    //       Cuadro2,
-    //       Cuadro3,
-    //     ],
-    //   ),
-    // );
+    return Scaffold(
+        backgroundColor: ColoresApp.fondoBlanco,
+        body: Container(
+          child: FutureBuilder(
+              future: servicePlatos.getPlatosApi(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<ResponsePlatos> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  // ignore: prefer_const_constructors
+                  return Center(
+                    child: const CircularProgressIndicator(),
+                  );
+                } else {
+                  print(snapshot);
+                  return ListaPlatos(snapshot.data!.data);
+                }
+              }),
+        ));
+  }
+}
+class ListaPlatos extends StatelessWidget {
+  final List<MisPlatos> platos;
+  ListaPlatos(this.platos);
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: platos.length,
+        itemBuilder: (BuildContext context, int index) {
+          final usuario = platos[index];
+          return ListTile(
+            title: Container(
+                child: Column(
+                  children: [
+                    VistaPlatos(id:usuario.id, nombre:usuario.nombre, precio:usuario.precio, starts:usuario.starts, detalles:usuario.detalles)
+                  ],
+                )),
+          );
+        });
   }
 }
