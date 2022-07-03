@@ -2,90 +2,217 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 
-class VistaMesas extends StatefulWidget{
+class VistaMesas extends StatefulWidget {
   final int id;
   final int num_sillas;
   final String estado;
   final String piso;
-   
-  VistaMesas({required this.id, required this.num_sillas, required this.estado,required this.piso});
+
+  VistaMesas(
+      {required this.id,
+      required this.num_sillas,
+      required this.estado,
+      required this.piso});
   @override
-  VistaMesasState createState() => VistaMesasState(id:id, num_sillas:num_sillas, estado:estado, piso:piso);
+  VistaMesasState createState() => VistaMesasState(
+      id: id, num_sillas: num_sillas, estado: estado, piso: piso);
 }
-class VistaMesasState extends State<VistaMesas>{
+
+class VistaMesasState extends State<VistaMesas> {
   final int id;
   final int num_sillas;
   final String estado;
   final String piso;
-   
-  VistaMesasState({required this.id,required this.num_sillas,required this.estado,required this.piso});
-  late String numMesa ="";
+
+  VistaMesasState(
+      {required this.id,
+      required this.num_sillas,
+      required this.estado,
+      required this.piso});
+  late String numMesa = "";
   @override
- Widget build(BuildContext context) {
-    
+  Widget build(BuildContext context) {
     return Card(
       color: ColoresApp.fondoBlanco,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       margin: EdgeInsets.all(15),
-      elevation: 5,
+      elevation: 3,
       child: InkWell(
           onTap: () {
             print("Ir a opcion");
           },
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                  title: gestionaEstado(estado),
-                  subtitle: Text(
-                      "Reserve su mesa y en seguida un mozo asignado le atenderá",
-                      style: TextStyle(color: ColoresApp.darkPrimary, fontSize: 10)),
-                  leading: Column(children: [
-                    Icon(Icons.table_bar, color: Colors.amber,),
-                    Text('N° 00'+id.toString(), style: TextStyle(color: ColoresApp.fondoNaranja, fontWeight: FontWeight.bold))
-                  ],)
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(5),
+                width: 100.0,
+                height: 100.0,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/img/mesa.jpg"),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(
+                    10.0,
+                  ),
+                ),
               ),
-              Row(
-                 mainAxisAlignment: MainAxisAlignment.center,
-               children: [
-                SvgPicture.asset("assets/icons/c1.svg",height: 30, width: 30),
-                SvgPicture.asset("assets/icons/c2.svg",height: 30, width: 30),
-                SvgPicture.asset("assets/icons/c3.svg",height: 30, width: 30),
-                SvgPicture.asset("assets/icons/c4.svg",height: 30, width: 30),
-               ],
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.03,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  FlatButton(
-                      onPressed:iniciandoservicio,
-                      child: Text('Reservar',
-                          style: TextStyle(color: ColoresApp.darkPrimary))),
-                  FlatButton(
-                      onPressed: () => {},
-                      child: Text('Reportar',
-                          style: TextStyle(color: ColoresApp.darkPrimary)))
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Text(
+                        "Piso " + piso,
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          color: ColoresApp.gris,
+                        ),
+                      ),
+                      Text(
+                        "- Mesa N°",
+                        style: TextStyle(
+                          color: ColoresApp.gris,
+                          fontSize: 13.0,
+                        ),
+                      ),
+                      Text(
+                        " 00" + id.toString(),
+                        style: TextStyle(
+                          color: ColoresApp.gris,
+                          fontSize: 13.0,
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                   Padding(
+                  padding: const EdgeInsets.only(top: 8.0),
+                  child: Container(
+                    width: 100,
+                    height: 25,
+                    decoration: BoxDecoration(
+                      color:  micolor(estado),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Center(
+                      child: Text(estado,
+                        style: const TextStyle(fontSize: 16, color: Colors.white ,fontWeight: FontWeight.w500,
+                        ),
+                      ),
+                    ),
+                   )
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Row(
+                    children: [
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                      Row(children: [
+                         FaIcon( FontAwesomeIcons.chair,size: 13.0,color: ColoresApp.gris),
+                         Text(
+                        " " + num_sillas.toString() + " sillas",
+                        style: TextStyle(
+                          fontSize: 13.0,
+                          color: ColoresApp.gris,
+                        ),
+                      )
+                      ],)
+                     ,
+                      const SizedBox(
+                        width: 10.0,
+                      ),
+                       const SizedBox(
+                        width: 10.0,
+                      ),
+                       const SizedBox(
+                        width: 3.0,
+                      ),
+                      FlatButton(
+                        color: Color.fromARGB(88, 51, 51, 51),
+                          onPressed: iniciandoservicio,
+                          child: Text('Reservar',
+                              style: TextStyle(color: ColoresApp.fondoBlanco))),
+                    ],
+                  ),
                 ],
-              )
+              ),
+              Expanded(
+                child: Container(),
+              ),
+              Align(
+                alignment: Alignment.topRight,            
+                child: Container(
+                  width: 40.0,
+                  height: 40.0,
+                  margin: const EdgeInsets.only(right: 10),
+                  decoration: BoxDecoration(
+                    color: ColoresApp.fondoBlanco,
+                    shape: BoxShape.circle,
+                  ),
+                  child: Center(                    
+                    child: statusMesa(estado),
+                  ),
+                ),
+              ),
             ],
           )),
     );
   }
+  Color micolor(String estado){
+     Color widget;
+    switch (estado) {
+      case "Disponible":
+        widget = const Color.fromARGB(255, 65, 243, 142);
+        break;
+      case "Ocupada":
+        widget = const Color.fromARGB(255, 236, 45, 12);
+        break;
+      default:
+        widget = const Color.fromARGB(255, 198, 142, 52);
+    }
+    return widget; 
+  }
+  FaIcon statusMesa(String estado) {
+    FaIcon widget;
+    switch (estado) {
+      case "Disponible":
+        widget = const FaIcon( FontAwesomeIcons.check,size: 20.0,color: Colors.green);
+        break;
+      case "Ocupada":
+        widget = const FaIcon( FontAwesomeIcons.stop, size: 20.0,color: Colors.red,);
+        break;
+      default:
+        widget = const FaIcon( FontAwesomeIcons.warning, size: 20.0,color: Colors.yellow,);
+    }
+    return widget;
+  }
+
   Widget gestionaEstado(String estado) {
     Widget widget;
     switch (estado) {
       case "Disponible":
         widget = Row(
           children: [
-            const Text("Estado: ",
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold)),
             Text(
               estado,
-              style: TextStyle(color: Colors.green[900]),
+              style: const TextStyle(
+                  color: Color.fromARGB(255, 19, 232, 33),
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
             )
           ],
         );
@@ -93,12 +220,12 @@ class VistaMesasState extends State<VistaMesas>{
       case "Ocupada":
         widget = Row(
           children: [
-            const Text("Estado: ",
-                style: TextStyle(
-                    color: Colors.black, fontWeight: FontWeight.bold)),
             Text(
               estado,
-              style: TextStyle(color: Colors.red[900]),
+              style: TextStyle(
+                  color: Colors.red[900],
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15),
             )
           ],
         );
@@ -108,17 +235,27 @@ class VistaMesasState extends State<VistaMesas>{
     }
     return widget;
   }
-   Future<void> iniciandoservicio() async {
-        sendSms('980866911','Rony');
-       print("Mensaje enviado!!!");
-    }
-   //Enviando SMS al usuariotkinicio=45
+
+  Future<void> iniciandoservicio() async {
+    sendSms('980866911', 'Rony');
+    print("Mensaje enviado!!!");
+  }
+
+  //Enviando SMS al usuariotkinicio=45
   late TwilioFlutter twilioFlutter;
   void initState() {
-      twilioFlutter =TwilioFlutter(accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6', authToken: 'bad3fb75bfc2c665325d73244c386a', twilioNumber: '+16107568190');
-      super.initState();
-    }
-    void sendSms(String phone,String name) async {
-      twilioFlutter.sendSMS(toNumber: '+51'+phone, messageBody: 'Hola '+name+' se realizó una reserva, puedes seguirlo desde la web, http://api-rsu.herokuapp.com/');
-    }
+    twilioFlutter = TwilioFlutter(
+        accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
+        authToken: 'bad3fb75bfc2c665325d73244c386a',
+        twilioNumber: '+16107568190');
+    super.initState();
+  }
+
+  void sendSms(String phone, String name) async {
+    twilioFlutter.sendSMS(
+        toNumber: '+51' + phone,
+        messageBody: 'Hola ' +
+            name +
+            ' se realizó una reserva, puedes seguirlo desde la web, http://api-rsu.herokuapp.com/');
+  }
 }

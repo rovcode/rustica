@@ -6,6 +6,7 @@ import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Widgets/Resources/atomos/Logos.dart';
 import 'package:dio/dio.dart';
 import 'package:rustica/Widgets/Resources/moleculas/GestorSMS.dart';
+
 class Registro extends StatefulWidget {
   @override
   RegistroState createState() => RegistroState();
@@ -26,7 +27,8 @@ class RegistroState extends State<Registro> {
         backgroundColor: ColoresApp.fondoNaranja,
       ),
       body: Container(
-        child: SingleChildScrollView(child:  Form( 
+        child: SingleChildScrollView(
+            child: Form(
           //1 Form como raiz de nuestro formulario
           key: _formKey,
           child: Center(
@@ -68,7 +70,6 @@ class RegistroState extends State<Registro> {
           }),
     );
   }
- 
 
   Widget _nombre() {
     return Container(
@@ -162,29 +163,31 @@ class RegistroState extends State<Registro> {
                 ],
               )),
         ));
-    }
-    //Creamos el Future registrar
-    Future<void> registrarUsuario() async{
-       if(_formKey.currentState!.validate()){
-        // ignore: prefer_const_constructors
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-          content:  const Text(
-            "Registrando..",
-            style: TextStyle(color: Colors.white),),
-            backgroundColor: ColoresApp.fondoNaranja,
-        ));
-        //obtenemos los valores ingresados por el usuario 
-         Map<String, dynamic> datosUsuario ={
-            "name":txtnombre.text,
-            "phone":txttelefono.text,
-            "email": txtcorreo.text, 
-            "password": txtpassword.text,
-            "rol_id":2
-         };
-          ApiRSU _apiUsurio = ApiRSU();
-          dynamic res = await _apiUsurio.registerUser(datosUsuario);
-          ScaffoldMessenger.of(context).hideCurrentSnackBar();
-            if (res.statusCode == 200) {
+  }
+
+  //Creamos el Future registrar
+  Future<void> registrarUsuario() async {
+    if (_formKey.currentState!.validate()) {
+      // ignore: prefer_const_constructors
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: const Text(
+          "Registrando..",
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: ColoresApp.fondoNaranja,
+      ));
+      //obtenemos los valores ingresados por el usuario
+      Map<String, dynamic> datosUsuario = {
+        "name": txtnombre.text,
+        "phone": txttelefono.text,
+        "email": txtcorreo.text,
+        "password": txtpassword.text,
+        "rol_id": 2
+      };
+      ApiRSU _apiUsurio = ApiRSU();
+      dynamic res = await _apiUsurio.registerUser(datosUsuario);
+      ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      if (res.statusCode == 200) {
         if (res.data['mensaje'] != null) {
           ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             content: const Text(
@@ -202,27 +205,32 @@ class RegistroState extends State<Registro> {
             ),
             backgroundColor: Colors.green,
           ));
-             int id = res.data['user']['id'];
-          String name=res.data['user']['name'];
-          String phone=res.data['user']['phone'];
-          String email=res.data['user']['email'];
-          int rol_id=res.data['user']['rol_id'];
-          final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id,);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
+          int id = res.data['user']['id'];
+          String name = res.data['user']['name'];
+          String phone = res.data['user']['phone'];
+          String email = res.data['user']['email'];
+          int rol_id = res.data['user']['rol_id'];
+          final data = Usuario(
+            id: id,
+            name: name,
+            phone: phone,
+            email: email,
+            rol_id: rol_id,
+          );
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => Dashboard(data: data)));
           //GestorSMS gestionSMS =  GestorSMS(numerocliente: phone);
         }
         //print(res.data['user']['id']);
       } else {
-         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            content: const Text(
-              'Este usuario ya se registró anteriormente',
-              style: TextStyle(color: Colors.red),
-            ),
-            backgroundColor: ColoresApp.fondoBlanco,
-          ));
-        
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+          content: const Text(
+            'Este usuario ya se registró anteriormente',
+            style: TextStyle(color: Colors.red),
+          ),
+          backgroundColor: ColoresApp.fondoBlanco,
+        ));
       }
-            
-       }
     }
+  }
 }

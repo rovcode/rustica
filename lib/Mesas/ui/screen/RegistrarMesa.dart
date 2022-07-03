@@ -1,8 +1,9 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
+import 'package:rustica/Mesas/repository/ServiceMesas.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
-
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 class RegistrarMesa extends StatefulWidget{
  const RegistrarMesa({GestureTapCallback? onTap});
 
@@ -117,7 +118,7 @@ class RegistrarMesaState extends State<RegistrarMesa>{
                     child: RaisedButton(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                       color: ColoresApp.fondoNaranja,
-                      onPressed: (){},
+                      onPressed:registrarMesa,
                       child: Text('Registrar Mesa',
                           style: TextStyle(
                             color: ColoresApp.fondoBlanco,
@@ -128,4 +129,45 @@ class RegistrarMesaState extends State<RegistrarMesa>{
               )),
         ));
     }
+  //Creamos el formulario dentro de un Future.
+  Future<void> registrarMesa() async{
+     if(_formKey.currentState!.validate()){
+       //Generamos objeto mesa
+        Map<String, dynamic> datosmesa ={
+            "num_sillas":numsillas.text,
+            "estado":estado.text,
+            "piso": piso.text,
+         };
+         //Instanciamos el servicios
+         ServiceMesas serviceMesas = ServiceMesas();
+         dynamic response = serviceMesas.registrarMesas(datosmesa);
+          Navigator.of(context).pop();
+      //  if(response.statusCode==200){
+      //      adminAlertas("Rregistro Correcto","Se registro una nueva mesa");
+      //  }else{
+      //    adminAlertas("Respuesta del API","Se produjo un error en el API");
+      //  }
+     }else{
+       adminAlertas("Error en registro","No fue posible registrar la mesa");
+     }
+  }
+  adminAlertas(String titulo, String mensaje){
+     showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              // return object of type AlertDialog
+              return AlertDialog(
+                title: Text(titulo),
+                content: Text(mensaje),
+                actions: <Widget>[ FlatButton(
+                    child:const Text("Cerrar"),
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                ],
+              );
+            },
+          );
+  }
 }
