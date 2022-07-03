@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
+import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 class plato_detalle3 extends StatefulWidget{
 
@@ -18,15 +20,12 @@ class _plato_detalle3 extends State<plato_detalle3>{
   bool corazon = false;
   int total = 1;
 
-  @override
-  Widget build(BuildContext context){
-
+  Widget build(BuildContext context) {
     return Scaffold(
-
       body: SafeArea(
         child: Container(
-
-            padding: EdgeInsets.all(15.0),
+            color: ColoresApp.fondoBlanco,
+            padding: EdgeInsets.all(0),
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
             child: Stack(
@@ -37,104 +36,101 @@ class _plato_detalle3 extends State<plato_detalle3>{
                     margin: EdgeInsets.only(top: 50),
                     child: Column(
                       children: [
-
-                        SizedBox(height: 15,),
-
                         //imagen con fondo:
                         Container(
-
                           width: MediaQuery.of(context).size.width,
-                          height: 300,
+                          height: 275,
                           color: Colors.orange,
                           child: Image.asset('assets/img/pollobrasa.jpg'),
-
                         ),
 
                         //panel central
                         //puntuacion estrellas
                         Row(
-
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
+                              margin: EdgeInsets.only(top: 10),
                               width: 60,
                               height: 30,
                               decoration: BoxDecoration(
-                                  color: Colors.orange.shade200.withOpacity(0.75),
-                                  borderRadius: BorderRadius.circular(50)
-                              ),
-
+                                  color:
+                                  Colors.orange.shade200.withOpacity(0.75),
+                                  borderRadius: BorderRadius.circular(50)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  Icon(Icons.star,color: Colors.orange,size: 20,),
-                                  SizedBox(width: 3,),
+                                  Icon(
+                                    Icons.star,
+                                    color: Colors.orange,
+                                    size: 20,
+                                  ),
+                                  SizedBox(
+                                    width: 3,
+                                  ),
                                   Text("")
-
                                 ],
-
-
-                              ),),
+                              ),
+                            ),
                           ],
                         ),
 
                         //panel inferior
-                        SizedBox(height: 15,),
-                        Row(
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Column(
                           children: [
                             Container(
-                              width: 100,
-                              height: 20,
-                              color: Colors.black,
-                              child: Text("POLLO A LA BRASA"),
-
+                              margin: EdgeInsets.all(10),
+                              child: Text("POLLO A LA BRASA",style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
                             ),
 
                             //boton de aumento de unidades
-                            SizedBox(width: 20,),
+
                             Container(
                               width: 100,
                               height: 45,
                               decoration: BoxDecoration(
                                   color: Colors.grey.shade900,
-                                  borderRadius: BorderRadius.circular(10)
-
-                              ),
+                                  borderRadius: BorderRadius.circular(10)),
                               child: Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
                                 children: [
-
-                                  InkWell(onTap:(){
-                                    if(total < 1){
-
-                                      setState((){
-                                        total = 1;
-                                      });
-
-                                    }else if(total > 1){
-
-                                      setState((){
-                                        total -=1;
-                                      });
-                                    }
-
-
-                                  },child: Text("-", style: TextStyle(fontSize: 30),)),
-                                  Text("$total", style: TextStyle(fontSize: 20),),
-
-                                  InkWell(onTap:(){
-                                    setState((){
-                                      total +=1;
-                                    });
-
-                                  },child: Text("+", style: TextStyle(fontSize: 20),)),
-
-
+                                  InkWell(
+                                      onTap: () {
+                                        if (total < 1) {
+                                          setState(() {
+                                            total = 1;
+                                          });
+                                        } else if (total > 1) {
+                                          setState(() {
+                                            total -= 1;
+                                          });
+                                        }
+                                      },
+                                      child: Text(
+                                        "-",
+                                        style: TextStyle(fontSize: 30),
+                                      )),
+                                  Text(
+                                    "$total",
+                                    style: TextStyle(fontSize: 20),
+                                  ),
+                                  InkWell(
+                                      onTap: () {
+                                        setState(() {
+                                          total += 1;
+                                        });
+                                      },
+                                      child: Text(
+                                        "+",
+                                        style: TextStyle(fontSize: 20),
+                                      )),
                                 ],
                               ),
-
                             )
-
                           ],
                         ),
 
@@ -142,10 +138,12 @@ class _plato_detalle3 extends State<plato_detalle3>{
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Text("Ingredientes"),
+                            Text("Ingredientes",style: TextStyle(color: Colors.black,)),
                           ],
                         ),
-                        SizedBox(height: 10,),
+                        SizedBox(
+                          height: 10,
+                        ),
 
                         //emojis de ingredientes
                         SingleChildScrollView(
@@ -162,26 +160,30 @@ class _plato_detalle3 extends State<plato_detalle3>{
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0,4),
-                                          blurRadius: 4
-
-                                      )
-                                    ]
-                                ),
+                                          offset: Offset(0, 4),
+                                          blurRadius: 4)
+                                    ]),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 10,),
-                                    Text("🍗", style: TextStyle(fontSize: 24),),
-                                    SizedBox(height: 5,),
-                                    Text("pollo",),
-
-
-
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "🍗",
+                                      style: TextStyle(fontSize: 24),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "pollo", style: TextStyle(color: Colors.black,)
+                                    ),
                                   ],
                                 ),
                               ),
-
-                              SizedBox(width: 15,),
+                              SizedBox(
+                                width: 15,
+                              ),
                               Container(
                                 width: 70,
                                 height: 70,
@@ -191,26 +193,30 @@ class _plato_detalle3 extends State<plato_detalle3>{
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0,4),
-                                          blurRadius: 4
-
-                                      )
-                                    ]
-                                ),
+                                          offset: Offset(0, 4),
+                                          blurRadius: 4)
+                                    ]),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 10,),
-                                    Text("🍚", style: TextStyle(fontSize: 24),),
-                                    SizedBox(height: 5,),
-                                    Text("arroz",),
-
-
-
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "🍚",
+                                      style: TextStyle(fontSize: 24),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "arroz", style:TextStyle(color: Colors.black,)
+                                    ),
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 15,),
-
+                              SizedBox(
+                                width: 15,
+                              ),
                               Container(
                                 width: 70,
                                 height: 70,
@@ -220,26 +226,30 @@ class _plato_detalle3 extends State<plato_detalle3>{
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0,4),
-                                          blurRadius: 4
-
-                                      )
-                                    ]
-                                ),
+                                          offset: Offset(0, 4),
+                                          blurRadius: 4)
+                                    ]),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 10,),
-                                    Text("🥚", style: TextStyle(fontSize: 24),),
-                                    SizedBox(height: 5,),
-                                    Text("huevo",),
-
-
-
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "🥚",
+                                      style: TextStyle(fontSize: 24),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "huevo", style:TextStyle(color: Colors.black,)
+                                    ),
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 15,),
-
+                              SizedBox(
+                                width: 15,
+                              ),
                               Container(
                                 width: 70,
                                 height: 70,
@@ -249,45 +259,52 @@ class _plato_detalle3 extends State<plato_detalle3>{
                                     boxShadow: [
                                       BoxShadow(
                                           color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0,4),
-                                          blurRadius: 4
-
-                                      )
-                                    ]
-                                ),
+                                          offset: Offset(0, 4),
+                                          blurRadius: 4)
+                                    ]),
                                 child: Column(
                                   children: [
-                                    SizedBox(height: 10,),
-                                    Text("🧅", style: TextStyle(fontSize: 24),),
-                                    SizedBox(height: 5,),
-                                    Text("cebolla",),
-
-
-
+                                    SizedBox(
+                                      height: 10,
+                                    ),
+                                    Text(
+                                      "🧅",
+                                      style: TextStyle(fontSize: 24),
+                                    ),
+                                    SizedBox(
+                                      height: 5,
+                                    ),
+                                    Text(
+                                        "cebolla",style:TextStyle(color: Colors.black,)
+                                    ),
                                   ],
                                 ),
                               ),
-                              SizedBox(width: 15,),
-
+                              SizedBox(
+                                width: 15,
+                              ),
                             ],
                           ),
                         ),
 
                         //descripcion de comida
-                        SizedBox(height: 20,),
+                        SizedBox(
+                          height: 20,
+                        ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text("Descripción"),
+                            Text("Descripción", style: TextStyle(color: Colors.black,),),
                           ],
                         ),
-                        SizedBox(height: 10,),
-                        Text("Pollo a la brasa con papas"),
-                        SizedBox(height: 110,)
-
-
-
-
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Text(
+                            "Pollo a la brasa con papas",style: TextStyle(color: Colors.black,)),
+                        SizedBox(
+                          height: 110,
+                        )
                       ],
                     ),
                   ),
@@ -300,95 +317,71 @@ class _plato_detalle3 extends State<plato_detalle3>{
                   height: 50,
                   color: Colors.orange,
                   child: Row(
-
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                     children: [
-
-                      IconButton(onPressed: (){
-
-                        Navigator.pop(context);
-
-                      }, icon: Icon(Icons.arrow_back_rounded)),
-                      Text("DETALLES DE PLATO"),
-                      IconButton(onPressed: (){
-
-                        if(corazon == false){
-                          setState((){
-
-                            corazon = true;
-
-                          });
-                        } else {
-                          setState((){
-                            corazon = false;
-
-                          });
-                        }
-
-
-                      }, icon: corazon == false ? Icon(Icons.favorite_border_outlined) :  Icon(Icons.favorite,color: Colors.red,)),
-
+                      IconButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          icon: Icon(Icons.arrow_back_rounded)),
+                      Text("DETALLES DE PLATO",style: TextStyle(color: Colors.black,)),
+                      IconButton(
+                          onPressed: () {
+                            if (corazon == false) {
+                              setState(() {
+                                corazon = true;
+                              });
+                            } else {
+                              setState(() {
+                                corazon = false;
+                              });
+                            }
+                          },
+                          icon: corazon == false
+                              ? Icon(Icons.favorite_border_outlined)
+                              : Icon(
+                            Icons.favorite,
+                            color: Colors.red,
+                          )),
                     ],
                   ),
-
-
                 ),
                 //transparencia de diseño
                 Container(
-                  margin: EdgeInsets.only(top: 600),
-                  padding: EdgeInsets.only(top: 50),
+                  margin: EdgeInsets.only(top: 600, left: 30, right: 30),
+                  padding: EdgeInsets.only(top: 50,left: 30, right: 30),
                   width: MediaQuery.of(context).size.width,
-                  height: 150,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          begin: Alignment.topCenter,
-                          end: Alignment.bottomCenter,
-                          colors: [Colors.white.withOpacity(0), Colors.white]
-                      )
-                  ),
-
                   //precio
-                  child: Row(
-                    children: [
-                      Text("\S/15", style: TextStyle(color: Colors.black),),
-                      Text("",),
-                      SizedBox(width: 150,),
-                      Container(
-                        width: 190,
-                        height: 50,
-                        decoration: BoxDecoration(
-                            color: Colors.black,
-                            borderRadius: BorderRadius.circular(6)
-                        ),
-                        child: Center(
-                          child: GestureDetector(
-                              onTap: (){
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(content: Text("Pedido satisfactorio"),backgroundColor: Colors.green,
-                                      shape: StadiumBorder(),
-                                      behavior: SnackBarBehavior.floating,));
-                              },
+                  child:  Container(
+                      width: 190,
+                      height: 50,
+                      decoration: BoxDecoration(
+                          color: Colors.amber,
+                          borderRadius: BorderRadius.circular(6)),
+                      child: Center(
+                        child: GestureDetector(
+                          onTap: () {
+                            ScaffoldMessenger.of(context)
+                                .showSnackBar(SnackBar(
+                              content: Text("Pedido satisfactorio"),
+                              backgroundColor: Colors.green,
+                              shape: StadiumBorder(),
+                              behavior: SnackBarBehavior.floating,
 
-                              child: Text("Confimar pedido", style: TextStyle(color: Colors.white),)),
+                            ));
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
+                          },
+                          child: Row(children: [
+                            const Text("Confimar pedido",style: TextStyle(color: Colors.white),),
+                            const Text(" (S/15.00)",style: TextStyle(color: Colors.black),),
+                          ]),
                         ),
-
-                      )
-                    ],
-                  ),
+                      )),
                 )
-
-
-
               ],
-            )
-
-        ),
+            )),
       ),
-
     );
-
   }
-
 
 }

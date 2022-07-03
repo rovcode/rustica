@@ -2,13 +2,11 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:rustica/Mesas/model/Mesa.dart';
 import 'package:rustica/Mesas/repository/ResponseMesas.dart';
 import 'package:rustica/Mesas/repository/ServiceMesas.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:http/http.dart' as http;
 import 'package:rustica/Widgets/Resources/moleculas/ViewMesas.dart';
-import 'package:rustica/Widgets/Resources/moleculas/WidgetMesa.dart';
 
 class MesasUsuario extends StatefulWidget {
   @override
@@ -16,18 +14,14 @@ class MesasUsuario extends StatefulWidget {
 }
 
 class MesasUsuarioState extends State<MesasUsuario> {
-  Future<ResponseMesas> getMesasApi() async {
-    final response = await http.get('http://api-rsu.herokuapp.com/api/mesas');
-    return responseMesasFromJson(response.body);
-  }
-
+  ServiceMesas serviceMesas = ServiceMesas();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColoresApp.fondoBlanco,
         body: Container(
           child: FutureBuilder(
-              future: getMesasApi(),
+              future: serviceMesas.getMesasApi(),
               builder: (BuildContext context,
                   AsyncSnapshot<ResponseMesas> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
@@ -44,31 +38,6 @@ class MesasUsuarioState extends State<MesasUsuario> {
   }
 }
 
-//   Widget asycnHelper(AsyncSnapshot snapshot) {
-//     Widget element = Container();
-//     if (snapshot.hasError) {
-//       element = Text('Error ');
-//     } else if (!snapshot.hasData) {
-//       element = Center(
-//         child: CircularProgressIndicator(),
-//       );
-//     } else {
-//       element = const ListaMesas2(num_sillas:snapshot.data.num_sillas, estado:snapshot.data.estado, piso:'ss');
-//     }
-//     return element;
-//   }
-// }
-// class ListaMesas2 extends StatelessWidget {
-//    final int num_sillas;
-//    final String estado;
-//    final String piso;
-//   const ListaMesas2({required this.num_sillas,required this.estado, required this.piso});
-//   @override
-//   Widget build(BuildContext context) {
-//     print(this.num_sillas);
-//     return ListView();
-//   }
-// }
 class ListaMesas extends StatelessWidget {
   final List<MiMesa> mesas;
   ListaMesas(this.mesas);
@@ -77,12 +46,16 @@ class ListaMesas extends StatelessWidget {
     return ListView.builder(
         itemCount: mesas.length,
         itemBuilder: (BuildContext context, int index) {
-          final usuario = mesas[index];
+          final mismesas = mesas[index];
           return ListTile(
             title: Container(
                 child: Column(
               children: [
-                VistaMesas(id:usuario.id, num_sillas:usuario.numSillas, estado:usuario.estado, piso:usuario.piso)
+                VistaMesas(
+                    id: mismesas.id,
+                    num_sillas: mismesas.numSillas,
+                    estado: mismesas.estado,
+                    piso: mismesas.piso)
               ],
             )),
           );

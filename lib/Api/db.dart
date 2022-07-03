@@ -7,6 +7,7 @@ String recursoRols(){return "http://api-rsu.herokuapp.com/api/roles"; }
 String recursoPlatos(){return "http://api-rsu.herokuapp.com/api/platos"; }
 String recursoUrsurio(){return "http://api-rsu.herokuapp.com/api/usuario/"; }
 String recursoMesas(){return "http://api-rsu.herokuapp.com/api/mesas/"; }
+String recursoRegistrarMesas(){return "http://api-rsu.herokuapp.com/api/registrarmesa"; }
 
 
 

@@ -40,6 +40,8 @@ dependencies:
   url_launcher: ^6.1.4
   http:
   paymentez: ^1.0.4
+  flutter_spinkit: ^5.1.0
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:
@@ -79,6 +81,7 @@ flutter:
    - assets/img/avatardafault.jpg
    - assets/icons/
    - assets/img/
+   - assets/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 
