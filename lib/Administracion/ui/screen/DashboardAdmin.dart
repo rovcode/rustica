@@ -76,11 +76,11 @@ class DashboardAdmin extends StatelessWidget {
                     const SizedBox(
                       width: 10,
                     ),
-                    SeguimientosAdmin('Calificación',
-                        'assets/icons/checklist.svg', Colors.transparent, () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrarMesa()))}),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    // SeguimientosAdmin('Calificación',
+                    //     'assets/icons/checklist.svg', Colors.transparent, () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrarMesa()))}),
+                    // const SizedBox(
+                    //   width: 10,
+                    // ),
                     SeguimientosAdmin('Stock', 'assets/icons/stock.svg',
                         Colors.transparent, () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrarMesa()))}),
                     const SizedBox(
@@ -88,7 +88,7 @@ class DashboardAdmin extends StatelessWidget {
                     ),
                     InkWell(
                         child: SeguimientosAdmin(
-                            'Mesas',
+                            'Crear mesa',
                             'assets/icons/addmesa.svg',
                             Colors.transparent,
                             () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrarMesa()))})),
