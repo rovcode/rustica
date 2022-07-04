@@ -371,8 +371,8 @@ class _plato_detalle2 extends State<plato_detalle2> {
                                   behavior: SnackBarBehavior.floating,
                                   
                                 ));
-                                //Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
-                                getDatos(id);
+                                Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
+                                //getDatos(id);
                               },
                               child: Row(children: [                                
                                 const Text("Confimar pedido",style: TextStyle(color: Colors.white),),
@@ -387,8 +387,11 @@ class _plato_detalle2 extends State<plato_detalle2> {
     );
 
   }
+
   Future<void> getDatos(int id) async {
     ServicePlatos servicePlatos = ServicePlatos();
     dynamic res = await servicePlatos.getDetallesPlatosApi(id);
+    print(res);
   }
+
 }
