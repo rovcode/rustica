@@ -1,4 +1,5 @@
 import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rustica/Platos/repository/ServicePlatos.dart';
@@ -32,6 +33,7 @@ class VistaPlatosState extends State<VistaPlatos>{
 
   @override
   Widget build(BuildContext context) {
+
     //ServicePlatos service = ServicePlatos();
     return Card(
       color: ColoresApp.fondoBlanco,
@@ -42,48 +44,146 @@ class VistaPlatosState extends State<VistaPlatos>{
           onTap: () {
             //service.getDetallesPlatosApi();
           },
-          child: Column(
-            children: <Widget>[
-              ListTile(
-                  contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
-                  subtitle: Text(
-                      'N° 00'+id.toString() +'\n'
-                      'N° 00'+nombre.toString() +'\n'
-                      'N° 00'+precio.toString() +'\n'
-                      'N° 00'+starts.toString() +'\n'
-                      'N° 00'+detalles.toString(),
-                      style: TextStyle(color: ColoresApp.darkPrimary, fontSize: 10)),
-                  leading: Column(children: [
-                    Icon(Icons.fastfood_rounded, color: Colors.amber,),
-                  ],)
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.all(5),
+                width: 100.0,
+                height: 100.0,
+                decoration: BoxDecoration(
+                  image: const DecorationImage(
+                    image: AssetImage("assets/img/platos_mesero.png"),
+                    fit: BoxFit.cover,
+                  ),
+                  borderRadius: BorderRadius.circular(10.0),
+                ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.03,
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SvgPicture.asset("assets/icons/c1.svg",height: 30, width: 30),
-                  SvgPicture.asset("assets/icons/c2.svg",height: 30, width: 30),
-                  SvgPicture.asset("assets/icons/c3.svg",height: 30, width: 30),
-                  SvgPicture.asset("assets/icons/c4.svg",height: 30, width: 30),
+                  Text(
+                    "Plato: "+nombre.toString(),
+                    style: TextStyle(
+
+                      fontSize: 15,
+                      color: ColoresApp.gris,
+                    ),
+                  ),
+                  Text(
+                    "Precio: "+precio.toString(),
+                    style: TextStyle(
+
+                      fontSize: 15,
+                      color: ColoresApp.gris,
+                    ),
+                    
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        "Estrellas: "+starts.toString(),
+                        style: TextStyle(
+
+                          fontSize: 15,
+                          color: ColoresApp.gris,
+                        ),
+                      ),
+                      Icon(
+                        Icons.star,
+                        color: Colors.orange,
+                        size: 15),
+                    ],
+                  ),
+                  Text(
+                    ""+detalles.toString(),
+                    style: TextStyle(
+
+                      fontSize: 15,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Row(
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(top: 40)),
+                      const SizedBox(
+                        width: 65,
+                      ),
+
+                      FlatButton(
+                        color: ColoresApp.gris,
+                        onPressed: () => {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id)))
+                        },
+                        child: Text(
+                          "Ver detalles",
+                          style: TextStyle(
+                            color: ColoresApp.fondoBlanco,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                  FlatButton(
-                      onPressed:() => {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id)))
-
-                      },
-                      child: Text('Ver Detalle',
-                          style: TextStyle(color: ColoresApp.darkPrimary))),
-                  //FlatButton(
-                    //  onPressed: () => {},
-                      //child: Text('Reportar',
-                        //  style: TextStyle(color: ColoresApp.darkPrimary)))
-                ],
-              )
             ],
-          )),
+          )
+      )
     );
+           // children: <Widget>[
+          //  ListTile(
+          //     contentPadding: EdgeInsets.fromLTRB(15, 10, 25, 0),
+        //     subtitle: Text(
+        //          'Plato: '+nombre.toString() +'\n'
+        //            'Precio: '+precio.toString() +'\n'
+        //            'Estrellas: '+starts.toString()+'\n',
+          //             style: TextStyle(
+          //              color: ColoresApp.gris, fontSize: 14,
+        //              fontWeight: FontWeight.bold),
+          //        ),
+        //      leading: Column(children: [
+        //          Icon(Icons.fastfood_rounded, color: Colors.amber, size: 47),
+        //        ],)
+//
+        //            ),
+        //    Row(
+
+        //      mainAxisAlignment: MainAxisAlignment.center,
+        //      children: [
+        //        SvgPicture.asset("assets/icons/c1.svg",height: 30, width: 30),
+        //        SvgPicture.asset("assets/icons/c2.svg",height: 30, width: 30),
+        //        SvgPicture.asset("assets/icons/c3.svg",height: 30, width: 30),
+        //        SvgPicture.asset("assets/icons/c4.svg",height: 30, width: 30),
+        //      ],
+        //    ),
+        //    Row(
+        //      mainAxisAlignment: MainAxisAlignment.start,
+        //      children: <Widget>[
+        //        const SizedBox(
+        //          width: 10.0,
+        //          height: 10.0,
+//
+        ////                ),
+
+    //  FlatButton(
+
+    //    color:  Color.fromARGB(88, 51, 51, 51),
+    //                onPressed:() => {
+    //                  Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id)))
+//
+    //                    },
+          //              child: Text('Ver Detalle',
+    //              style: TextStyle(color: ColoresApp.fondoBlanco))),
+
+        // ],
+
+        //     )
+        //   ],
+    // )),
+    // );
   }
 }
