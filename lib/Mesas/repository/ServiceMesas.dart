@@ -28,6 +28,21 @@ class ServiceMesas {
       return e.response!.data;
     }
   }
+  //Actualizando estado reservado
+   Future<Response> reservarMesa(Map<String, dynamic>? datosmesa, int id) async {
+    try {
+      Response response = await _dio.post(url.reservarMesa(id),
+          data: datosmesa,
+          options: Options(
+              followRedirects: false,
+              validateStatus: (status) {
+                return status < 500;
+              }));
+      return response;
+    } on DioError catch (e) {
+      return e.response!.data;
+    }
+  }
 
 }
  

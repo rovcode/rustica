@@ -17,6 +17,7 @@ import 'package:rustica/Usuarios/ui/screen/pantalla_registro.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:rustica/Usuarios/model/User.dart';
+import 'package:rustica/Widgets/Splash.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 
 class Login extends StatefulWidget {
@@ -202,7 +203,7 @@ class LoginState extends State<Login> {
           String email=res.data['user']['email'];
           int rol_id=res.data['user']['rol_id'];
           final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id);
-          Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));         
+          Navigator.push(context, MaterialPageRoute(builder: (context) => Splash(user:data)));         
       
           // sendSms('980866911','Rony');
 

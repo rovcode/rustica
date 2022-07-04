@@ -6,7 +6,7 @@ import 'package:rustica/Mesas/repository/ResponseMesas.dart';
 import 'package:rustica/Mesas/repository/ServiceMesas.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:http/http.dart' as http;
-import 'package:rustica/Widgets/Resources/moleculas/ViewMesas.dart';
+import 'package:rustica/Mesas/ui/screen/ViewMesas.dart';
 
 class MesasUsuario extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class MesasUsuarioState extends State<MesasUsuario> {
         backgroundColor: ColoresApp.fondoBlanco,
         body: Container(
           child: FutureBuilder(
-              future: serviceMesas.getMesasApi(),
+              future: serviceMesas.getMesasApi(),            
               builder: (BuildContext context,
                   AsyncSnapshot<ResponseMesas> snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
