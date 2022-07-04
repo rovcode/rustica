@@ -6,6 +6,7 @@ import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Widgets/Resources/atomos/Logos.dart';
 import 'package:dio/dio.dart';
 import 'package:rustica/Widgets/Resources/moleculas/GestorSMS.dart';
+import 'package:rustica/Widgets/Splash.dart';
 
 class Registro extends StatefulWidget {
   @override
@@ -218,7 +219,7 @@ class RegistroState extends State<Registro> {
             rol_id: rol_id,
           );
           Navigator.push(context,
-              MaterialPageRoute(builder: (context) => Dashboard(data: data)));
+              MaterialPageRoute(builder: (context) => Splash(user: data)));
           //GestorSMS gestionSMS =  GestorSMS(numerocliente: phone);
         }
         //print(res.data['user']['id']);

@@ -63,7 +63,7 @@ class PantallPrincipal extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Text('Más consumido',
+                child: Text('Tus Reservas',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: ColoresApp.darkPrimary,

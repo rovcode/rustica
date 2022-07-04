@@ -3,6 +3,12 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+import 'package:rustica/Mesas/ui/screen/mesas_usuario.dart';
+import 'package:rustica/Reservas/ui/screen/paymentez.dart';
+import 'package:rustica/Usuarios/model/User.dart';
+import 'package:rustica/Usuarios/ui/screen/PantallPrincipal.dart';
+import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 
@@ -96,23 +102,26 @@ class VistaMesasState extends State<VistaMesas> {
                   const SizedBox(
                     height: 10.0,
                   ),
-                   Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Container(
-                    width: 100,
-                    height: 25,
-                    decoration: BoxDecoration(
-                      color:  micolor(estado),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Center(
-                      child: Text(estado,
-                        style: const TextStyle(fontSize: 16, color: Colors.white ,fontWeight: FontWeight.w500,
+                  Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Container(
+                        width: 100,
+                        height: 25,
+                        decoration: BoxDecoration(
+                          color: micolor(estado),
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                      ),
-                    ),
-                   )
-                  ),
+                        child: Center(
+                          child: Text(
+                            estado,
+                            style: const TextStyle(
+                              fontSize: 16,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w500,
+                            ),
+                          ),
+                        ),
+                      )),
                   const SizedBox(
                     height: 10.0,
                   ),
@@ -121,30 +130,41 @@ class VistaMesasState extends State<VistaMesas> {
                       const SizedBox(
                         width: 10.0,
                       ),
-                      Row(children: [
-                         FaIcon( FontAwesomeIcons.chair,size: 13.0,color: ColoresApp.gris),
-                         Text(
-                        " " + num_sillas.toString() + " sillas",
-                        style: TextStyle(
-                          fontSize: 13.0,
-                          color: ColoresApp.gris,
-                        ),
-                      )
-                      ],)
-                     ,
+                      Row(
+                        children: [
+                          FaIcon(FontAwesomeIcons.chair,
+                              size: 13.0, color: ColoresApp.gris),
+                          Text(
+                            " " + num_sillas.toString() + " sillas",
+                            style: TextStyle(
+                              fontSize: 13.0,
+                              color: ColoresApp.gris,
+                            ),
+                          )
+                        ],
+                      ),
                       const SizedBox(
                         width: 10.0,
                       ),
-                       const SizedBox(
+                      const SizedBox(
                         width: 10.0,
                       ),
-                       const SizedBox(
+                      const SizedBox(
                         width: 3.0,
                       ),
                       FlatButton(
-                        color: Color.fromARGB(88, 51, 51, 51),
-                          onPressed: iniciandoservicio,
-                          child: Text('Reservar',
+                          color: Color.fromARGB(88, 51, 51, 51),
+                          onPressed: () {
+                            reserva(id, estado);
+                              int cod = 1;
+                              String name="Prueba";
+                              String phone="98086691";
+                              String email="";
+                              int rol_id=2;
+                              final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id);
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data))); 
+                          },
+                          child: Text(textoBoton(estado).toString(),
                               style: TextStyle(color: ColoresApp.fondoBlanco))),
                     ],
                   ),
@@ -154,7 +174,7 @@ class VistaMesasState extends State<VistaMesas> {
                 child: Container(),
               ),
               Align(
-                alignment: Alignment.topRight,            
+                alignment: Alignment.topRight,
                 child: Container(
                   width: 40.0,
                   height: 40.0,
@@ -163,7 +183,7 @@ class VistaMesasState extends State<VistaMesas> {
                     color: ColoresApp.fondoBlanco,
                     shape: BoxShape.circle,
                   ),
-                  child: Center(                    
+                  child: Center(
                     child: statusMesa(estado),
                   ),
                 ),
@@ -172,8 +192,17 @@ class VistaMesasState extends State<VistaMesas> {
           )),
     );
   }
-  Color micolor(String estado){
-     Color widget;
+
+ textoBoton(String estado) {
+    if (estado == "Disponible") {
+      return "Reservar";
+    } else if (estado == "Ocupada") {
+      return  "Pedir liberación";
+    }
+  }
+
+  Color micolor(String estado) {
+    Color widget;
     switch (estado) {
       case "Disponible":
         widget = const Color.fromARGB(255, 65, 243, 142);
@@ -184,19 +213,29 @@ class VistaMesasState extends State<VistaMesas> {
       default:
         widget = const Color.fromARGB(255, 198, 142, 52);
     }
-    return widget; 
+    return widget;
   }
+
   FaIcon statusMesa(String estado) {
     FaIcon widget;
     switch (estado) {
       case "Disponible":
-        widget = const FaIcon( FontAwesomeIcons.check,size: 20.0,color: Colors.green);
+        widget = const FaIcon(FontAwesomeIcons.check,
+            size: 20.0, color: Colors.green);
         break;
       case "Ocupada":
-        widget = const FaIcon( FontAwesomeIcons.stop, size: 20.0,color: Colors.red,);
+        widget = const FaIcon(
+          FontAwesomeIcons.stop,
+          size: 20.0,
+          color: Colors.red,
+        );
         break;
       default:
-        widget = const FaIcon( FontAwesomeIcons.warning, size: 20.0,color: Colors.yellow,);
+        widget = const FaIcon(
+          FontAwesomeIcons.warning,
+          size: 20.0,
+          color: Colors.yellow,
+        );
     }
     return widget;
   }
@@ -234,6 +273,28 @@ class VistaMesasState extends State<VistaMesas> {
         widget = Container();
     }
     return widget;
+  }
+
+  Future<void> reserva(int id, String nuevoestado) async {
+    String st = "";
+    //Generamos objeto mesa
+    if (nuevoestado == "Disponible") {
+      st = "Ocupada";
+    } else if (nuevoestado == "Ocupada") {
+      st = "Disponible";
+    }
+    Map<String, dynamic> datosmesa = {
+      "estado": st,
+    };
+    //Instanciamos el servicios
+    ServiceMesas serviceMesas = ServiceMesas();
+    dynamic response = serviceMesas.reservarMesa(datosmesa, id);
+    //  if(response.statusCode==200){
+    //      adminAlertas("Rregistro Correcto","Se registro una nueva mesa");
+    //  }else{
+    //    adminAlertas("Respuesta del API","Se produjo un error en el API");
+    //  }
+    iniciandoservicio();
   }
 
   Future<void> iniciandoservicio() async {

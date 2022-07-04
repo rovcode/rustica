@@ -88,7 +88,6 @@ class PasarelaPageState extends State<Pasarela> {
 
                       case 'error':
                         print(data.error);
-                        //todo se puede agregar una notificación que hay un error al querer agregar la tarjeta.
                         break;
                     }
                   }
