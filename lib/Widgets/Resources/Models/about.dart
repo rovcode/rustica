@@ -1,7 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/Usuarios/model/User.dart';
-import 'package:rustica/Usuarios/repository/API-RSU.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
+import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
+import 'package:rustica/Usuarios/model/User.dart';
+import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
+import 'package:rustica/Usuarios/repository/API-RSU.dart';
+import 'package:rustica/Widgets/Resources/moleculas/gestor_menu_app.dart';
+
+
+
 class About extends StatelessWidget{
   final Usuario data;
   About({required this.data});
@@ -17,8 +25,8 @@ class About extends StatelessWidget{
           FadeInImage(
               fit: BoxFit.cover,
               height: double.infinity,
-              placeholder: NetworkImage('https://i.pinimg.com/originals/93/94/76/939476f03d23aed679564f0011a8eb42.jpg'),
-              image: NetworkImage('https://i.pinimg.com/originals/93/94/76/939476f03d23aed679564f0011a8eb42.jpg')),
+              placeholder: NetworkImage('https://scontent.flim13-1.fna.fbcdn.net/v/t31.18172-8/21765780_1811881862185768_695814991271747917_o.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=111&ccb=1-7&_nc_sid=e007fa&efg=eyJpIjoidCJ9&_nc_eui2=AeE6D4rvZ3bpzfePOPuzqlhywBPeM26u4lTAE94zbq7iVGlKj0DbWPNr--lhd5I2T3oSKjQZDbO6mQqK6o78k0uN&_nc_ohc=J1IM7mA2a9AAX-kI0Ji&tn=PPVZ5n4mI8twmQ0M&_nc_ht=scontent.flim13-1.fna&oh=00_AT9y50mCiV6A2XF5OFhm_7LOG_qYi1KjTCln5OK74uBgpQ&oe=62E33D26'),
+              image: NetworkImage('https://scontent.flim13-1.fna.fbcdn.net/v/t31.18172-8/21765780_1811881862185768_695814991271747917_o.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=111&ccb=1-7&_nc_sid=e007fa&efg=eyJpIjoidCJ9&_nc_eui2=AeE6D4rvZ3bpzfePOPuzqlhywBPeM26u4lTAE94zbq7iVGlKj0DbWPNr--lhd5I2T3oSKjQZDbO6mQqK6o78k0uN&_nc_ohc=J1IM7mA2a9AAX-kI0Ji&tn=PPVZ5n4mI8twmQ0M&_nc_ht=scontent.flim13-1.fna&oh=00_AT9y50mCiV6A2XF5OFhm_7LOG_qYi1KjTCln5OK74uBgpQ&oe=62E33D26')),
           Container(
             alignment: AlignmentDirectional.topStart,
             margin: EdgeInsets.only(top: 50.0, left: 10.0),
@@ -26,18 +34,160 @@ class About extends StatelessWidget{
               onTap: () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data) ))   },
               child: Icon(
                   Icons.chevron_left,
-                  color: Colors.black,
+                  color: Colors.orange,
                   size: 40.0
               ),
             ),
+          ),
+          Transform.translate(
+              offset: Offset(0.0, 500),
+              child:_cardProfileInfo(data.name,data.email)
           )
-
-
-
-
         ],
       ),
     );
   }
 
+}
+
+Widget _cardProfileInfo(String nombre, String correo){
+  return Container (
+    margin: EdgeInsets.symmetric(horizontal: 20.0),
+    padding: EdgeInsets.all(20.0),
+    height: 320,
+    decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+        color: Colors.white),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        _socialButtons(),
+        SizedBox(height: 6.0),
+        _headers('RUSTICA', Colors.black, 24.0),
+        SizedBox(height: 4.0),
+        _headers('Ofrecido por', Color.fromRGBO(42, 44, 49, 1.0), 14.0),
+        Container(
+          margin: EdgeInsets.only(top: 10.0),
+          child: Text(
+              'Rustica, Inc.',
+              style: TextStyle(
+                  color: Color.fromRGBO(42, 44, 49, 1.0),
+                  fontWeight: FontWeight.w500,
+                  fontSize: 15.0)),
+        ),
+        _stats()
+      ],
+    ),
+  );
+}
+
+Widget _socialButtons() {
+  return Row(
+    children: [
+      CircleAvatar(
+        backgroundImage: NetworkImage(
+            'https://scontent.flim13-1.fna.fbcdn.net/v/t31.18172-8/21765780_1811881862185768_695814991271747917_o.jpg?stp=cp0_dst-jpg_e15_fr_q65&_nc_cat=111&ccb=1-7&_nc_sid=e007fa&efg=eyJpIjoidCJ9&_nc_eui2=AeE6D4rvZ3bpzfePOPuzqlhywBPeM26u4lTAE94zbq7iVGlKj0DbWPNr--lhd5I2T3oSKjQZDbO6mQqK6o78k0uN&_nc_ohc=J1IM7mA2a9AAX-kI0Ji&tn=PPVZ5n4mI8twmQ0M&_nc_ht=scontent.flim13-1.fna&oh=00_AT9y50mCiV6A2XF5OFhm_7LOG_qYi1KjTCln5OK74uBgpQ&oe=62E33D26'),
+        radius: 40.0,
+      ),
+      Transform.translate(
+        offset: Offset(-20.0, 30.0),
+        child: Icon(
+          Icons.check_circle,
+          color: Colors.green,
+        ),
+      ),
+      Spacer(),
+      Container(
+        margin: EdgeInsets.only(right: 10.0),
+        /*child: RaisedButton(
+            onPressed: (){},
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+            color: Colors.white,
+            child: Text('ADD FRIEND', style: TextStyle(color: Colors.black)),
+          ),*/
+      ),
+      RaisedButton(
+        onPressed: (){
+          launch("http://api-rsu.herokuapp.com/");},
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+        color: Color.fromRGBO(245, 45, 86, 1.0),
+        child: Text('Pag. Web', style: TextStyle(color: Colors.white)),
+      )
+    ],
+  );
+}
+Widget _headers(String texto, Color color, double fontSize){
+  return Text ( texto,
+      style: TextStyle(
+          color: color,
+          fontWeight: FontWeight.w600,
+          fontSize: fontSize));
+}
+
+Widget _stats(){
+  return Container(
+    margin: EdgeInsets.only(top: 10.0),
+    height: 70.0,
+    decoration: BoxDecoration(
+        color:Colors.white,
+        border: Border.symmetric(
+            horizontal: BorderSide(
+                color: Color.fromRGBO(245,245,245,1.0)))),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Column(
+          children: [
+            Center(
+              child: Text(
+                'Actualizacion',
+                style: TextStyle(
+                    color: Color.fromRGBO(42, 44, 49, 1.0),
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.normal),
+              ),
+            ),
+            SizedBox(
+                height: 6.0),
+            Center(
+              child: Text(
+                '04 de Julio 2022',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+            width: 40.0),
+        Column(
+          children: [
+            Center(
+              child: Text(
+                'Requiere Android',
+                style: TextStyle(
+                    color: Color.fromRGBO(42, 44, 49, 1.0),
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.normal),
+              ),
+            ),
+            SizedBox(
+                height: 6.0),
+            Center(
+              child: Text(
+                'Varía con el '
+                ' dispositivo',
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 13.0,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
+          ],
+        )
+      ],
+    ),
+  );
 }
