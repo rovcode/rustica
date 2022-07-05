@@ -5,6 +5,7 @@ import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/Models/perfil.dart';
 import 'package:rustica/Widgets/Resources/Models/nosotros.dart';
+import 'package:rustica/Widgets/Resources/Models/insumo.dart';
 import 'package:rustica/Widgets/Resources/Models/about.dart';
 import 'package:rustica/Widgets/Resources/VistaApi.dart';
 
@@ -189,6 +190,8 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
             ListTile(
               leading: Icon(Icons.add_business),
               title: Text('Insumos'),
+                onTap: () =>{
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Insumo(data:tipo)))  }
 
             ),
             ListTile(

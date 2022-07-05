@@ -1,15 +1,16 @@
 //@dart=2.9
+
 import 'package:flutter/material.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Widgets/ChatBot/pantalla_chatbot.dart';
 import 'package:rustica/Widgets/pantalla_principal.dart';
 import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 
+
 void main() {
   //WidgetsFlutterBinding.ensureInitialized();//Inicia Firebase
   //Firebase.initializeApp();//Cargamos metodo proncipal
   runApp(RusticaApp());
- 
 }
 
 class RusticaApp extends StatelessWidget {
