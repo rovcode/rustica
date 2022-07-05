@@ -307,7 +307,7 @@ class VistaMesasState extends State<VistaMesas> {
   void initState() {
     twilioFlutter = TwilioFlutter(
         accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
-        authToken: '45bad3fb75bfc2c665325d73244c386a',
+        authToken: 'ebc80346aeb39ceefeb4ca5f5e357534',
         twilioNumber: '+16107568190');
     super.initState();
   }

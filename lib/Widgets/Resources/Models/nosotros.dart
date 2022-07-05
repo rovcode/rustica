@@ -75,7 +75,7 @@ Widget _cardProfileInfo(){
               style: TextStyle(
                   color: Color.fromRGBO(42, 44, 49, 1.0),
                   fontWeight: FontWeight.w500,
-                  fontSize: 15.0)),
+                  fontSize: 13.0)),
         ),
         Container(
           margin: EdgeInsets.only(top: 10.0),
@@ -87,7 +87,7 @@ Widget _cardProfileInfo(){
               style: TextStyle(
                   color: Color.fromRGBO(42, 44, 49, 1.0),
                   fontWeight: FontWeight.w500,
-                  fontSize: 15.0)),
+                  fontSize: 13.0)),
         ),
       ],
     ),
