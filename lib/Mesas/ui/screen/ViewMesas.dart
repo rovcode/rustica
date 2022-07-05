@@ -298,7 +298,7 @@ class VistaMesasState extends State<VistaMesas> {
   }
 
   Future<void> iniciandoservicio() async {
-    sendSms('980866911', 'Rony');
+    sendSms('931486375', 'Dick');
     print("Mensaje enviado!!!");
   }
 
@@ -307,7 +307,7 @@ class VistaMesasState extends State<VistaMesas> {
   void initState() {
     twilioFlutter = TwilioFlutter(
         accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
-        authToken: 'bad3fb75bfc2c665325d73244c386a',
+        authToken: '45bad3fb75bfc2c665325d73244c386a',
         twilioNumber: '+16107568190');
     super.initState();
   }
