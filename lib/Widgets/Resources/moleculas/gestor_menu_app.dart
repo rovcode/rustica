@@ -191,7 +191,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
               leading: Icon(Icons.add_business),
               title: Text('Insumos'),
                 onTap: () =>{
-                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Insumo(data:tipo)))  }
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Nosotros(data:tipo) ))  }
 
             ),
             ListTile(
