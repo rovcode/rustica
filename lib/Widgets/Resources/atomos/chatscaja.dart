@@ -18,7 +18,7 @@ class CajaChat extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         Container(
-          constraints: BoxConstraints(maxWidth: 250),
+          constraints: const BoxConstraints(maxWidth: 250),
           child: Container(
             decoration: BoxDecoration(
               color: esmensajeUsuario ? ColoresApp.gris : Colors.orange,
@@ -27,7 +27,7 @@ class CajaChat extends StatelessWidget {
             padding: const EdgeInsets.all(10),
             child: Text(
               chat.text?.text[0] ?? '',
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
               ),
             ),

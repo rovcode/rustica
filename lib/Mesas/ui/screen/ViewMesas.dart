@@ -24,6 +24,7 @@ class VistaMesas extends StatefulWidget {
       required this.estado,
       required this.piso});
   @override
+  // ignore: no_logic_in_create_state
   VistaMesasState createState() => VistaMesasState(
       id: id, num_sillas: num_sillas, estado: estado, piso: piso);
 }
@@ -197,7 +198,7 @@ class VistaMesasState extends State<VistaMesas> {
     if (estado == "Disponible") {
       return "Reservar";
     } else if (estado == "Ocupada") {
-      return  "Pedir liberación";
+      return  "";
     }
   }
 
@@ -298,7 +299,7 @@ class VistaMesasState extends State<VistaMesas> {
   }
 
   Future<void> iniciandoservicio() async {
-    sendSms('931486375', 'Dick');
+    sendSms('980866911', 'Rony');
     print("Mensaje enviado!!!");
   }
 
