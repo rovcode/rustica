@@ -6,8 +6,10 @@ import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/Models/perfil.dart';
 import 'package:rustica/Widgets/Resources/Models/nosotros.dart';
 import 'package:rustica/Widgets/Resources/Models/insumo.dart';
+import 'package:rustica/Widgets/Resources/Models/notificacion.dart';
 import 'package:rustica/Widgets/Resources/Models/about.dart';
 import 'package:rustica/Widgets/Resources/VistaApi.dart';
+
 
 class GestorMenuApp extends StatefulWidget {
   //final int tipousuarios;
@@ -111,7 +113,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
         builder: (context){
           return Container(
             color: Color(0xFF747475),
-            height: 260,
+            height: 170,
             child: Container(
               child :ListView(
                 padding: EdgeInsets.zero,
@@ -133,7 +135,9 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
   }
 
   Widget _buildBottomNavigationMenu(int id) {
+
     Widget widget2;
+    final Notifications;
     switch (id) {
       case 2:
         widget2 = Column(
@@ -144,11 +148,11 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
                 onTap: () =>{
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
             ),
-            ListTile(
-              leading: Icon(Icons.access_alarm),
-              title: Text('Notificación'),
+           /* ListTile(
+                leading: Icon(Icons.access_alarm),
+                title: Text('Notificación'),
 
-            ),
+            ),*/
             ListTile(
               leading: Icon(Icons.ac_unit),
               title: Text('Acerca de Nosotros'),
@@ -175,11 +179,12 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
                 onTap: () =>{
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Profile(data:tipo)))  }
             ),
+            /*
             ListTile(
               leading: Icon(Icons.access_alarm),
               title: Text('Notificación'),
 
-            ),
+            ),*/
             ListTile(
               leading: Icon(Icons.ac_unit),
               title: Text('Acerca de Nosotros'),

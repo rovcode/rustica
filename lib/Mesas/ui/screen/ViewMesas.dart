@@ -9,6 +9,7 @@ import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Usuarios/ui/screen/PantallPrincipal.dart';
 import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
+import 'package:rustica/Widgets/Resources/Models/notificacion.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:twilio_flutter/twilio_flutter.dart';
 
@@ -155,6 +156,11 @@ class VistaMesasState extends State<VistaMesas> {
                       FlatButton(
                           color: Color.fromARGB(88, 51, 51, 51),
                           onPressed: () {
+                            Timer(Duration(seconds: 300),(){
+                              final Notifications noti= new Notifications();
+                              noti.init();
+                              noti.showNotification();
+                            });
                             reserva(id, estado);
                               int cod = 1;
                               String name="Prueba";
@@ -162,7 +168,7 @@ class VistaMesasState extends State<VistaMesas> {
                               String email="";
                               int rol_id=2;
                               final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id);
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data))); 
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
                           },
                           child: Text(textoBoton(estado).toString(),
                               style: TextStyle(color: ColoresApp.fondoBlanco))),
