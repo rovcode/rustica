@@ -2,7 +2,7 @@
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:rustica/Platos/repository/ResponsePlatos.dart';
-import 'package:rustica/Platos/repository/ServicePlatos.dart';
+import 'package:rustica/Platos/casos_de_uso/ServicePlatos.dart';
 import 'package:rustica/Platos/ui/screen/ViewPlatos.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';

@@ -1,13 +1,12 @@
 import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:rustica/Usuarios/model/User.dart';
-import 'package:rustica/Api/db.dart';
+import 'package:rustica/Usuarios/repository/endpoints.dart';
 
-class ApiRSU {
+class ServiceUsuario {
   final Dio _dio = Dio();
   // final url = "http://api-rsu.herokuapp.com/api/login";
-  Recurso url = Recurso();
+  EndpointsUsuario url = EndpointsUsuario();
   //Registro usuario
   Future<Response> registerUser(Map<String, dynamic>? datosUsuario) async {
     try {
@@ -40,11 +39,12 @@ class ApiRSU {
 //Traer datos del usuario
   Future<Response> obtenerdatosusuario(int id) async {
     try {
-      Response response = await _dio.get(url.recursoUrsurio()+id.toString(),);
+      Response response = await _dio.get(
+        url.recursoUrsurio() + id.toString(),
+      );
       return response;
     } on DioError catch (e) {
       return e.response!.data;
     }
-
   }
 }

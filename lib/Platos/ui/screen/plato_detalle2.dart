@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/Platos/repository/ServicePlatos.dart';
+import 'package:rustica/Platos/casos_de_uso/ServicePlatos.dart';
 import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 

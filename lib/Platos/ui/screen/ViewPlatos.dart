@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:rustica/Platos/repository/ServicePlatos.dart';
+import 'package:rustica/Platos/casos_de_uso/ServicePlatos.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Platos/ui/screen/plato_detalle2.dart';
 

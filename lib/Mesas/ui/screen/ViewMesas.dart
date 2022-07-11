@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
 import 'package:rustica/Mesas/ui/screen/mesas_usuario.dart';
 import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Usuarios/model/User.dart';

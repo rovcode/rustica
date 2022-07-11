@@ -5,7 +5,7 @@ import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
 import 'package:rustica/Usuarios/ui/screen/pantalla_login.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
-import 'package:rustica/Usuarios/repository/API-RSU.dart';
+import 'package:rustica/Usuarios/casos_de_uso/ServiceUsuario.dart';
 import 'package:rustica/Widgets/Resources/moleculas/gestor_menu_app.dart';
 
 

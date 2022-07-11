@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:rustica/Usuarios/repository/API-RSU.dart';
+import 'package:rustica/Usuarios/casos_de_uso/ServiceUsuario.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
@@ -185,7 +185,7 @@ class RegistroState extends State<Registro> {
         "password": txtpassword.text,
         "rol_id": 2
       };
-      ApiRSU _apiUsurio = ApiRSU();
+      ServiceUsuario _apiUsurio = ServiceUsuario();
       dynamic res = await _apiUsurio.registerUser(datosUsuario);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       if (res.statusCode == 200) {

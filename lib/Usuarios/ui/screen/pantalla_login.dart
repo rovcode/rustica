@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:rustica/Usuarios/repository/API-RSU.dart';
-import 'package:rustica/Usuarios/repository/ServiceApiLogin.dart';
+import 'package:rustica/Usuarios/casos_de_uso/ServiceUsuario.dart';
+import 'package:rustica/Usuarios/casos_de_uso/ServiceApiLogin.dart';
 import 'package:rustica/Usuarios/ui/screen/dashboard.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Widgets/Resources/atomos/Logos.dart';
@@ -171,7 +171,7 @@ class LoginState extends State<Login> {
         ),
         backgroundColor: ColoresApp.fondoNaranja,
       ));
-      ApiRSU _apiUsurio = ApiRSU();
+      ServiceUsuario _apiUsurio = ServiceUsuario();
       dynamic res = await _apiUsurio.iniciarSesion(
         txtcorreo.text,
         txtpassword.text,

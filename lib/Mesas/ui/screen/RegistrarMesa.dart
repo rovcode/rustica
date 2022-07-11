@@ -1,7 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:flutter/material.dart';
-import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 class RegistrarMesa extends StatefulWidget{
