@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/Mesas/repository/ResponseMesas.dart';
-import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:http/http.dart' as http;
 import 'package:rustica/Mesas/ui/screen/ViewMesas.dart';

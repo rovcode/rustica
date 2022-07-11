@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:rustica/Widgets/Resources/atomos/chatscaja.dart';
 class ListaChats extends StatelessWidget {
   /// El componente recibirá una lista de mensajes
  final List<Map<String, dynamic>> arraychats;
 
+  // ignore: use_key_in_widget_constructors
   const ListaChats({
     this.arraychats = const [],
   });

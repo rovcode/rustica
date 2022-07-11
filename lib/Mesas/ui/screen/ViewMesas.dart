@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
 import 'package:rustica/Mesas/ui/screen/mesas_usuario.dart';
 import 'package:rustica/Reservas/ui/screen/paymentez.dart';
 import 'package:rustica/Usuarios/model/User.dart';
@@ -25,6 +25,7 @@ class VistaMesas extends StatefulWidget {
       required this.estado,
       required this.piso});
   @override
+  // ignore: no_logic_in_create_state
   VistaMesasState createState() => VistaMesasState(
       id: id, num_sillas: num_sillas, estado: estado, piso: piso);
 }
@@ -203,7 +204,7 @@ class VistaMesasState extends State<VistaMesas> {
     if (estado == "Disponible") {
       return "Reservar";
     } else if (estado == "Ocupada") {
-      return  "Pedir liberación";
+      return  "";
     }
   }
 
@@ -304,7 +305,7 @@ class VistaMesasState extends State<VistaMesas> {
   }
 
   Future<void> iniciandoservicio() async {
-    sendSms('931486375', 'Dick');
+    sendSms('980866911', 'Rony');
     print("Mensaje enviado!!!");
   }
 
@@ -313,7 +314,7 @@ class VistaMesasState extends State<VistaMesas> {
   void initState() {
     twilioFlutter = TwilioFlutter(
         accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
-        authToken: '45bad3fb75bfc2c665325d73244c386a',
+        authToken: 'ebc80346aeb39ceefeb4ca5f5e357534',
         twilioNumber: '+16107568190');
     super.initState();
   }

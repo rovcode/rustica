@@ -1,49 +1,55 @@
-
 import 'package:flutter/material.dart';
-
+// ignore: import_of_legacy_library_into_null_safe
 import 'package:dialog_flowtter/dialog_flowtter.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
-import 'package:rustica/Widgets/get_chat_chatbot.dart';
+import 'package:rustica/Widgets/ChatBot/get_chat_chatbot.dart';
 
 class ChatBot extends StatefulWidget {
+  const ChatBot({Key? key}) : super(key: key);
+
   @override
   ChatBotState createState() => ChatBotState();
-  
 }
 
-class ChatBotState extends State<ChatBot> { 
+class ChatBotState extends State<ChatBot> {
   final TextEditingController txtControlerChat = TextEditingController();
   final DialogFlowtter txtControlerDialog = DialogFlowtter();
   final List<Map<String, dynamic>> chats = [];
-  void enviarChat(String chat) async  {
+  void enviarChat(String chat) async {
     if (chat.isEmpty) return;
     setState(() {
       Message usuarioChat = Message(text: DialogText(text: [chat]));
       cargarChat(usuarioChat, true);
     });
-    QueryInput consulta = QueryInput(text: TextInput(text:chat));//Creamos la consulta para el chatbot
-    DetectIntentResponse  respuesta = await txtControlerDialog.detectIntent(queryInput: consulta);
+    QueryInput consulta = QueryInput(
+        text: TextInput(text: chat)); //Creamos la consulta para el chatbot
+    DetectIntentResponse respuesta =
+        await txtControlerDialog.detectIntent(queryInput: consulta);
     if (respuesta.message == null) return;
     setState(() {
       cargarChat(respuesta.message);
     });
   }
+
   void cargarChat(Message chat, [bool esmensajeUsuario = false]) {
     chats.add({
       'chat': chat,
       'esmensajeUsuario': esmensajeUsuario,
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ColoresApp.lightPrimary,
-      appBar: AppBar(title: Text('ChatBot Rustica'),backgroundColor:ColoresApp.fondoNaranja ),
-      body: Column(        
-          children: [
+      appBar: AppBar(
+          title: const Text('ChatBot Rustica'),
+          backgroundColor: ColoresApp.fondoNaranja),
+      body: Column(
+        children: [
           Expanded(
-          child: ListaChats(arraychats: chats),
-        ),         
+            child: ListaChats(arraychats: chats),
+          ),
           Container(
             padding: const EdgeInsets.symmetric(
               horizontal: 10,
@@ -53,17 +59,19 @@ class ChatBotState extends State<ChatBot> {
             child: Row(
               children: [
                 Expanded(
-                  child: TextField(style: TextStyle(color: Colors.white),
-                  controller: txtControlerChat,),
+                  child: TextField(
+                    style: const TextStyle(color: Colors.white),
+                    controller: txtControlerChat,
+                  ),
                 ),
                 IconButton(
                   color: Colors.white,
-                  icon: Icon(Icons.send),
+                  icon: const Icon(Icons.send),
                   onPressed: () {
-                    String chats=txtControlerChat.text;
+                    String chats = txtControlerChat.text;
                     enviarChat(chats);
                     txtControlerChat.clear();
-                    print("Ingeso teclado:"+chats);
+                    print("Ingeso teclado:" + chats);
                   },
                 ),
               ],

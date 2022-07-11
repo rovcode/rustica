@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/Administracion/ui/screen/DashboardAdmin.dart';
 import 'package:rustica/Mesas/ui/screen/mesas_usuario.dart';
-import 'package:rustica/Mesas/repository/ServiceMesas.dart';
+// ignore: unused_import
+import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
 import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Platos/ui/screen/pantalla_platos.dart';
 import 'package:rustica/Usuarios/ui/screen/PantallPrincipal.dart';

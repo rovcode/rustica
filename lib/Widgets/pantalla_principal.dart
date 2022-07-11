@@ -57,11 +57,11 @@ class PantallPrincipal extends StatelessWidget {
                       width: 250,
                       height: 50,
                       child: RaisedButton(
-                        shape: new RoundedRectangleBorder(
-                            borderRadius: new BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
                         color: ColoresApp.fondoNaranja,
                         onPressed: () {},
-                        child: Text('Escanear QR',
+                        child: Text('Iniciar con huella',
                             style: TextStyle(
                               color: ColoresApp.lightPrimary,
                             )),
@@ -74,6 +74,7 @@ class PantallPrincipal extends StatelessWidget {
 
     //===================================================
 
+    // ignore: non_constant_identifier_names
     Widget ButtonLogin() {
       return Container(
           margin: EdgeInsets.only(top: 35),
