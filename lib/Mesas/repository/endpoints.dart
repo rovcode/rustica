@@ -1,4 +1,4 @@
-import 'package:rustica/Api/base.dart';
+import 'package:rustica/infraestructura/base.dart';
 
 class EdnpointsMesas {
   ROUTEAPI rutaApi = ROUTEAPI();

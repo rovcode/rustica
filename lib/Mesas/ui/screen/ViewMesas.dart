@@ -157,19 +157,24 @@ class VistaMesasState extends State<VistaMesas> {
                       FlatButton(
                           color: Color.fromARGB(88, 51, 51, 51),
                           onPressed: () {
-                            Timer(Duration(seconds: 300),(){
-                              final Notifications noti= new Notifications();
-                              noti.init();
-                              noti.showNotification();
-                            });
+                            innvianotificacion(estado);
                             reserva(id, estado);
-                              int cod = 1;
-                              String name="Prueba";
-                              String phone="98086691";
-                              String email="";
-                              int rol_id=2;
-                              final data = Usuario(id: id, name:name, phone: phone, email: email, rol_id: rol_id);
-                              Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard(data:data)));
+                            int cod = 1;
+                            String name = "Prueba";
+                            String phone = "98086691";
+                            String email = "";
+                            int rol_id = 2;
+                            final data = Usuario(
+                                id: id,
+                                name: name,
+                                phone: phone,
+                                email: email,
+                                rol_id: rol_id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Dashboard(data: data)));
                           },
                           child: Text(textoBoton(estado).toString(),
                               style: TextStyle(color: ColoresApp.fondoBlanco))),
@@ -200,11 +205,21 @@ class VistaMesasState extends State<VistaMesas> {
     );
   }
 
- textoBoton(String estado) {
+  innvianotificacion(String state) {   
+    if (state == "Disponible") {
+        Timer(Duration(seconds: 10), () {
+        final Notifications noti = new Notifications();
+        noti.init();
+        noti.showNotification();
+      });
+    }
+  }
+
+  textoBoton(String estado) {
     if (estado == "Disponible") {
       return "Reservar";
     } else if (estado == "Ocupada") {
-      return  "";
+      return "";
     }
   }
 
@@ -305,7 +320,7 @@ class VistaMesasState extends State<VistaMesas> {
   }
 
   Future<void> iniciandoservicio() async {
-    sendSms('980866911', 'Rony');
+    sendSms('931486375', 'Dick');
     print("Mensaje enviado!!!");
   }
 
@@ -314,7 +329,7 @@ class VistaMesasState extends State<VistaMesas> {
   void initState() {
     twilioFlutter = TwilioFlutter(
         accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
-        authToken: 'ebc80346aeb39ceefeb4ca5f5e357534',
+        authToken: '7835cdc69bb599fb881445cd76ef2b931378',
         twilioNumber: '+16107568190');
     super.initState();
   }

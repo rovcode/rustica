@@ -15,7 +15,7 @@ class Notifications{
     /*this.flutterLocalNotificationsPlugin.initialize(initializationSettings);*/
   }
 
-  Future<void> showNotification()async{
+Future<void> showNotification()async{
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
     AndroidNotificationDetails('your channel id', 'your channel name',
         channelDescription: 'your channel description',
@@ -29,4 +29,5 @@ class Notifications{
         'Ya han pasado 5 minutos,¿Aun quiere reservar la Messa?', platformChannelSpecifics,
         payload: 'item x');
   }
+
 }

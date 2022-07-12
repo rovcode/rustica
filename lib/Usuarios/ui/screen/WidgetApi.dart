@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rustica/Widgets/Resources/moleculas/barra_navegacion.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
-import 'package:rustica/Widgets/Resources/VistaApi.dart';
 class WidgetApi extends StatefulWidget{
   @override
   WidgetApiState createState() => WidgetApiState();
@@ -19,7 +18,6 @@ class WidgetApiState extends State<WidgetApi>{
          body:
          Column(
            children: [
-             VistaApi(),
              Text("API: https://jsonplaceholder.typicode.com/", style: TextStyle(color: ColoresApp.darkPrimary, fontWeight: FontWeight.bold),),
              Text("Haga esta consula: https://jsonplaceholder.typicode.com/photos/180", style: TextStyle(color: ColoresApp.darkPrimary),)
              

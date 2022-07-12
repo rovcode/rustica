@@ -8,7 +8,6 @@ import 'package:rustica/Widgets/Resources/Models/nosotros.dart';
 import 'package:rustica/Widgets/Resources/Models/insumo.dart';
 import 'package:rustica/Widgets/Resources/Models/notificacion.dart';
 import 'package:rustica/Widgets/Resources/Models/about.dart';
-import 'package:rustica/Widgets/Resources/VistaApi.dart';
 
 
 class GestorMenuApp extends StatefulWidget {
@@ -58,7 +57,7 @@ class GestorMemnuAppState extends State<GestorMenuApp> {
         break;
       case 1:
         widget =  Column(children: [
-          opcionMenu(icon: Icons.home, nombre: "Dashboard",onTap: () =>{Navigator.push(context, MaterialPageRoute(builder: (context) => VistaApi()))}),
+          opcionMenu(icon: Icons.home, nombre: "Dashboard",onTap: () =>{/*Navigator.push(context, MaterialPageRoute(builder: (context) => VistaApi()))*/}),
           opcionMenu(icon: Icons.file_copy_sharp, nombre: "Facturas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.monetization_on, nombre: "Ventas",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
           opcionMenu(icon: Icons.stop, nombre: "Productos",onTap: () =>{/*Navigator.pushReplacementNamed(context, MyHomePage=>()):*/}),
