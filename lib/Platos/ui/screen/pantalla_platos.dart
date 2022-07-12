@@ -56,12 +56,12 @@ class ListaPlatos extends StatelessWidget {
     return ListView.builder(
         itemCount: platos.length,
         itemBuilder: (BuildContext context, int index) {
-          final usuario = platos[index];
+          final plato = platos[index];
           return ListTile(
             title: Container(
                 child: Column(
                   children: [
-                    VistaPlatos(id:usuario.id, nombre:usuario.nombre, precio:usuario.precio, starts:usuario.starts, detalles:usuario.detalles)
+                    VistaPlatos(id:plato.id, nombre:plato.nombre, precio:plato.precio, starts:plato.starts, detalles:plato.detalles)
                   ],
                 )),
           );

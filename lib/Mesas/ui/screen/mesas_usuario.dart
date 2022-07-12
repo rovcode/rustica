@@ -4,16 +4,21 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:rustica/Mesas/repository/ResponseMesas.dart';
 import 'package:rustica/Mesas/casos_de_uso/ServiceMesas.dart';
+import 'package:rustica/Usuarios/model/User.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:http/http.dart' as http;
 import 'package:rustica/Mesas/ui/screen/ViewMesas.dart';
 
 class MesasUsuario extends StatefulWidget {
+  final Usuario usuario;
+  MesasUsuario({required this.usuario});
   @override
-  MesasUsuarioState createState() => MesasUsuarioState();
+  MesasUsuarioState createState() => MesasUsuarioState(miuser: usuario);
 }
 
 class MesasUsuarioState extends State<MesasUsuario> {
+  final Usuario miuser;
+  MesasUsuarioState({required this.miuser});
   ServiceMesas serviceMesas = ServiceMesas();
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class MesasUsuarioState extends State<MesasUsuario> {
                   );
                 } else {
                   print(snapshot.data!.success);
-                  return ListaMesas(snapshot.data!.data);
+                  return ListaMesas(snapshot.data!.data, miuser);
                 }
               }),
         ));
@@ -40,7 +45,8 @@ class MesasUsuarioState extends State<MesasUsuario> {
 
 class ListaMesas extends StatelessWidget {
   final List<MiMesa> mesas;
-  ListaMesas(this.mesas);
+  final Usuario miuser;
+  ListaMesas(this.mesas, this.miuser);
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -55,7 +61,7 @@ class ListaMesas extends StatelessWidget {
                     id: mismesas.id,
                     num_sillas: mismesas.numSillas,
                     estado: mismesas.estado,
-                    piso: mismesas.piso)
+                    piso: mismesas.piso, user:miuser)
               ],
             )),
           );

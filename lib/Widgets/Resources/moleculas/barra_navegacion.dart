@@ -24,7 +24,7 @@ class BarraNavegacionState extends State<BarraNavegacion> {
    static const TextStyle optionStyle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
 
 
-    List<Widget> get WidgetOpciones => [TipoDashboard(data.rol_id),Platos(data:data),MesasUsuario(),RedSocial()];
+    List<Widget> get WidgetOpciones => [TipoDashboard(data.rol_id),Platos(data:data),MesasUsuario(usuario: data,),RedSocial()];
 
   
   ///Creamos una funcion para validar el state  
@@ -49,9 +49,9 @@ class BarraNavegacionState extends State<BarraNavegacion> {
            icon: Icon(Icons.home_filled),label: 'Principal', ),
            
         //op2
-         BottomNavigationBarItem( icon: Icon(Icons.explore),label: 'Explorar',),
+         BottomNavigationBarItem( icon: Icon(Icons.restaurant_menu),label: 'Platos',),
         //op3
-         BottomNavigationBarItem( icon: Icon(Icons.restaurant_menu),label: 'Mesas',),
+         BottomNavigationBarItem( icon: Icon(Icons.table_bar),label: 'Mesas',),
         //op4
          BottomNavigationBarItem( icon: Icon(Icons.supervised_user_circle_sharp),label: 'Conectar',),
       ],

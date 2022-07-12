@@ -18,16 +18,17 @@ class VistaMesas extends StatefulWidget {
   final int num_sillas;
   final String estado;
   final String piso;
+  final Usuario user;
 
   VistaMesas(
       {required this.id,
       required this.num_sillas,
       required this.estado,
-      required this.piso});
+      required this.piso, required this.user});
   @override
   // ignore: no_logic_in_create_state
   VistaMesasState createState() => VistaMesasState(
-      id: id, num_sillas: num_sillas, estado: estado, piso: piso);
+      id: id, num_sillas: num_sillas, estado: estado, piso: piso, usuario:user);
 }
 
 class VistaMesasState extends State<VistaMesas> {
@@ -35,12 +36,13 @@ class VistaMesasState extends State<VistaMesas> {
   final int num_sillas;
   final String estado;
   final String piso;
-
+  final Usuario usuario;
+ 
   VistaMesasState(
       {required this.id,
       required this.num_sillas,
       required this.estado,
-      required this.piso});
+      required this.piso, required this.usuario});
   late String numMesa = "";
   @override
   Widget build(BuildContext context) {
@@ -154,16 +156,16 @@ class VistaMesasState extends State<VistaMesas> {
                       const SizedBox(
                         width: 3.0,
                       ),
-                      FlatButton(
-                          color: Color.fromARGB(88, 51, 51, 51),
-                          onPressed: () {
-                            innvianotificacion(estado);
+                       FlatButton(
+                          color:  ColoresApp.gris,
+                          onPressed: () {                            
+                            notificacion(estado, id, piso);
                             reserva(id, estado);
-                            int cod = 1;
-                            String name = "Prueba";
-                            String phone = "98086691";
-                            String email = "";
-                            int rol_id = 2;
+                            //int cod = 1;
+                            String name = usuario.name;
+                            String phone = usuario.phone;
+                            String email =usuario.email;
+                            int rol_id = usuario.rol_id; 
                             final data = Usuario(
                                 id: id,
                                 name: name,
@@ -204,14 +206,129 @@ class VistaMesasState extends State<VistaMesas> {
           )),
     );
   }
+  Color fondo(int rol){
+     Color btn;
+     switch (rol) {
+       case 1:
+         btn=  ColoresApp.gris;
+       break;
+       case 2:
+            btn=  ColoresApp.fondoBlanco;
+       break;
+       default:
+        btn= ColoresApp.fondoBlanco;
+     }
+     return btn;
+  }
+  //=======================================================================
+  FlatButton  gestionBtn(int rol){
+     FlatButton btn;
+     switch (rol) {
+       case 1:
+         btn=  FlatButton(
+                          color:  ColoresApp.gris,
+                          onPressed: () {                            
+                            notificacion(estado, id, piso);
+                            reserva(id, estado);
+                            //int cod = 1;
+                            String name = usuario.name;
+                            String phone = usuario.phone;
+                            String email =usuario.email;
+                            int rol_id = usuario.rol_id; 
+                            final data = Usuario(
+                                id: id,
+                                name: name,
+                                phone: phone,
+                                email: email,
+                                rol_id: rol_id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Dashboard(data: data)));
+                          },
+                          child: Text(textoBoton(estado).toString(),
+                              style: TextStyle(color: ColoresApp.fondoBlanco)));
+       break;
+       case 2:
+            btn=  FlatButton(
+                          color:  ColoresApp.gris,
+                          onPressed: () {                            
+                            notificacion(estado, id, piso);
+                            reserva(id, estado);
+                            //int cod = 1;
+                            String name = usuario.name;
+                            String phone = usuario.phone;
+                            String email =usuario.email;
+                            int rol_id = usuario.rol_id; 
+                            final data = Usuario(
+                                id: id,
+                                name: name,
+                                phone: phone,
+                                email: email,
+                                rol_id: rol_id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Dashboard(data: data)));
+                          },
+                          child: Text(textoBoton(estado).toString(),
+                              style: TextStyle(color: ColoresApp.fondoBlanco)));
+       break;
+       default:
+        btn= FlatButton(
+                          color:  fondo(usuario.rol_id),
+                          onPressed: () {                            
+                            notificacion(estado, id, piso);
+                            reserva(id, estado);
+                            //int cod = 1;
+                            String name = usuario.name;
+                            String phone = usuario.phone;
+                            String email =usuario.email;
+                            int rol_id = usuario.rol_id; 
+                            final data = Usuario(
+                                id: id,
+                                name: name,
+                                phone: phone,
+                                email: email,
+                                rol_id: rol_id);
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        Dashboard(data: data)));
+                          },
+                          child: Text(textoBoton(estado).toString(),
+                              style: TextStyle(color: ColoresApp.fondoBlanco)));
+     }
+     return btn;
+  }
+  //=======================================================================
+  // Widget boton(int rolid){
+  //   Widget btn;
+  //    Switch(rolid){
+  //      case 1:
+  //       return btn = 
+  //      break;
+  //      case 2:
+  //      break;
+  //      default:
+  //      break;
+  //    }
+  // }
 
-  innvianotificacion(String state) {   
-    if (state == "Disponible") {
-        Timer(Duration(seconds: 10), () {
-        final Notifications noti = new Notifications();
-        noti.init();
-        noti.showNotification();
+  notificacion(String state, int numeromesa, String piso) {   
+    if (state == "Disponible") { 
+        final  Notificacion noti =Notificacion(titulo:'Reservaciones de Rustica',mensaje:'Reservaste tu mesa N° '+numeromesa.toString()+' en el piso '+piso);
+        noti.getstate();      
+        Timer(const Duration(seconds: 10), () {        
+         final  Notificacion noti =Notificacion(titulo:'Reservaciones de Rustica',mensaje:'Ya estamos terminando tu pedido');
+        noti.getstate();
       });
+    }else {
+        final  Notificacion noti =Notificacion(titulo:'Estado mesa',mensaje:'Mesa liberada');
+         noti.getstate();
     }
   }
 
@@ -219,7 +336,7 @@ class VistaMesasState extends State<VistaMesas> {
     if (estado == "Disponible") {
       return "Reservar";
     } else if (estado == "Ocupada") {
-      return "";
+      return "Liberar";
     }
   }
 
@@ -328,8 +445,8 @@ class VistaMesasState extends State<VistaMesas> {
   late TwilioFlutter twilioFlutter;
   void initState() {
     twilioFlutter = TwilioFlutter(
-        accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
-        authToken: '7835cdc69bb599fb881445cd76ef2b931378',
+        accountSid: '78ACb959f96a62d836b9cd375cd7c991a3a678',
+        authToken: '35cdc69bb599fb881445cd76ef2b9313',
         twilioNumber: '+16107568190');
     super.initState();
   }

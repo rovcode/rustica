@@ -33,7 +33,7 @@ class VistaPlatosState extends State<VistaPlatos>{
 
   @override
   Widget build(BuildContext context) {
-
+    print(detalles);
     //ServicePlatos service = ServicePlatos();
     return Card(
       color: ColoresApp.fondoBlanco,
@@ -51,14 +51,16 @@ class VistaPlatosState extends State<VistaPlatos>{
                 margin: const EdgeInsets.all(5),
                 width: 100.0,
                 height: 100.0,
-                decoration: BoxDecoration(
-                  image: const DecorationImage(
-                    image: AssetImage("assets/img/platos_mesero.png"),
-                    fit: BoxFit.cover,
-                  ),
-                  borderRadius: BorderRadius.circular(10.0),
-                ),
+                // decoration: BoxDecoration(
+                //   image: const DecorationImage(
+                //     image: NetworkImage(''),
+                //     fit: BoxFit.cover,
+                //   ),
+                //   borderRadius: BorderRadius.circular(10.0),
+                // ),
+                child: Image.network(detalles),
               ),
+              
               SizedBox(
                 width: MediaQuery.of(context).size.width * 0.03,
               ),
@@ -98,14 +100,14 @@ class VistaPlatosState extends State<VistaPlatos>{
                         size: 15),
                     ],
                   ),
-                  Text(
-                    ""+detalles.toString(),
-                    style: TextStyle(
+                  // Text(
+                  //   ""+detalles.toString(),
+                  //   style: TextStyle(
 
-                      fontSize: 15,
-                      color: Colors.red,
-                    ),
-                  ),
+                  //     fontSize: 15,
+                  //     color: Colors.red,
+                  //   ),
+                  // ),
                   Row(
                     children: [
                       Padding(
