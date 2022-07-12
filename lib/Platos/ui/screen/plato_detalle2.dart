@@ -19,7 +19,11 @@ class _plato_detalle2 extends State<plato_detalle2> {
   ServicePlatos servicePlatos = ServicePlatos();
   //dynamic res = await servicePlatos.getDetallesPlatosApi(1);
   //servicePlatos.getDetallesPlatosApi();
-
+  Future<void> getDatos(int id) async {
+    ServicePlatos servicePlatos = ServicePlatos();
+    dynamic res = await servicePlatos.getDetallesPlatosApi(id);
+    print(res);
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -388,10 +392,6 @@ class _plato_detalle2 extends State<plato_detalle2> {
 
   }
 
-  Future<void> getDatos(int id) async {
-    ServicePlatos servicePlatos = ServicePlatos();
-    dynamic res = await servicePlatos.getDetallesPlatosApi(id);
-    print(res);
-  }
+
 
 }
