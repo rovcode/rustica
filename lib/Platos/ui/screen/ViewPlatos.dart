@@ -15,7 +15,7 @@ class VistaPlatos extends StatefulWidget{
   final String precio;
   final int starts;
   final String detalles;
-
+//trabaje con diego , dick
   VistaPlatos({required this.id, required this.nombre, required this.precio,required this.starts,required this.detalles});
   @override
   VistaPlatosState createState() => VistaPlatosState(id:id, nombre:nombre, precio:precio, starts:starts, detalles:detalles);
@@ -119,7 +119,7 @@ class VistaPlatosState extends State<VistaPlatos>{
                       FlatButton(
                         color: ColoresApp.gris,
                         onPressed: () => {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id)))
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id, nombre:nombre, precio:precio, starts:starts, detalles:detalles)))
                         },
                         child: Text(
                           "Ver detalles",

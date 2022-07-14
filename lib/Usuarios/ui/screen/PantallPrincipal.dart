@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:rustica/Reservas/casos_de_uso/SeviceReservas.dart';
+import 'package:rustica/Reservas/repository/ResponseReservas.dart';
 import 'package:rustica/Usuarios/ui/screen/CategoriasRustica.dart';
 import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 import 'package:rustica/Usuarios/ui/screen/CardPublicidad.dart';
 import 'package:rustica/Widgets/ChatBot/pantalla_chatbot.dart';
 
 class PantallPrincipal extends StatelessWidget {
+   ServiceReservas serviceReserva = ServiceReservas();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,9 +16,9 @@ class PantallPrincipal extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ChatBot()),
+            MaterialPageRoute(builder: (context) => const ChatBot()),
           );
-        },
+        }, 
         tooltip: 'Chatbot',
         backgroundColor: ColoresApp.fondoNaranja,
         child: const Icon(Icons.message),
@@ -23,7 +26,6 @@ class PantallPrincipal extends StatelessWidget {
       backgroundColor: ColoresApp.fondoBlanco,
       body: SafeArea(
         bottom: false,
-        child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -37,10 +39,8 @@ class PantallPrincipal extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
+              const SizedBox( height: 10,),
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -54,11 +54,11 @@ class PantallPrincipal extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               categoriaRustica(),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Padding(
@@ -71,13 +71,29 @@ class PantallPrincipal extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
-              masconsumido(),
+              //masconsumido(),
+              // Container(
+              //    child:FutureBuilder(
+              // future: serviceReserva.getReservas(),            
+              // builder: (BuildContext context,
+              //     AsyncSnapshot<ResponseRerva> snapshot) {
+              //   if (snapshot.connectionState == ConnectionState.waiting) {
+              //     // ignore: prefer_const_constructors
+              //     return Center(
+              //       child: const CircularProgressIndicator(),
+              //     );
+              //   } else {
+              //     print(snapshot.data!.success);
+              //     return ListaReservas(snapshot.data!.data);
+              //   }
+              // }),
+              // )
             ],
           ),
-        ),
+        
       ),
     );
   }
@@ -157,5 +173,26 @@ class PantallPrincipal extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+class ListaReservas extends StatelessWidget {
+  final List<Reservas> reservas;
+ 
+  ListaReservas(this.reservas);
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+        itemCount: reservas.length,
+        itemBuilder: (BuildContext context, int index) {
+          final misreservas = reservas[index];
+          return ListTile(
+            title: Container(
+                child: Column(
+              children: [
+                 Text(misreservas.estado)
+              ],
+            )),
+          );
+        });
   }
 }

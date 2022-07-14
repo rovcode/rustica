@@ -24,7 +24,7 @@ class MesasUsuarioState extends State<MesasUsuario> {
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: ColoresApp.fondoBlanco,
-        body: Container(
+        body: Container( 
           child: FutureBuilder(
               future: serviceMesas.getMesasApi(),            
               builder: (BuildContext context,

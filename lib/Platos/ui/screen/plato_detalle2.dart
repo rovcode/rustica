@@ -5,28 +5,28 @@ import 'package:rustica/Widgets/Resources/atomos/ColoresApp.dart';
 
 class plato_detalle2 extends StatefulWidget {
   int id;
-  var chaufa;
-  plato_detalle2({required this.id});
+  String nombre;
+  String precio;
+  int starts;
+  String detalles;
+  plato_detalle2({required this.id, required this.nombre, required this.precio,required this.starts,required this.detalles});
   @override
-  _plato_detalle2 createState() => _plato_detalle2(id:id);
+  _plato_detalle2 createState() => _plato_detalle2(id:id,nombre:nombre,precio:precio,starts: starts,detalles: detalles);
 }
 
 class _plato_detalle2 extends State<plato_detalle2> {
   int id;
-  _plato_detalle2({required this.id});
+  String nombre;
+  String precio;
+  int starts;
+  String detalles;
+  _plato_detalle2({required this.id, required this.nombre, required this.precio,required this.starts,required this.detalles});
   bool corazon = false;
   int total = 1;
-  ServicePlatos servicePlatos = ServicePlatos();
-  //dynamic res = await servicePlatos.getDetallesPlatosApi(1);
-  //servicePlatos.getDetallesPlatosApi();
-  Future<void> getDatos(int id) async {
-    ServicePlatos servicePlatos = ServicePlatos();
-    dynamic res = await servicePlatos.getDetallesPlatosApi(id);
-    print(res);
-  }
+
   @override
   Widget build(BuildContext context) {
-
+    print(detalles);
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -47,7 +47,7 @@ class _plato_detalle2 extends State<plato_detalle2> {
                           width: MediaQuery.of(context).size.width,
                           height: 275,
                           color: Colors.orange,
-                          child: Image.asset('assets/img/arrozchaufa.jpg'),
+                          child: Image.network(detalles),
                         ),
 
                         //panel central
@@ -57,24 +57,26 @@ class _plato_detalle2 extends State<plato_detalle2> {
                           children: [
                             Container(
                               margin: EdgeInsets.only(top: 10),
-                              width: 60,
+                              width: 140,
                               height: 30,
                               decoration: BoxDecoration(
                                   color:
                                       Colors.orange.shade200.withOpacity(0.75),
-                                  borderRadius: BorderRadius.circular(50)),
+                                  borderRadius: BorderRadius.circular(140)),
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
+                                  Text(
+                                    "Estrellas: "+starts.toString(),
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      color: ColoresApp.gris,
+                                    ),
+                                  ),
                                   Icon(
-                                    Icons.star,
-                                    color: Colors.orange,
-                                    size: 20,
-                                  ),
-                                  SizedBox(
-                                    width: 3,
-                                  ),
-                                  Text("")
+                                      Icons.star,
+                                      color: Colors.orange,
+                                      size: 18),
                                 ],
                               ),
                             ),
@@ -89,7 +91,7 @@ class _plato_detalle2 extends State<plato_detalle2> {
                           children: [
                             Container(
                               margin: EdgeInsets.all(10),
-                              child: Text("ARROZ CHAUFA",style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
+                              child: _headers(nombre, Colors.black, 24.0),
                             ),
 
                             //boton de aumento de unidades
@@ -141,12 +143,7 @@ class _plato_detalle2 extends State<plato_detalle2> {
                         ),
 
                         //ingredientes
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Text("Ingredientes",style: TextStyle(color: Colors.black,)),
-                          ],
-                        ),
+
                         SizedBox(
                           height: 10,
                         ),
@@ -155,148 +152,10 @@ class _plato_detalle2 extends State<plato_detalle2> {
                         SingleChildScrollView(
                           physics: BouncingScrollPhysics(),
                           scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: [
-                              Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 4)
-                                    ]),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "🍗",
-                                      style: TextStyle(fontSize: 24),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "pollo", style: TextStyle(color: Colors.black,)
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 4)
-                                    ]),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "🍚",
-                                      style: TextStyle(fontSize: 24),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "arroz", style:TextStyle(color: Colors.black,)
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 4)
-                                    ]),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "🥚",
-                                      style: TextStyle(fontSize: 24),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "huevo", style:TextStyle(color: Colors.black,)
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                              Container(
-                                width: 70,
-                                height: 70,
-                                decoration: BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.circular(10),
-                                    boxShadow: [
-                                      BoxShadow(
-                                          color: Colors.grey.withOpacity(0.2),
-                                          offset: Offset(0, 4),
-                                          blurRadius: 4)
-                                    ]),
-                                child: Column(
-                                  children: [
-                                    SizedBox(
-                                      height: 10,
-                                    ),
-                                    Text(
-                                      "🧅",
-                                      style: TextStyle(fontSize: 24),
-                                    ),
-                                    SizedBox(
-                                      height: 5,
-                                    ),
-                                    Text(
-                                      "cebolla",style:TextStyle(color: Colors.black,)
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(
-                                width: 15,
-                              ),
-                            ],
-                          ),
+
                         ),
 
-                        //descripcion de comida
-                        SizedBox(
-                          height: 20,
-                        ),
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -306,8 +165,9 @@ class _plato_detalle2 extends State<plato_detalle2> {
                         SizedBox(
                           height: 10,
                         ),
+
                         Text(
-                            "Arroz chaufa de pollo con ingredientes naturales",style: TextStyle(color: Colors.black,)),
+                            nombre+" con ingredientes naturales",style: TextStyle(color: Colors.black,)),
                         SizedBox(
                           height: 110,
                         )
@@ -378,9 +238,11 @@ class _plato_detalle2 extends State<plato_detalle2> {
                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Pasarela()));
                                 //getDatos(id);
                               },
-                              child: Row(children: [                                
+                              child: Row(children: [
+                                SizedBox(width: 20.0),
                                 const Text("Confimar pedido",style: TextStyle(color: Colors.white),),
-                                const Text(" (S/11)",style: TextStyle(color: Colors.black),), 
+                                SizedBox(width: 20.0),
+                                _headers(precio, Colors.black, 15.0),
                               ]),
                         ),
                       )),
@@ -391,7 +253,13 @@ class _plato_detalle2 extends State<plato_detalle2> {
     );
 
   }
-
+  Widget _headers(String texto, Color color, double fontSize){
+    return Text ( texto,
+        style: TextStyle(
+            color: color,
+            fontWeight: FontWeight.w600,
+            fontSize: fontSize));
+  }
 
 
 }
