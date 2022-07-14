@@ -74,7 +74,7 @@ class PantallPrincipal extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              //masconsumido(),
+              masconsumido(),
               // Container(
               //    child:FutureBuilder(
               // future: serviceReserva.getReservas(),            
