@@ -322,7 +322,7 @@ class VistaMesasState extends State<VistaMesas> {
     if (state == "Disponible") { 
         final  Notificacion noti =Notificacion(titulo:'Reservaciones de Rustica',mensaje:'Reservaste tu mesa N° '+numeromesa.toString()+' en el piso '+piso);
         noti.getstate();      
-        Timer(const Duration(seconds: 10), () {        
+        Timer(const Duration(seconds: 15), () {        
          final  Notificacion noti =Notificacion(titulo:'Reservaciones de Rustica',mensaje:'Ya estamos terminando tu pedido');
         noti.getstate();
       });
@@ -437,7 +437,7 @@ class VistaMesasState extends State<VistaMesas> {
   }
 
   Future<void> iniciandoservicio() async {
-    sendSms('931486375', 'Dick');
+    sendSms('980866911', 'Rony');
     print("Mensaje enviado!!!");
   }
 
@@ -445,7 +445,7 @@ class VistaMesasState extends State<VistaMesas> {
   late TwilioFlutter twilioFlutter;
   void initState() {
     twilioFlutter = TwilioFlutter(
-        accountSid: '78ACb959f96a62d836b9cd375cd7c991a3a678',
+        accountSid: 'ACb959f96a62d836b9cd375cd7c991a3a6',
         authToken: '35cdc69bb599fb881445cd76ef2b9313',
         twilioNumber: '+16107568190');
     super.initState();

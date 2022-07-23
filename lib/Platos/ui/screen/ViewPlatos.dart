@@ -121,12 +121,15 @@ class VistaPlatosState extends State<VistaPlatos>{
                         onPressed: () => {
                           Navigator.push(context, MaterialPageRoute(builder: (context) => plato_detalle2(id:id, nombre:nombre, precio:precio, starts:starts, detalles:detalles)))
                         },
-                        child: Text(
-                          "Ver detalles",
+                        child: Row(children: [
+                           const Icon(Icons.payment),
+                            Text(
+                          " Comprar",
                           style: TextStyle(
                             color: ColoresApp.fondoBlanco,
                           ),
                         ),
+                        ],),
                       ),
                     ],
                   ),
